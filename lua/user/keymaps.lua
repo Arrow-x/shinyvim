@@ -25,10 +25,10 @@ keymap("n", "<Tab>", "<C-w>", opts)
 -- keymap("n", "<leader>e", ":Lex 20<cr>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-Up>", ":resize +2<CR>", opts)
+keymap("n", "<A-Down>", ":resize -2<CR>", opts)
+keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -42,14 +42,14 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- keymap("n", "<C-j>", ":cnext<CR>zzzv", opts)
 -- keymap("n", "<C-k>", ":cprevious<CR>zzzv", opts)
 
-keymap("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
-keymap("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
-keymap("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
-keymap("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+keymap("n", "<A-h>", "<C-w>h", { desc = "Move to left split" })
+keymap("n", "<A-j>", "<C-w>j", { desc = "Move to below split" })
+keymap("n", "<A-k>", "<C-w>k", { desc = "Move to above split" })
+keymap("n", "<A-l>", "<C-w>l", { desc = "Move to right split" })
 
 -- Move text up and Down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+keymap("n", "<C-j>", ":m .+1<CR>==", opts)
+keymap("n", "<C-k>", ":m .-2<CR>==", opts)
 
 -- Keeping it centered
 keymap("n", "n", "nzzzv", opts)
@@ -71,8 +71,8 @@ keymap("n", "Y", "y$", opts)
 keymap("i", "jk", "<Esc>la", opts)
 
 -- Move text up and down
-keymap("i", "<A-j>", "<Esc>:m .+1<CR>==i", opts)
-keymap("i", "<A-k>", "<Esc>:m .-2<CR>==i ", opts)
+keymap("i", "<C-j>", "<Esc>:m .+1<CR>==i", opts)
+keymap("i", "<C-k>", "<Esc>:m .-2<CR>==i ", opts)
 
 --Undo Break Points
 keymap("i", ",", ",<C-g>u", opts)
@@ -96,16 +96,16 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 -- keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 -- keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv=gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv=gv", opts)
+keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts)
+keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- terminal --
 -- better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
+keymap("t", "<A-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<A-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<A-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<A-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("t", "<A-c>", [[<C-\><C-n>]], term_opts)
 -- System Clipboard --
 -- Copy to system clipboard
 keymap("v", "<leader>y", '"+y', opts)
