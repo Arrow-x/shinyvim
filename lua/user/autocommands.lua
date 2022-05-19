@@ -5,6 +5,7 @@ local groups = {
 	auto_resize = vim.api.nvim_create_augroup("auto_resize", { clear = true }),
 	alpha = vim.api.nvim_create_augroup("alpha", { clear = true }),
 	lsp = vim.api.nvim_create_augroup("lsp", { clear = true }),
+	exe_code = vim.api.nvim_create_augroup("exe_code", { clear = true }),
 }
 
 local c_autocmd = vim.api.nvim_create_autocmd
@@ -80,5 +81,33 @@ c_autocmd("VimResized", {
 	pattern = "*",
 	callback = function()
 		vim.cmd("tabdo wincmd =")
+	end,
+})
+
+c_autocmd("FileType", {
+	group = groups.exe_code,
+	pattern = "python",
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<F5>",
+			":sp<CR> :term python3 %<CR> :startinsert<CR>",
+			{ buffer = true, noremap = true, silent = true },
+			{ desc = "Executer the current buffer" }
+		)
+	end,
+})
+
+c_autocmd("FileType", {
+	group = groups.exe_code,
+	pattern = "bash, sh",
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<F5>",
+			":sp<CR> :term sh %<CR> :startinsert<CR>",
+			{ buffer = true, noremap = true, silent = true },
+			{ desc = "Executer the current buffer" }
+		)
 	end,
 })
