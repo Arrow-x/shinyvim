@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("lewis6991/impatient.nvim")
 	use("tpope/vim-surround")
+	use("Darazaki/indent-o-matic")
 
 	-- ColorSchemes
 	use("folke/tokyonight.nvim")
