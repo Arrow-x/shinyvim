@@ -6,7 +6,6 @@ end
 local lspconfig = require("lspconfig")
 
 local servers = {
-	"prosemd_lsp",
 	"sumneko_lua",
 	"rust_analyzer",
 	-- "pyright",
