@@ -106,12 +106,13 @@ keymap("t", "<A-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<A-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<A-l>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<A-c>", [[<C-\><C-n>]], term_opts)
+
 -- System Clipboard --
 -- Copy to system clipboard
-keymap("v", "<leader>y", '"+y', opts)
-keymap("n", "<leader>Y", '"+yg_', opts)
-keymap("n", "<leader>y", '"+y', opts)
-keymap("n", "<leader>yy", '"+yy', opts)
+keymap("v", "<leader>y", '"+y', opts, { desc = "Copy the selected text to system clipboard" })
+keymap("n", "<leader>Y", '"+yg_', opts, { desc = "Copy to system clipbaord the rest of the line" })
+keymap("n", "<leader>y", '"+y', opts, { desc = "Copy to system clipboad action" })
+keymap("n", "<leader>yy", '"+yy', opts, { desc = "Copy the current line to system clipboard" })
 
 -- Paste from system clipboard
 keymap("n", "<leader>p", '"+p', opts)
