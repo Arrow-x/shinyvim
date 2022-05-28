@@ -62,33 +62,10 @@ end
 
 -- local function lsp_keymaps(bufnr)
 -- 	local opts = { noremap = true, silent = true }
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(
--- 		bufnr,
--- 		"n",
--- 		"<leader>vn",
--- 		'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
--- 		opts
--- 	)
--- 	vim.api.nvim_buf_set_keymap(
--- 		bufnr,
--- 		"n",
--- 		"<leader>vp",
--- 		'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
--- 		opts
--- 	)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>va", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vc", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
--- 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>vq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 --
 -- 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 -- end
---
+
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
