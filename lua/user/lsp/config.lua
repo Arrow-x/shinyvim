@@ -8,29 +8,27 @@ local tbl_deep_extend = vim.tbl_deep_extend
 local handlers = require("user.lsp.handlers")
 local on_attach = handlers.on_attach
 
-local servers = {}
+local servers = { "gdscript" }
+
 local installer_avail, lsp_installer = pcall(require, "nvim-lsp-installer")
 if installer_avail then
+	lsp_installer.setup()
 	for _, server in ipairs(lsp_installer.get_installed_servers()) do
 		insert(servers, server.name)
 	end
-	lsp_installer.setup()
 end
 
 for _, server in ipairs(servers) do
-	local old_on_attach = lspconfig[server].on_attach
 	local opts = {
 		on_attach = function(client, bufnr)
-			if old_on_attach then
-				old_on_attach(client, bufnr)
-			end
 			on_attach(client, bufnr)
 		end,
 		capabilities = tbl_deep_extend("force", handlers.capabilities, lspconfig[server].capabilities or {}),
 	}
-	local present, av_overrides = pcall(require, "user.lsp.settings." .. server)
+
+	local present, custom_settings = pcall(require, "user.lsp.settings." .. server)
 	if present then
-		opts = tbl_deep_extend("force", av_overrides, opts)
+		opts = tbl_deep_extend("force", custom_settings, opts)
 	end
 	lspconfig[server].setup(opts)
 end

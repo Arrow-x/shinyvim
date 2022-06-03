@@ -4,6 +4,5 @@ if not status_ok then
 end
 
 require("user.lsp.config")
-require("user.lsp.settings.gdscript")
 require("user.lsp.handlers").setup()
 require("user.lsp.null-ls")
