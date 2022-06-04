@@ -71,7 +71,7 @@ return packer.startup(function(use)
 	-- LSP
 	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer")
-
+	use("RRethy/vim-illuminate") -- Illuminate other uses of current word/symbol under cursor
 	use("jose-elias-alvarez/null-ls.nvim")
 
 	--Debug
