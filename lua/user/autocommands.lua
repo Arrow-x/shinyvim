@@ -2,6 +2,7 @@ local groups = {
 	general_settings = vim.api.nvim_create_augroup("general_settings", { clear = true }),
 	git = vim.api.nvim_create_augroup("git", { clear = true }),
 	markdown = vim.api.nvim_create_augroup("markdown", { clear = true }),
+	mail = vim.api.nvim_create_augroup("mail", { clear = true }),
 	auto_resize = vim.api.nvim_create_augroup("auto_resize", { clear = true }),
 	alpha = vim.api.nvim_create_augroup("alpha", { clear = true }),
 	lsp = vim.api.nvim_create_augroup("lsp", { clear = true }),
@@ -55,6 +56,15 @@ c_autocmd("BufWritePre", {
 c_autocmd("FileType", {
 	group = groups.git,
 	pattern = "gitcommit",
+	callback = function()
+		vim.wo.spell = true
+		vim.wo.wrap = true
+	end,
+})
+
+c_autocmd("FileType", {
+	group = groups.mail,
+	pattern = "mail",
 	callback = function()
 		vim.wo.spell = true
 		vim.wo.wrap = true
