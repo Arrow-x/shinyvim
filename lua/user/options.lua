@@ -43,11 +43,10 @@ O.expandtab = false -- convert tabs to spaces
 O.tabstop = 4 -- insert 4 spaces for a tab
 
 O.shortmess:append("c")
--- vim.cmd("set path=.,,**")
--- vim.cmd("set wildmenu")
+-- O.whichwrap:append("<,>,[,],h,l")
+-- O.iskeyword:append("-")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 vim.cmd("let g:did_load_filetypes = 0")
 vim.cmd("let g:do_filetype_lua = 1")
