@@ -44,7 +44,7 @@ O.tabstop = 4 -- insert 4 spaces for a tab
 
 O.shortmess:append("c")
 -- vim.cmd("set path=.,,**")
-vim.cmd("set wildmenu")
+-- vim.cmd("set wildmenu")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

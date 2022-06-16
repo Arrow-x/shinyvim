@@ -45,7 +45,6 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("windwp/nvim-autopairs")
 	use("numToStr/Comment.nvim")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("lewis6991/impatient.nvim")
 	use("tpope/vim-surround")
 	use("tpope/vim-apathy")
@@ -82,10 +81,6 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	})
 
 	-- Treesitter
 	use({
