@@ -3,3 +3,8 @@ vim.filetype.add({
 		conf = "dosini",
 	},
 })
+vim.filetype.add({
+	filename = {
+		[".xprofile"] = "sh",
+	},
+})
