@@ -47,28 +47,6 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
--- local border = {
--- 	{ "┏", "FloatBorder" },
--- 	{ "━", "FloatBorder" },
--- 	{ "┓", "FloatBorder" },
--- 	{ "┃", "FloatBorder" },
--- 	{ "┛", "FloatBorder" },
--- 	{ "━", "FloatBorder" },
--- 	{ "┗", "FloatBorder" },
--- 	{ "┃", "FloatBorder" },
--- }
-
--- local border = {
--- 	{ "╔", "FloatBorder" },
--- 	{ "═", "FloatBorder" },
--- 	{ "╗", "FloatBorder" },
--- 	{ "║", "FloatBorder" },
--- 	{ "╝", "FloatBorder" },
--- 	{ "═", "FloatBorder" },
--- 	{ "╚", "FloatBorder" },
--- 	{ "║", "FloatBorder" },
--- }
-
 local border = {
 	{ "╭", "CmpBorder" },
 	{ "─", "CmpBorder" },
@@ -79,16 +57,6 @@ local border = {
 	{ "╰", "CmpBorder" },
 	{ "│", "CmpBorder" },
 }
--- local border = {
--- 	{ "╭", "FloatBorder" },
--- 	{ "─", "FloatBorder" },
--- 	{ "╮", "FloatBorder" },
--- 	{ "│", "FloatBorder" },
--- 	{ "╯", "FloatBorder" },
--- 	{ "─", "FloatBorder" },
--- 	{ "╰", "FloatBorder" },
--- 	{ "│", "FloatBorder" },
--- }
 
 cmp.setup({
 	snippet = {

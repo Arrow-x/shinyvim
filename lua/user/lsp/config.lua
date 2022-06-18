@@ -8,7 +8,11 @@ local tbl_deep_extend = vim.tbl_deep_extend
 local handlers = require("user.lsp.handlers")
 local on_attach = handlers.on_attach
 
-local servers = { "gdscript" }
+-- Lsp servers that are not installed by lsp_installer
+local servers = {
+	"gdscript",
+	-- "ltex",
+}
 
 local installer_avail, lsp_installer = pcall(require, "nvim-lsp-installer")
 if installer_avail then

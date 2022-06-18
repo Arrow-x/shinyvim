@@ -53,7 +53,7 @@ acmd("FileType", {
 	pattern = { "gitcommit", "mail", "markdown" },
 	callback = function()
 		vim.wo.spell = true
-		vim.wo.wrap = true
+		vim.cmd("set wrap linebreak")
 	end,
 })
 
