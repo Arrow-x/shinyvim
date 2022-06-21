@@ -19,9 +19,6 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
--- Better window navigation
-keymap("n", "<Tab>", "<C-w>", opts)
-
 -- keymap("n", "<leader>e", ":Lex 20<cr>", opts)
 
 -- Resize with arrows
@@ -36,11 +33,11 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- close buffers
 -- keymap("n", "<leader>q", ":Bdelete<CR>", opts)
---keymap("n","<leader>Q", ":%bd\|e#<CR>", opts)
+keymap("n", "<leader>Q", ":%bd|e#<CR>", opts)
 
 -- Quicklist nice navigation
--- keymap("n", "<C-j>", ":cnext<CR>zzzv", opts)
--- keymap("n", "<C-k>", ":cprevious<CR>zzzv", opts)
+keymap("n", "<Tab>", ":cnext<CR>zzzv", opts)
+keymap("n", "<S-Tab>", ":cprevious<CR>zzzv", opts)
 
 keymap("n", "<A-h>", "<C-w>h", { desc = "Move to left split" })
 keymap("n", "<A-j>", "<C-w>j", { desc = "Move to below split" })
@@ -60,8 +57,8 @@ keymap("n", "J", "mzJ`z", opts)
 keymap("n", "Y", "y$", opts)
 
 -- Jumplist mutation
---nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
---nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+vim.cmd('nnoremap <expr> k (v:count > 5 ? "m\'" . v:count : "") . \'k\'')
+vim.cmd('nnoremap <expr> j (v:count > 5 ? "m\'" . v:count : "") . \'j\'')
 
 -- quickly fix formatting
 -- keymap("n", "<leader>=", "gg<S-v>G=", opts)
@@ -133,16 +130,16 @@ keymap("v", "<leader>P", '"+P', opts)
 -- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 
 -- Lsp
--- keymap("n", "<leader>vd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
--- keymap("n", "<leader>vc", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
--- keymap("n", "<leader>vi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
--- keymap("n", "<leader>vr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
--- keymap("n", "<leader>vH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
--- keymap("n", "<leader>vR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
--- keymap("n", "<leader>va", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
--- keymap("n", "<leader>vn", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
--- keymap("n", "<leader>vp", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
--- keymap("n", "<leader>vh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
--- keymap("n", "<leader>vq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+-- keymap("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", opts, { desc = "Go th Def" })
+-- keymap("n", "<leader>lc", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+-- keymap("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+-- keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+-- keymap("n", "<leader>lH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+-- keymap("n", "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+-- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+-- keymap("n", "<leader>ln", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+-- keymap("n", "<leader>lp", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
+-- keymap("n", "<leader>lh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+-- keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
