@@ -3,6 +3,17 @@ if not status_ok then
 	return
 end
 
+local mappings = {
+	P = { name = "Packer" },
+	l = { name = "LSP" },
+	g = { name = "Git" },
+	f = { name = "Search" },
+	t = { name = "Terminal" },
+	d = { name = "Debug" },
+	y = { name = "Copy to System clipboard" },
+	p = { name = "Paste to system clipboard" },
+}
+
 local setup = {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
@@ -76,117 +87,6 @@ local opts = {
 	silent = true, -- use `silent` when creating keymaps
 	noremap = true, -- use `noremap` when creating keymaps
 	nowait = true, -- use `nowait` when creating keymaps
-}
-
-local mappings = {
-	["m"] = { "<cmd>Alpha<cr>", "Alpha" },
-	["b"] = {
-		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-		"Buffers",
-	},
-	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	-- ["w"] = { "<cmd>w!<CR>", "Save" },
-	-- ["!"] = { "<cmd>q!<CR>", "Quit" },
-	["q"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-
-	P = {
-		name = "Packer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
-		i = { "<cmd>PackerInstall<cr>", "Install" },
-		s = { "<cmd>PackerSync<cr>", "Sync" },
-		S = { "<cmd>PackerStatus<cr>", "Status" },
-		u = { "<cmd>PackerUpdate<cr>", "Update" },
-	},
-
-	g = {
-		name = "Git",
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-		u = {
-			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-			"Undo Stage Hunk",
-		},
-		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-		d = {
-			"<cmd>Gitsigns diffthis HEAD<cr>",
-			"Diff",
-		},
-	},
-
-	l = {
-		name = "LSP",
-		d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "go to Definition" },
-		c = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "go to Declaration" },
-		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "go to Implementation" },
-		R = { "<cmd>lua vim.lsp.buf.references()<CR>", "go to references" },
-		H = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-		a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Actions" },
-		n = { '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', "Go to next Diagnostics" },
-		p = { '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', "Go to prev Diagnostics" },
-		h = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Hover Diagnostics" },
-		q = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostics to loacal list" },
-		I = { "<cmd>LspInfo<cr>", "Info" },
-		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-		-- d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics", },
-		-- w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics", },
-		-- I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-		-- l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		-- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-		-- S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", }, },
-	},
-	f = {
-		name = "Search",
-		f = {
-			function()
-				local fopts = { hidden = true } -- define here if you want to define something
-				local ok = pcall(require("telescope.builtin").git_files)
-				if not ok then
-					require("telescope.builtin").find_files(fopts)
-				end
-			end,
-			"Find Files",
-		},
-		b = { "<cmd>Telescope buffers<cr>", "Show Buffers" },
-		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-		R = { "<cmd>Telescope registers<cr>", "Registers" },
-		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-		C = { "<cmd>Telescope commands<cr>", "Commands" },
-		g = { "<cmd>Telescope live_grep<cr>", "Find word" },
-		p = { "<cmd>Telescope projects<cr>", "Projects" },
-	},
-
-	t = {
-		name = "Terminal",
-		-- n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-		-- u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-		t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-		p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "Lazygit" },
-		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-		-- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-	},
-	d = {
-		name = "Debug",
-		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-		o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-		r = { "<cmd>lua require'dap'.repl.open()<cr>", "inspect REPL" },
-	},
 }
 
 which_key.setup(setup)
