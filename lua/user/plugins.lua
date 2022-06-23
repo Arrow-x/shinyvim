@@ -107,6 +107,7 @@ return packer.startup(function(use)
 	use({ "SmiteshP/nvim-gps" })
 	use("vimwiki/vimwiki")
 	use("Pocco81/TrueZen.nvim")
+	use("tools-life/taskwiki")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
