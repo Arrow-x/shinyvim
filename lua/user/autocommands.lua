@@ -53,7 +53,19 @@ acmd("FileType", {
 	pattern = { "gitcommit", "mail", "markdown" },
 	callback = function()
 		vim.wo.spell = true
-		vim.cmd("set wrap linebreak")
+		vim.cmd("setlocal wrap linebreak nolist")
+		vim.cmd("set virtualedit=")
+		vim.cmd("setlocal display+=lastline")
+
+		vim.keymap.set("n", "k", "gk", { silent = true, buffer = true })
+		vim.keymap.set("n", "j", "gj", { silent = true, buffer = true })
+		vim.keymap.set("n", "^", "g<Home>", { silent = true, buffer = true })
+		vim.keymap.set("n", "$", "g<End>", { silent = true, buffer = true })
+
+		vim.keymap.set("i", "<Up>", "<C-o>gk", { silent = true, buffer = true })
+		vim.keymap.set("i", "<Down>", "<C-o>gj", { silent = true, buffer = true })
+		vim.keymap.set("i", "<Home>", "<C-o>g<Home>", { silent = true, buffer = true })
+		vim.keymap.set("i", "<End>", "<C-o>g<End>", { silent = true, buffer = true })
 	end,
 })
 
