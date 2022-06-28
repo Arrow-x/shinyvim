@@ -48,5 +48,5 @@ O.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd("let g:did_load_filetypes = 0")
-vim.cmd("let g:do_filetype_lua = 1")
+-- vim.cmd("let g:did_load_filetypes = 0")
+-- vim.cmd("let g:do_filetype_lua = 1")
