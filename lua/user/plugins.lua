@@ -50,6 +50,7 @@ return packer.startup(function(use)
 
 	-- ColorSchemes
 	use({ "folke/tokyonight.nvim" })
+	use("gruvbox-community/gruvbox")
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" })

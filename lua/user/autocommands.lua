@@ -69,6 +69,15 @@ acmd("FileType", {
 	end,
 })
 
+acmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.cmd("colorscheme gruvbox")
+		vim.cmd("set background=light")
+		-- vim.cmd(":TZAtaraxisOn")
+	end,
+})
+
 acmd("User", {
 	pattern = "AlphaReady",
 	callback = function()
