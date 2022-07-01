@@ -23,7 +23,9 @@ require("user.autocommands")
 require("user.indent-o-matic")
 require("user.gps")
 require("user.illuminate")
+require("user.vim-surround")
+
+-- Writing regular text section
 require("user.vimwiki")
 require("user.true-zen")
 require("user.taskwiki")
-require("user.vim-surround")

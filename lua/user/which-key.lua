@@ -12,6 +12,7 @@ local mappings = {
 	d = { name = "Debug" },
 	y = { name = "Copy to System clipboard" },
 	p = { name = "Paste to system clipboard" },
+	w = { name = "VimWiki" },
 }
 
 local setup = {
