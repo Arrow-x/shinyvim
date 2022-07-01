@@ -179,11 +179,10 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.open()<cr>", { silent = tr
 
 -- ToggleTerm keymap
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { silent = true, desc = "Lazygit" })
-keymap("n", "<leader>tt", "<cmd>lua _HTOP_TOGGLE()<cr>", { silent = true, desc = "Htop" })
-keymap("n", "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", { silent = true, desc = "Python" })
-keymap("n", "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", { silent = true, desc = "Lazygit" })
-keymap("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { silent = true, desc = "Float" })
-keymap("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { silent = true, desc = "Horizontal" })
+keymap("n", "<leader>`t", "<cmd>lua _HTOP_TOGGLE()<cr>", { silent = true, desc = "Htop" })
+keymap("n", "<leader>`p", "<cmd>lua _PYTHON_TOGGLE()<cr>", { silent = true, desc = "Python" })
+keymap("n", "<leader>``", "<cmd>ToggleTerm direction=float<cr>", { silent = true, desc = "Float" })
+keymap("n", "<leader>`h", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { silent = true, desc = "Horizontal" })
 
 -- Telescope
 keymap("n", "<leader>ff", function()

@@ -8,11 +8,12 @@ local mappings = {
 	l = { name = "LSP" },
 	g = { name = "Git" },
 	f = { name = "Search" },
-	t = { name = "Terminal" },
+	t = { name = "TaskWiki" },
 	d = { name = "Debug" },
 	y = { name = "Copy to System clipboard" },
 	p = { name = "Paste to system clipboard" },
 	w = { name = "VimWiki" },
+	["`"] = { name = "ToggleTerm" },
 }
 
 local setup = {
