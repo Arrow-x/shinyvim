@@ -11,11 +11,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local function available(plugin)
-	local status_ok, _ = pcall(require, plugin)
-	if status_ok then
-		return true
-	end
-	return false
+	return pcall(require, plugin)
 end
 
 -- Modes
