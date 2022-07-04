@@ -113,8 +113,10 @@ keymap("t", "<A-c>", [[<C-\><C-n>]], term_opts)
 
 -- System Clipboard --
 -- Copy to system clipboard
+keymap("n", "<leader>y", '"+y', { silent = true, desc = "Copy Action to system clipboard" })
 keymap("n", "<leader>Y", '"+yg_', { silent = true, desc = "Copy to system clipbaord the rest of the line" })
 keymap("n", "<leader>yy", '"+yy', { silent = true, desc = "Copy the current line to system clipboard" })
+
 keymap("v", "<leader>y", '"+y', { silent = true, desc = "Normal Mode Copy the selected text to system clipboard" })
 keymap("v", "<leader>y", '"+y', { silent = true, desc = "Visual mode Copy the selected text to system clipboard" })
 
