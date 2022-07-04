@@ -24,8 +24,8 @@ end
 
 for _, server in ipairs(servers) do
 	local opts = {
-		on_attach = function(client, bufnr)
-			on_attach(client, bufnr)
+		on_attach = function(client)
+			on_attach(client)
 		end,
 		capabilities = tbl_deep_extend("force", handlers.capabilities, lspconfig[server].capabilities or {}),
 	}
