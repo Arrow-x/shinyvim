@@ -39,8 +39,8 @@ keymap(
 	{ silent = true, desc = "Buffers" }
 )
 
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<C-l>", ":bnext<CR>", opts)
+keymap("n", "<C-h>", ":bprevious<CR>", opts)
 
 -- Quicklist nice navigation
 keymap("n", "<Tab>", ":cnext<CR>zzzv", opts)
