@@ -6,7 +6,6 @@ if not status_cmp_ok then
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 M.setup = function()
