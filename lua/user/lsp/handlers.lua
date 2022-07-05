@@ -49,24 +49,6 @@ M.setup = function()
 	})
 end
 
--- local function lsp_keymaps(bufnr)
--- 	local opts = { noremap = true, silent = true }
--- 	vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
--- 	vim.keymap.set("n", "c", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
--- 	vim.keymap.set("n", "i", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
--- 	vim.keymap.set("n", "r", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
--- 	vim.keymap.set("n", "H", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
--- 	vim.keymap.set("n", "R", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
--- 	vim.keymap.set("n", "a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
--- 	vim.keymap.set("n", "n", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
--- 	vim.keymap.set("n", "p", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
--- 	vim.keymap.set("n", "h", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
--- 	vim.keymap.set("n", "q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
--- 	vim.keymap.set("n", "I", "<cmd>LspInfo<cr>", opts)
--- 	vim.keymap.set("n", "f", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
--- 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
--- end
-
 M.on_attach = function(client)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
@@ -76,7 +58,6 @@ M.on_attach = function(client)
 		client.resolved_capabilities.document_formatting = false
 	end
 
-	-- lsp_keymaps(bufnr)
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return
