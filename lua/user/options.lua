@@ -35,6 +35,10 @@ O.hlsearch = true -- highlight all matches on previous search pattern
 O.incsearch = true
 O.ignorecase = false -- ignore case in search patterns
 
+O.smartindent = true -- make indenting smarter again
+O.expandtab = false -- convert tabs to spaces
+O.tabstop = 4 -- insert 4 spaces for a tab
+
 O.shortmess:append("c")
 -- O.whichwrap:append("<,>,[,],h,l")
 -- O.iskeyword:append("-")
@@ -62,6 +66,6 @@ G.loaded_zipPlugin = true -- disable zip
 G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
 
-vim.cmd("highlight Normal guibg=none")
+-- vim.cmd("highlight Normal guibg=none")
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
