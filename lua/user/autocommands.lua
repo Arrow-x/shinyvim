@@ -70,11 +70,11 @@ acmd("FileType", {
 })
 
 acmd("FileType", {
-	pattern = "markdown",
+	pattern = "vimwiki",
 	callback = function()
 		vim.cmd("colorscheme gruvbox")
 		vim.cmd("set background=light")
-		-- vim.cmd(":TZAtaraxisOn")
+		-- vim.cmd("TZAtaraxisOn")
 	end,
 })
 
