@@ -1,18 +1,15 @@
--- local groups = {
--- 	general_settings = vim.api.nvim_create_augroup("general_settings", { clear = true }),
--- 	git = vim.api.nvim_create_augroup("git", { clear = true }),
--- 	markdown = vim.api.nvim_create_augroup("markdown", { clear = true }),
--- 	mail = vim.api.nvim_create_augroup("mail", { clear = true }),
--- 	auto_resize = vim.api.nvim_create_augroup("auto_resize", { clear = true }),
--- 	alpha = vim.api.nvim_create_augroup("alpha", { clear = true }),
--- 	lsp = vim.api.nvim_create_augroup("lsp", { clear = true }),
--- 	exe_code = vim.api.nvim_create_augroup("exe_code", { clear = true }),
--- }
+local gr = {
+	general_settings = vim.api.nvim_create_augroup("general_settings", { clear = true }),
+	writing = vim.api.nvim_create_augroup("writing", { clear = true }),
+	alpha = vim.api.nvim_create_augroup("alpha", { clear = true }),
+	exe_code = vim.api.nvim_create_augroup("exe_code", { clear = true }),
+}
 
 local acmd = vim.api.nvim_create_autocmd
 
 acmd("TextYankPost", {
 	pattern = "*",
+	group = gr.general_settings,
 	callback = function()
 		require("vim.highlight").on_yank({ higroup = "Visual", timeout = 200 })
 	end,
@@ -20,6 +17,7 @@ acmd("TextYankPost", {
 
 acmd("FileType", {
 	pattern = "qf",
+	group = gr.general_settings,
 	callback = function()
 		vim.cmd("set nobuflisted")
 	end,
@@ -27,6 +25,7 @@ acmd("FileType", {
 
 acmd({ "BufWinEnter" }, {
 	pattern = "*",
+	group = gr.general_settings,
 	callback = function()
 		-- vim.opt.formatoptions:remove("cro")
 		vim.cmd("set formatoptions-=cro")
@@ -35,6 +34,7 @@ acmd({ "BufWinEnter" }, {
 
 acmd("FileType", {
 	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
+	group = gr.general_settings,
 	callback = function()
 		vim.keymap.set("n", "q", function()
 			vim.cmd("close")
@@ -44,6 +44,7 @@ acmd("FileType", {
 
 acmd("BufWritePre", {
 	pattern = "*",
+	group = gr.general_settings,
 	callback = function()
 		vim.lsp.buf.formatting_sync()
 	end,
@@ -51,6 +52,7 @@ acmd("BufWritePre", {
 
 acmd("FileType", {
 	pattern = { "gitcommit", "mail", "markdown" },
+	group = gr.writing,
 	callback = function()
 		vim.wo.spell = true
 		vim.cmd("setlocal wrap linebreak nolist")
@@ -71,6 +73,7 @@ acmd("FileType", {
 
 acmd("FileType", {
 	pattern = "vimwiki",
+	group = gr.writing,
 	callback = function()
 		vim.cmd("colorscheme gruvbox")
 		vim.cmd("set background=light")
@@ -80,12 +83,14 @@ acmd("FileType", {
 
 acmd("User", {
 	pattern = "AlphaReady",
+	group = gr.alpha,
 	callback = function()
 		vim.cmd("set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2")
 	end,
 })
 acmd("VimResized", {
 	pattern = "*",
+	group = gr.general_settings,
 	callback = function()
 		vim.cmd("tabdo wincmd =")
 	end,
@@ -93,6 +98,7 @@ acmd("VimResized", {
 
 acmd("FileType", {
 	pattern = "python",
+	group = gr.exe_code,
 	callback = function()
 		vim.keymap.set(
 			"n",
@@ -106,6 +112,7 @@ acmd("FileType", {
 
 acmd("FileType", {
 	pattern = "bash, sh",
+	group = gr.exe_code,
 	callback = function()
 		vim.keymap.set(
 			"n",
