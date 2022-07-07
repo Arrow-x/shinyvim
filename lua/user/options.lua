@@ -40,8 +40,8 @@ O.expandtab = false -- convert tabs to spaces
 O.tabstop = 4 -- insert 4 spaces for a tab
 
 O.shortmess:append("c")
--- O.whichwrap:append("<,>,[,],h,l")
--- O.iskeyword:append("-")
+O.whichwrap:append("<,>,[,],h,l")
+O.iskeyword:append("-")
 
 local G = vim.g
 G.do_filetype_lua = 1 -- use filetype.lua
@@ -67,5 +67,3 @@ G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
 
 -- vim.cmd("highlight Normal guibg=none")
-vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd([[set iskeyword+=-]])
