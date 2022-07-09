@@ -19,7 +19,7 @@ acmd("FileType", {
 	pattern = "qf",
 	group = gr.general_settings,
 	callback = function()
-		vim.cmd("set nobuflisted")
+		vim.o.buflisted = false
 	end,
 })
 
@@ -27,8 +27,7 @@ acmd({ "BufWinEnter" }, {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		-- vim.opt.formatoptions:remove("cro")
-		vim.cmd("set formatoptions-=cro")
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
 	end,
 })
 
@@ -55,9 +54,11 @@ acmd("FileType", {
 	group = gr.writing,
 	callback = function()
 		vim.wo.spell = true
-		vim.cmd("setlocal wrap linebreak nolist")
-		vim.cmd("set virtualedit=")
-		vim.cmd("setlocal display+=lastline")
+		vim.wo.wrap = true
+		vim.wo.linebreak = true
+		vim.wo.list = false
+		vim.wo.virtualedit = ""
+		vim.opt.display:append("lastline")
 
 		vim.keymap.set("n", "k", "gk", { silent = true, buffer = true })
 		vim.keymap.set("n", "j", "gj", { silent = true, buffer = true })
@@ -88,6 +89,7 @@ acmd("User", {
 		vim.cmd("set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2")
 	end,
 })
+
 acmd("VimResized", {
 	pattern = "*",
 	group = gr.general_settings,
