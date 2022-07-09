@@ -1,4 +1,6 @@
 local O = vim.opt
+local G = vim.g
+
 -- O.clipboard = "unnamedplus" --uses all the + register for clipboard
 O.cmdheight = 1 -- more space in the neovim command line for displaying messages
 O.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -43,7 +45,6 @@ O.shortmess:append("c")
 O.whichwrap:append("<,>,[,],h,l")
 O.iskeyword:append("-")
 
-local G = vim.g
 G.do_filetype_lua = 1 -- use filetype.lua
 G.did_load_filetypes = 0 -- don't use filetype.vim
 G.highlighturl_enabled = true -- highlight URLs by default
