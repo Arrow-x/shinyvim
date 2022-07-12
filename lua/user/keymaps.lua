@@ -296,7 +296,7 @@ if tel_status_ok then
 end
 
 -- Packer Keympas
-if available("Packer") then
+if available("packer") then
 	keymap("n", "<leader>Pc", "<cmd>PackerCompile<cr>", { silent = true, desc = "Compile" })
 	keymap("n", "<leader>Pi", "<cmd>PackerInstall<cr>", { silent = true, desc = "Install" })
 	keymap("n", "<leader>Ps", "<cmd>PackerSync<cr>", { silent = true, desc = "Sync" })
