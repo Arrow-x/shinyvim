@@ -120,9 +120,7 @@ keymap("v", "<leader>y", '"+y', { silent = true, desc = "Visual mode Copy the se
 
 -- Paste from system clipboard
 keymap("n", "<leader>p", '"+p', opts)
-keymap("n", "<leader>P", '"+P', opts)
 keymap("v", "<leader>p", '"+p', opts)
-keymap("v", "<leader>P", '"+P', opts)
 
 -- Lsp keymaps
 if pcall(require, "lspconfig") then
