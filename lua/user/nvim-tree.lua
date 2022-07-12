@@ -114,7 +114,7 @@ nvim_tree.setup({
 		enable = false,
 		show_on_dirs = false,
 		icons = {
-			hint = "",
+			hint = "",
 			info = "",
 			warning = "",
 			error = "",
