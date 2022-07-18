@@ -45,7 +45,7 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" })
 	use({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
 	use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
-	use({ "tpope/vim-surround", commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea" })
+	use({ "kylechui/nvim-surround" })
 	use({ "Darazaki/indent-o-matic", commit = "bf37c6e4ccd17197d32dee69cffab4f5bbe4cbf2" })
 	use({ "mbbill/undotree" })
 
