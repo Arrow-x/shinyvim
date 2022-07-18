@@ -43,7 +43,7 @@ return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim", commit = "e4c2afb37d31e99b399425e102c58b091fbc16be" })
 	use({ "nvim-lua/plenary.nvim", commit = "986ad71ae930c7d96e812734540511b4ca838aa2" })
 	use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" })
-	use({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
+	use({ "numToStr/Comment.nvim", tag = "v0.6.1" })
 	use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
 	use({ "kylechui/nvim-surround" })
 	use({ "Darazaki/indent-o-matic", commit = "bf37c6e4ccd17197d32dee69cffab4f5bbe4cbf2" })
@@ -81,7 +81,7 @@ return packer.startup(function(use)
 	use({ "theHamsta/nvim-dap-virtual-text", commit = "9b731b9748d243b60e61eecbe2d114c39554486e" })
 
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", commit = "b79cd6c88b3d96b0f49cb7d240807cd59b610cd8" })
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
 
 	-- Treesitter
 	use({
