@@ -129,51 +129,39 @@ if pcall(require, "lspconfig") then
 	keymap("n", "<leader>ld", function()
 		vim.lsp.buf.definition()
 	end, { silent = true, desc = "go to Definition" })
-
 	keymap("n", "<leader>lc", function()
 		vim.lsp.buf.declaration()
 	end, { silent = true, desc = "go to Declaration" })
-
 	keymap("n", "<leader>li", function()
 		vim.lsp.buf.implementation()
 	end, { silent = true, desc = "go to Implementation" })
-
 	keymap("n", "<leader>lR", function()
 		vim.lsp.buf.references()
 	end, { silent = true, desc = "go to references" })
-
 	keymap("n", "<leader>lH", function()
 		vim.lsp.buf.signature_help()
 	end, { silent = true, desc = "Signature Help" })
-
 	keymap("n", "<leader>lr", function()
 		vim.lsp.buf.rename()
 	end, { silent = true, desc = "Rename" })
-
 	keymap("n", "<leader>la", function()
 		vim.lsp.buf.code_action()
 	end, { silent = true, desc = "Code Actions" })
-
 	keymap("n", "<leader>ln", function()
 		vim.diagnostic.goto_next({ border = "rounded" })
 	end, { silent = true, desc = "Go to next Diagnostics" })
-
 	keymap("n", "<leader>lp", function()
 		vim.diagnostic.goto_prev({ border = "rounded" })
 	end, { silent = true, desc = "Go to prev Diagnostics" })
-
 	keymap("n", "<leader>lh", function()
 		vim.diagnostic.open_float()
 	end, { silent = true, desc = "Hover Diagnostics" })
-
 	keymap("n", "<leader>lq", function()
 		vim.diagnostic.setloclist()
 	end, { silent = true, desc = "Diagnostics to loacal list" })
-
 	keymap("n", "<leader>lI", function()
 		vim.cmd("LspInfo")
 	end, { silent = true, desc = "Info" })
-
 	keymap("n", "<leader>lf", function()
 		vim.lsp.buf.formatting()
 	end, { silent = true, desc = "Format" })
