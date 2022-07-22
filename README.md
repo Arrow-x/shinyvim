@@ -5,4 +5,4 @@
      ___/ // / / // // / / // /_/ / | |/ // // / / / / /
     /____//_/ /_//_//_/ /_/ \__, /  |___//_//_/ /_/ /_/ 
                            /____/                       
-a cool neovim configuration 
+a cool Neovim configuration 
