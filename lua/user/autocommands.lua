@@ -32,7 +32,7 @@ acmd({ "BufWinEnter" }, {
 })
 
 acmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
+	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim" },
 	group = gr.general_settings,
 	callback = function()
 		vim.keymap.set("n", "q", function()
