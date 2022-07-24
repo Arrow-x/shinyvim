@@ -53,6 +53,7 @@ acmd("FileType", {
 	pattern = { "gitcommit", "mail", "markdown" },
 	group = gr.writing,
 	callback = function()
+		vim.opt.conceallevel = 2
 		vim.wo.spell = true
 		vim.wo.wrap = true
 		vim.wo.linebreak = true
