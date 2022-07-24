@@ -4,7 +4,7 @@ local G = vim.g
 -- O.clipboard = "unnamedplus" --uses all the + register for clipboard
 O.cmdheight = 1 -- more space in the neovim command line for displaying messages
 O.completeopt = { "menuone", "noselect" } -- mostly just for cmp
-O.conceallevel = 0 -- so that `` is visible in markdown files
+-- O.conceallevel = 0 -- so that `` is visible in markdown files
 O.fileencoding = "utf-8" -- the encoding written to a file
 -- O.mouse = "a"                             -- allow the mouse to be used in neovim
 O.showmode = false
@@ -37,13 +37,15 @@ O.hlsearch = true -- highlight all matches on previous search pattern
 O.incsearch = true
 O.ignorecase = false -- ignore case in search patterns
 
-O.smartindent = true -- make indenting smarter again
 O.expandtab = false -- convert tabs to spaces
 O.tabstop = 4 -- insert 4 spaces for a tab
+O.smartindent = false -- make indenting smarter again
+O.cindent = true
 
 O.shortmess:append("c")
 O.whichwrap:append("<,>,[,],h,l")
 O.iskeyword:append("-")
+-- O.path:append("**")
 
 G.do_filetype_lua = 1 -- use filetype.lua
 G.did_load_filetypes = 0 -- don't use filetype.vim
