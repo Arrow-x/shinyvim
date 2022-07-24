@@ -114,7 +114,20 @@ acmd("FileType", {
 })
 
 acmd("FileType", {
-	pattern = "bash, sh",
+	pattern = "go",
+	group = gr.exe_code,
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<F5>",
+			":vsp<CR> :term go run %<CR> :startinsert<CR>",
+			{ buffer = true, noremap = true, silent = true },
+			{ desc = "Executer the current buffer" }
+		)
+	end,
+})
+acmd("FileType", {
+	pattern = { "bash", "sh" },
 	group = gr.exe_code,
 	callback = function()
 		vim.keymap.set(
