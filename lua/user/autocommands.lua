@@ -45,7 +45,7 @@ acmd("BufWritePre", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		vim.lsp.buf.formatting_sync()
+		vim.lsp.buf.format()
 	end,
 })
 
