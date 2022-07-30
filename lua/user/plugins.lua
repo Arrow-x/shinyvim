@@ -108,7 +108,7 @@ return packer.startup(function(use)
 	use({ "folke/which-key.nvim", commit = "bd4411a2ed4dd8bb69c125e339d837028a6eea71" })
 	use({ "SmiteshP/nvim-gps" })
 	use("vimwiki/vimwiki")
-	use("Pocco81/TrueZen.nvim")
+	use("Pocco81/true-zen.nvim")
 	use("tools-life/taskwiki")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
