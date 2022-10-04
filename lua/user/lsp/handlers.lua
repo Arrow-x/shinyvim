@@ -49,10 +49,10 @@ M.setup = function()
 	})
 end
 
-M.on_attach = function(client)
-	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false
-	end
+M.on_attach = function(client, bufnr)
+	-- if client.name == "tsserver" then
+	-- 	client.server_capabilities.document_formatting = false
+	-- end
 
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.document_formatting = false
@@ -63,5 +63,13 @@ M.on_attach = function(client)
 		return
 	end
 	illuminate.on_attach(client)
+
+	--if client.server_capabilities.documentSymbolProvider then
+	--	local nstatus_ok, navic = pcall(require, "nvim-navic")
+	--	if not nstatus_ok then
+	--		return
+	--	end
+	--	navic.attach(client, bufnr)
+	--end
 end
 return M
