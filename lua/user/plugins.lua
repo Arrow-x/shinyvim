@@ -51,6 +51,7 @@ return packer.startup(function(use)
 
 	-- ColorSchemes
 	use({ "folke/tokyonight.nvim" })
+	use({ "gruvbox-community/gruvbox" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" })
@@ -103,9 +104,9 @@ return packer.startup(function(use)
 	use({ "antoinemadec/FixCursorHold.nvim" }) -- This is needed to fix lsp doc highlight
 	use({ "folke/which-key.nvim" })
 	use({ "SmiteshP/nvim-navic" })
-	use("vimwiki/vimwiki")
-	use("Pocco81/TrueZen.nvim")
-	use("tools-life/taskwiki")
+	use({ "vimwiki/vimwiki" })
+	use({ "Pocco81/TrueZen.nvim" })
+	use({ "tools-life/taskwiki" })
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
