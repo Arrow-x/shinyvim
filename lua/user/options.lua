@@ -67,5 +67,4 @@ G.loaded_zipPlugin = true -- disable zip
 G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
 
-vim.cmd("let g:python3_host_prog='python3.10'")
 -- vim.cmd("highlight Normal guibg=none")
