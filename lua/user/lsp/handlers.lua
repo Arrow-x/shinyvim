@@ -5,8 +5,9 @@ if not status_cmp_ok then
 	return
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = cmp_nvim_lsp.default_capabilities()
+--cmp_nvim_lsp.update_capabilities(capabilities)
 
 M.setup = function()
 	local signs = {
@@ -49,13 +50,25 @@ M.setup = function()
 	})
 end
 
-M.on_attach = function(client)
-	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+local function attach_navic(client, bufnr)
+	local status_ok, navic = pcall(require, "nvim-navic")
+	if not status_ok then
+		return
 	end
+	vim.g.navic_silence = true
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
+end
 
+M.on_attach = function(client, bufnr)
+	--attach_navic(client, bufnr)
+
+	if client.name == "tsserver" then
+		client.server_capabilities.document_formatting = false
+	end
 	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	local status_ok, illuminate = pcall(require, "illuminate")

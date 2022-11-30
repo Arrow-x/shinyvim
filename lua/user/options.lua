@@ -47,8 +47,6 @@ O.whichwrap:append("<,>,[,],h,l")
 O.iskeyword:append("-")
 -- O.path:append("**")
 
-G.do_filetype_lua = 1 -- use filetype.lua
-G.did_load_filetypes = 0 -- don't use filetype.vim
 G.highlighturl_enabled = true -- highlight URLs by default
 G.zipPlugin = false -- disable zip
 G.load_black = false -- disable black

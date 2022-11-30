@@ -22,7 +22,7 @@ require("user.indentline")
 require("user.alpha")
 require("user.autocommands")
 require("user.indent-o-matic")
-require("user.gps")
+
 require("user.illuminate")
 require("user.nvim-surround")
 
