@@ -1,35 +1,6 @@
-local status_ok, true_zen = pcall(require, "true_zen")
+local status_ok, true_zen = pcall(require, "true-zen")
 if not status_ok then
 	return
-end
-local lualine_ok, lualine = pcall(require, "lualine")
-
-local function tmux_off()
-	if vim.fn.exists("$TMUX") == 0 then
-		return
-	end
-	vim.cmd([[silent !tmux set status off]])
-end
-
-local function tmux_on()
-	if vim.fn.exists("$TMUX") == 0 then
-		return
-	end
-	vim.cmd([[silent !tmux set status on]])
-end
-
-local function open_cb()
-	if lualine_ok then
-		lualine.hide()
-	end
-	tmux_off()
-end
-
-local function close_cb()
-	if lualine_ok then
-		lualine.hide({ unhide = true })
-	end
-	tmux_on()
 end
 
 true_zen.setup({
@@ -49,10 +20,10 @@ true_zen.setup({
 				bottom = 0,
 			},
 			callbacks = { -- run functions when opening/closing Ataraxis mode
-				open_pre = { open_cb() },
+				open_pre = nil,
 				open_pos = nil,
 				close_pre = nil,
-				close_pos = { close_cb() },
+				close_pos = nil,
 			},
 		},
 		minimalist = {
@@ -107,6 +78,6 @@ true_zen.setup({
 			font = "+3",
 		},
 		twilight = false, -- enable twilight (ataraxis)
-		lualine = false, -- hide nvim-lualine (ataraxis)
+		lualine = true, -- hide nvim-lualine (ataraxis)
 	},
 })

@@ -104,8 +104,8 @@ return packer.startup(function(use)
 	use({ "antoinemadec/FixCursorHold.nvim" }) -- This is needed to fix lsp doc highlight
 	use({ "folke/which-key.nvim" })
 	use({ "SmiteshP/nvim-navic" })
-	use({ "vimwiki/vimwiki" })
-	use({ "Pocco81/TrueZen.nvim" })
+	use({ "vimwiki/vimwiki", branch = "dev" })
+	use({ "Pocco81/TrueZen.nvim", commit = "c88840bf8f01bdf48c55c7a7d31de806837856ff" })
 	use({ "tools-life/taskwiki" })
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
