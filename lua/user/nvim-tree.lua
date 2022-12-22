@@ -10,6 +10,7 @@ nvim_tree.setup({
 		mappings = {
 			list = {
 				{ key = "u", action = "dir_up" },
+				{ key = { "l", "<CR>", "o" }, action = "edit" },
 			},
 		},
 	},
