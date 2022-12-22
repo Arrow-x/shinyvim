@@ -22,6 +22,12 @@ nvim_tree.setup({
 			},
 		},
 	},
+	update_focused_file = {
+		enable = true,
+		debounce_delay = 15,
+		update_root = false,
+		ignore_list = {},
+	},
 	renderer = {
 		group_empty = true,
 	},
