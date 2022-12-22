@@ -21,9 +21,23 @@ nvim_tree.setup({
 		ignore_list = {},
 	},
 	renderer = {
+		add_trailing = false,
 		group_empty = true,
-	},
-	filters = {
-		dotfiles = true,
+		highlight_git = true,
+		full_name = false,
+		highlight_opened_files = "none",
+		root_folder_label = ":~:s?$?/..?",
+		indent_width = 2,
+		indent_markers = {
+			enable = true,
+			inline_arrows = true,
+			icons = {
+				corner = "└",
+				edge = "│",
+				item = "│",
+				bottom = "─",
+				none = " ",
+			},
+		},
 	},
 })
