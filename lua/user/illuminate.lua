@@ -17,4 +17,6 @@ illuminate.configure({
 		"NvimTree",
 		"TelescopePrompt",
 	},
+
+	modes_denylist = { "i" },
 })
