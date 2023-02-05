@@ -68,8 +68,9 @@ return packer.startup(function(use)
 	use({ "rafamadriz/friendly-snippets" })
 
 	-- LSP
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/nvim-lsp-installer" })
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "RRethy/vim-illuminate" }) -- Illuminate other uses of current word/symbol under cursor
 

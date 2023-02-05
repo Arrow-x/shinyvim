@@ -8,17 +8,22 @@ local tbl_deep_extend = vim.tbl_deep_extend
 local handlers = require("user.lsp.handlers")
 local on_attach = handlers.on_attach
 
--- Lsp servers that are not installed by lsp_installer
+-- Lsp servers that are not installed by mason
 local servers = {
 	"gdscript",
 	-- "ltex",
 }
 
-local installer_avail, lsp_installer = pcall(require, "nvim-lsp-installer")
-if installer_avail then
-	lsp_installer.setup()
-	for _, server in ipairs(lsp_installer.get_installed_servers()) do
-		insert(servers, server.name)
+local status_ok, mason = pcall(require, "mason")
+if status_ok then
+	mason.setup()
+end
+
+local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if status_ok then
+	mason_lspconfig.setup()
+	for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+		insert(servers, server)
 	end
 end
 
