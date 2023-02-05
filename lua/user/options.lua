@@ -56,6 +56,7 @@ G.loaded_getscriptPlugin = true -- disable getscript
 G.loaded_gzip = true -- disable gzip
 G.loaded_logipat = true -- disable logipat
 G.loaded_matchit = true -- disable matchit
+G.loaded_netrw = true -- disable netrw
 G.loaded_netrwFileHandlers = true -- disable netrw
 G.loaded_netrwPlugin = true -- disable netrw
 G.loaded_netrwSettngs = true -- disable netrw
