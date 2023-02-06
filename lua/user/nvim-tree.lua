@@ -5,6 +5,14 @@ end
 
 nvim_tree.setup({
 	sort_by = "case_sensitive",
+	filters = {
+		custom = { ".git" },
+		exclude = { ".gitignore" },
+	},
+
+	diagnostics = {
+		enable = true,
+	},
 	view = {
 		adaptive_size = true,
 		mappings = {
