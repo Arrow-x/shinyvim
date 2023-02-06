@@ -50,7 +50,7 @@ acmd("BufWritePre", {
 })
 
 acmd("FileType", {
-	pattern = { "gitcommit", "mail", "markdown" },
+	pattern = { "gitcommit", "mail", "markdown", "vimwiki" },
 	group = gr.writing,
 	callback = function()
 		vim.opt.conceallevel = 2
