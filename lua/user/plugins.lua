@@ -105,6 +105,7 @@ return packer.startup(function(use)
 	use({ "antoinemadec/FixCursorHold.nvim" }) -- This is needed to fix lsp doc highlight
 	use({ "folke/which-key.nvim" })
 	use({ "SmiteshP/nvim-navic" })
+	use({ "utilyre/barbecue.nvim" })
 	use({ "vimwiki/vimwiki" })
 	use({ "Pocco81/TrueZen.nvim", commit = "c88840bf8f01bdf48c55c7a7d31de806837856ff" })
 	use({ "tools-life/taskwiki" })
