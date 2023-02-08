@@ -50,20 +50,7 @@ M.setup = function()
 	})
 end
 
-local function attach_navic(client, bufnr)
-	local status_ok, navic = pcall(require, "nvim-navic")
-	if not status_ok then
-		return
-	end
-	vim.g.navic_silence = true
-	if client.server_capabilities.documentSymbolProvider then
-		navic.attach(client, bufnr)
-	end
-end
-
 M.on_attach = function(client, bufnr)
-	--attach_navic(client, bufnr)
-
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
 	end
@@ -74,6 +61,11 @@ M.on_attach = function(client, bufnr)
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return
+	local status_ok, navic = pcall(require, "nvim-navic")
+	if status_ok then
+		if client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, bufnr)
+		end
 	end
 	illuminate.on_attach(client)
 end
