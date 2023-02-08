@@ -301,3 +301,7 @@ end
 if available("nvim-tree") then
 	keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { silent = true, desc = "Explorer" })
 end
+
+if available("neo-tree") then
+	keymap("n", "<leader>e", "<cmd>NeoTreeRevealToggle<cr>", { silent = true, desc = "Explorer" })
+end

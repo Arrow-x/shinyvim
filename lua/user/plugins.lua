@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use({ "kylechui/nvim-surround" })
 	use({ "Darazaki/indent-o-matic" })
 	use({ "mbbill/undotree" })
+	use({ "MunifTanjim/nui.nvim" })
 
 	-- ColorSchemes
 	use({ "folke/tokyonight.nvim" })
@@ -93,8 +94,10 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim" })
 
 	-- UI
-	use({ "kyazdani42/nvim-tree.lua" })
 	use({ "kyazdani42/nvim-web-devicons" })
+	-- use({ "kyazdani42/nvim-tree.lua" })
+	use({ "nvim-neo-tree/neo-tree.nvim" })
+
 	use({ "akinsho/bufferline.nvim" })
 	use({ "moll/vim-bbye" })
 	use({ "nvim-lualine/lualine.nvim" })
