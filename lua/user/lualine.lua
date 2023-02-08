@@ -3,11 +3,6 @@ if not status_ok then
 	return
 end
 
-local status_gps_ok, navic = pcall(require, "nvim-navic")
-if not status_gps_ok then
-	return
-end
-
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
@@ -86,7 +81,6 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
