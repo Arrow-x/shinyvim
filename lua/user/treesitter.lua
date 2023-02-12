@@ -5,6 +5,8 @@ end
 
 configs.setup({
 	ensure_installed = {
+		"vim",
+		"help",
 		"gdscript",
 		"python",
 		"bash",
