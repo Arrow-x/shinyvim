@@ -81,6 +81,10 @@ acmd("FileType", {
 	callback = function()
 		vim.cmd("colorscheme gruvbox")
 		vim.cmd("set background=light")
+		local status_ok, barbecue = pcall(require, "barbecue.ui")
+		if status_ok then
+			barbecue.toggle(false)
+		end
 		-- vim.cmd("TZAtaraxisOn")
 	end,
 })
