@@ -8,10 +8,10 @@ neotree.setup({
 	default_component_configs = {
 		diagnostics = {
 			symbols = {
-				hint = "H",
-				info = "I",
-				warn = "!",
-				error = "X",
+				hint = "",
+				info = "",
+				warn = "",
+				error = "",
 			},
 			highlights = {
 				hint = "DiagnosticSignHint",
