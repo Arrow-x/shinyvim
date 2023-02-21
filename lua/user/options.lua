@@ -31,6 +31,7 @@ O.signcolumn = "yes" -- always show the sign column, otherwise it would shift th
 O.wrap = false -- display lines as one long line
 O.scrolloff = 8 -- is one of my fav
 O.sidescrolloff = 8
+O.autoread = true
 -- O.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 
 O.hlsearch = true -- highlight all matches on previous search pattern
