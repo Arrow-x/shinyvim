@@ -246,10 +246,13 @@ if tel_status_ok then
 		if not ok then
 			telescope.find_files(fopts)
 		end
-	end, { silent = true, desc = "Find Files" })
+	end, { silent = true, desc = "Find Files Git" })
 	keymap("n", "<leader>fb", function()
 		telescope.buffers()
 	end, { silent = true, desc = "Show Buffers" })
+	keymap("n", "<leader>fF", function()
+		telescope.find_files({ hidden = true })
+	end, { silent = true, desc = "Find Files" })
 	keymap("n", "<leader>fc", function()
 		telescope.colorscheme()
 	end, { silent = true, desc = "Colorscheme" })
