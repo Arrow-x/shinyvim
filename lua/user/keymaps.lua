@@ -308,3 +308,42 @@ end
 if available("neo-tree") then
 	keymap("n", "<leader>e", "<cmd>NeoTreeRevealToggle<cr>", { silent = true, desc = "Explorer" })
 end
+
+-- Harpoon
+if available("harpoon") then
+	keymap("n", "<leader>sa", function()
+		require("harpoon.mark").add_file()
+	end, { silent = true, desc = "Add File To Harpoon" })
+
+	keymap("n", "<leader>sm", function()
+		require("harpoon.ui").toggle_quick_menu()
+	end, { silent = true, desc = "Show Harpoon menu" })
+
+	keymap("n", "<leader>sj", function()
+		require("harpoon.ui").nav_file(1)
+	end, { silent = true, desc = "go to first file" })
+
+	keymap("n", "<leader>sk", function()
+		require("harpoon.ui").nav_file(2)
+	end, { silent = true, desc = "go to second file" })
+
+	keymap("n", "<leader>sl", function()
+		require("harpoon.ui").nav_file(3)
+	end, { silent = true, desc = "go to theird file" })
+
+	keymap("n", "<leader>s;", function()
+		require("harpoon.ui").nav_file(4)
+	end, { silent = true, desc = "go to forth file" })
+
+	keymap("n", '<leader>s"', function()
+		require("harpoon.ui").nav_file(5)
+	end, { silent = true, desc = "go to fifth file" })
+
+	keymap("n", "<leader>sn", function()
+		require("harpoon.ui").nav_next()
+	end, { silent = true, desc = "go to next file" })
+
+	keymap("n", "<leader>sp", function()
+		require("harpoon.ui").nav_prev()
+	end, { silent = true, desc = "go to prev file" })
+end

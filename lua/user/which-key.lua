@@ -11,6 +11,7 @@ local pluging_keymaps = {
 	{ plugin = "taskwiki", prefix = "t", desc = "TaskWarrior for VimWiki" },
 	{ plugin = "toggleterm.nvim", prefix = "`", desc = "A Terminal in your Terminal" },
 	{ plugin = "nvim-lspconfig", prefix = "l", desc = "LSP" },
+	{ plugin = "harpoon", prefix = "s", desc = "Harpoon" },
 }
 
 local mappings = {

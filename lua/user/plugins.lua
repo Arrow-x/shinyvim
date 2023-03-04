@@ -98,6 +98,8 @@ return packer.startup(function(use)
 	-- use({ "kyazdani42/nvim-tree.lua" })
 	use({ "nvim-neo-tree/neo-tree.nvim" })
 
+	use({ "ThePrimeagen/harpoon" })
+
 	use({ "akinsho/bufferline.nvim" })
 	use({ "moll/vim-bbye" })
 	use({ "nvim-lualine/lualine.nvim" })
