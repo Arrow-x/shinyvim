@@ -1,9 +1,13 @@
 _G.shinyvim = {}
 
 function shinyvim.is_available(plugin)
-	return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+	if packer_plugins[plugin] and packer_plugins[plugin].loaded then
+		return true
+	end
+	return false
 end
 
+-- other custom logic
 function shinyvim.tprint(tbl, indent)
 	if not indent then
 		indent = 0
