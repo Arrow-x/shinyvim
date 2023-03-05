@@ -51,11 +51,12 @@ M.setup = function()
 end
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false
-	end
-	if client.name == "sumneko_lua" then
-		client.server_capabilities.document_formatting = false
+	local servers_to_disable_formating_for = { "tsserver", "lua_ls" }
+
+	for _, server in pairs(servers_to_disable_formating_for) do
+		if client.name == server then
+			client.server_capabilities.document_formatting = false
+		end
 	end
 
 	local status_ok, illuminate = pcall(require, "illuminate")
