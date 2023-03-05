@@ -163,7 +163,7 @@ if pcall(require, "lspconfig") then
 		vim.cmd("LspInfo")
 	end, { desc = "Info" })
 	keymap("n", "<leader>lf", function()
-		vim.lsp.buf.formatting()
+		vim.lsp.buf.format()
 	end, { desc = "Format" })
 end
 
