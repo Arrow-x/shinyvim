@@ -347,3 +347,13 @@ if available("harpoon") then
 		require("harpoon.ui").nav_prev()
 	end, { desc = "go to prev file" })
 end
+
+-- Trouble.nvim
+if available("trouble") then
+	keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Trouble Toggle" })
+	keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Workspace Lsp Diagnostics" })
+	keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "Document Lsp Diagnostics" })
+	keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Toggle Local List" })
+	keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Toggle Quicklist" })
+	keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { desc = "toggle Lsp references" })
+end

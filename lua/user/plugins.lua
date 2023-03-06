@@ -74,6 +74,7 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig" })
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "RRethy/vim-illuminate" }) -- Illuminate other uses of current word/symbol under cursor
+	use({ "folke/trouble.nvim" })
 
 	--Debug
 	use({ "mfussenegger/nvim-dap" })
