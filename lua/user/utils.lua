@@ -1,10 +1,7 @@
 _G.shinyvim = {}
 
 function shinyvim.is_available(plugin)
-	if packer_plugins[plugin] and packer_plugins[plugin].loaded then
-		return true
-	end
-	return false
+	return packer_plugins[plugin] and packer_plugins[plugin].loaded
 end
 
 -- other custom logic
