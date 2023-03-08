@@ -64,7 +64,6 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -97,11 +96,9 @@ cmp.setup({
 			"s",
 		}),
 	}),
-
 	view = {
 		entries = "custom", -- can be "custom", "wildmenu" or "native"
 	},
-
 	window = {
 		completion = {
 			border = border,
@@ -114,7 +111,6 @@ cmp.setup({
 			scrollbar = "┃",
 		},
 	},
-
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
@@ -141,7 +137,16 @@ cmp.setup({
 		{ name = "spell" },
 		-- { name = 'look'},
 	}),
-
+	enabled = function()
+		-- disable completion in comments
+		local context = require("cmp.config.context")
+		-- keep command mode completion enabled when cursor is in a comment
+		if vim.api.nvim_get_mode().mode == "c" then
+			return true
+		else
+			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+		end
+	end,
 	-- formatting= {
 	--     format = lspkind.cmp_format({with_text = true,})
 	-- },
