@@ -55,7 +55,7 @@ return packer.startup(function(use)
 	use({ "gruvbox-community/gruvbox" })
 
 	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp" })
+	use({ "Arrow-x/nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer" })
 	use({ "hrsh7th/cmp-path" })
 	use({ "saadparwaiz1/cmp_luasnip" })
