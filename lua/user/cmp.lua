@@ -15,9 +15,6 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
--- Don't show the dumb matching stuff.
-vim.opt.shortmess:append("c")
-
 --   פּ ﯟ   some other good icons
 local kind_icons = {
 	Text = "",
