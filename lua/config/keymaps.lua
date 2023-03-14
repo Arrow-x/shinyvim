@@ -10,10 +10,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local function available(plugin)
-	return pcall(require, plugin)
-end
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -32,13 +28,6 @@ keymap("n", "<A-Up>", ":resize +2<CR>", opts)
 keymap("n", "<A-Down>", ":resize -2<CR>", opts)
 keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
-
--- Buffer Managment Keymaps
-keymap("n", "<leader>Q", ":%bd|e#<CR>", { desc = "Close All Buffers" })
-keymap("n", "<leader>q", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
-
-keymap("n", "<C-l>", ":bnext<CR>", opts)
-keymap("n", "<C-h>", ":bprevious<CR>", opts)
 
 -- Quicklist nice navigation
 keymap("n", "<Tab>", ":cnext<CR>zzzv", opts)
