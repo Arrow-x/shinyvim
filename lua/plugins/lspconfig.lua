@@ -39,8 +39,8 @@ return {
 						},
 						modes_denylist = { "i" },
 					})
-				end
-			}
+				end,
+			},
 		},
 		-- BUG the options are not working
 		config = function()
@@ -121,7 +121,11 @@ return {
 					on_attach = function(client, bufnr)
 						handlers.on_attach(client, bufnr)
 					end,
-					capabilities = tbl_deep_extend("force", handlers.capabilities, lspconfig[server].capabilities or {}),
+					capabilities = tbl_deep_extend(
+						"force",
+						handlers.capabilities,
+						lspconfig[server].capabilities or {}
+					),
 				}
 
 				local present, custom_settings = pcall(require, "config.lsp.settings." .. server)
