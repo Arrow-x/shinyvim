@@ -10,6 +10,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "friendly-snippets": { "branch": "main", "commit": "2f5b8a41659a19bd602497a35da8d81f1e88f6d9" },
+  "gitsigns.nvim": { "branch": "main", "commit": "b1f9cf7c5c5639c006c937fc1819e09f358210fc" },
   "lazy.nvim": { "branch": "main", "commit": "5b4444f0d7e556deba3f7ca949a2ba0e2c3369fb" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "a81503f0019942111fe464209237f8b4e85f4687" },
   "mason.nvim": { "branch": "main", "commit": "63988d84311defc54a36d8befcb8df3646ac1cbc" },
