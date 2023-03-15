@@ -6,5 +6,15 @@ return {
 		{ "gbc", desc = "Toggles the current line using blockwise comment" },
 		{ "gc",  desc = "(Op-pending) Toggles the region using linewise comment" },
 		{ "gb",  desc = "(Op-pending) Toggles the region using blockwise comment" },
+		{
+			"gc",
+			mode = "v",
+			desc = "(Op-pending) Toggles the region using linewise comment",
+		},
+		{
+			"gb",
+			mode = "v",
+			desc = "(Op-pending) Toggles the region using blockwise comment",
+		},
 	},
 }
