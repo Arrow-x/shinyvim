@@ -33,11 +33,6 @@ keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<Tab>", ":cnext<CR>zzzv", opts)
 keymap("n", "<S-Tab>", ":cprevious<CR>zzzv", opts)
 
-keymap("n", "<A-h>", "<C-w>h", opts)
-keymap("n", "<A-j>", "<C-w>j", opts)
-keymap("n", "<A-k>", "<C-w>k", opts)
-keymap("n", "<A-l>", "<C-w>l", opts)
-
 -- Move text up and Down
 keymap("n", "<C-j>", ":m .+1<CR>==", opts)
 keymap("n", "<C-k>", ":m .-2<CR>==", opts)
