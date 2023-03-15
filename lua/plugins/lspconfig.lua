@@ -21,6 +21,7 @@ return {
 			},
 			{
 				"RRethy/vim-illuminate",
+				event = { "BufReadPost", "BufNewFile" },
 				config = function()
 					local illuminate = require("illuminate")
 					vim.keymap.set("n", "<a-n>", function()
