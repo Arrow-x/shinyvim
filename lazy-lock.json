@@ -38,4 +38,5 @@
   "vim-bbye": { "branch": "master", "commit": "25ef93ac5a87526111f43e5110675032dbcacf56" },
   "vim-fugitive": { "branch": "master", "commit": "5b52a0f395065d6cb7b65a00a5e17eaf9ebd64d5" },
   "vim-illuminate": { "branch": "master", "commit": "49062ab1dd8fec91833a69f0a1344223dd59d643" }
+  "vimwiki": { "branch": "dev", "commit": "91fe25ad5f1d89ab9442a67b46d38d08a1e48ce5" }
 }
