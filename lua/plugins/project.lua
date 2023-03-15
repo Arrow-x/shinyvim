@@ -1,6 +1,7 @@
 return {
 	"ahmedkhalf/project.nvim",
-	event = "CmdUndefined",
+	lazy = true,
+	cmd = { "Telescope" },
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},
@@ -18,8 +19,8 @@ return {
 		--- **"pattern"** uses vim-rooter like glob pattern matching. Here
 		--- order matters: if one is not detected, the other is used as fallback. You
 		--- can also delete or rearangne the detection methods.
-		-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
-		detection_methods = { "pattern" },
+		detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
+		-- detection_methods = { "pattern" },
 		---@usage patterns used to detect root dir, when **"pattern"** is in detection_methods
 		patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
 		---@ Show hidden files in telescope when searching for files in a project
