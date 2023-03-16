@@ -11,12 +11,10 @@ return {
 			changedelete = { text = "▎" },
 			untracked = { text = "▎" },
 		},
-		on_attach = function(buffer)
+		on_attach = function()
 			local gitsigns = package.loaded.gitsigns
 
-			local function map(mode, l, r, desc)
-				vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-			end
+			local map = vim.keymap.set
 
 			map("n", "<leader>gn", function()
 				gitsigns.next_hunk()
