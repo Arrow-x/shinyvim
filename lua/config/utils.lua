@@ -4,16 +4,6 @@ function shinyvim.has(plugin)
 	return require("lazy.core.config").plugins[plugin] ~= nil
 end
 
-shinyvim.Active_autoformat = true
-
-vim.api.nvim_create_user_command("AutoFormat", function()
-	if shinyvim.Active_autoformat == true then
-		shinyvim.Active_autoformat = false
-	else
-		shinyvim.Active_autoformat = true
-	end
-end, {})
-
 -- other custom logic
 function shinyvim.tprint(tbl, indent)
 	if not indent then
@@ -52,9 +42,9 @@ function shinyvim.get_root()
 		for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
 			local workspace = client.config.workspace_folders
 			local paths = workspace
-					and vim.tbl_map(function(ws)
-						return vim.uri_to_fname(ws.uri)
-					end, workspace)
+				and vim.tbl_map(function(ws)
+					return vim.uri_to_fname(ws.uri)
+				end, workspace)
 				or client.config.root_dir and { client.config.root_dir }
 				or {}
 			for _, p in ipairs(paths) do
