@@ -1,6 +1,6 @@
-return
-{
+return {
 	"nvim-neo-tree/neo-tree.nvim",
+	lazy = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -8,6 +8,9 @@ return
 	},
 	opts = {
 		-- close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+		filesystem = {
+			hijack_netrw_behavior = "open_current",
+		},
 		default_component_configs = {
 			diagnostics = {
 				symbols = {
@@ -43,5 +46,5 @@ return
 	},
 	keys = {
 		{ "<leader>e", "<cmd>NeoTreeRevealToggle<cr>", desc = "Explorer" },
-	}
+	},
 }
