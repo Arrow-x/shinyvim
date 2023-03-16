@@ -161,11 +161,11 @@ return {
 					{ name = "spell" },
 					-- { name = 'look'},
 				}),
-				experimental = {
-					ghost_text = {
-						hl_group = "LspCodeLens",
-					},
-				},
+				-- experimental = {
+				-- 	ghost_text = {
+				-- 		hl_group = "LspCodeLens",
+				-- 	},
+				-- },
 			}
 		end,
 	},
