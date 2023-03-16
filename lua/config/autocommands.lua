@@ -45,7 +45,9 @@ acmd("BufWritePre", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		vim.lsp.buf.format()
+		if shinyvim.Active_autoformat then
+			vim.lsp.buf.format()
+		end
 	end,
 })
 
@@ -85,7 +87,7 @@ acmd("FileType", {
 		if status_ok then
 			barbecue.toggle(false)
 		end
-		-- vim.cmd("TZAtaraxisOn")
+		shinyvim.Active_autoformat = false
 	end,
 })
 
