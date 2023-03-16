@@ -20,7 +20,6 @@ return {
 				"tools-life/taskwiki",
 				init = function()
 					vim.g.taskwiki_taskrc_location = "/home/arrowx/.config/task/taskrc"
-					vim.g.task_wiki_dont_fold = true
 				end,
 			},
 		},
