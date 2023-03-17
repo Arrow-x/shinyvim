@@ -10,6 +10,12 @@ return {
 		-- close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		filesystem = {
 			hijack_netrw_behavior = "open_current",
+			filtered_items = {
+				visible = true,
+				never_show = {
+					".git",
+				},
+			},
 		},
 		default_component_configs = {
 			diagnostics = {
