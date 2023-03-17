@@ -32,6 +32,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -157,8 +158,9 @@ return {
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
-					-- { name = 'calc' },
 					{ name = "spell" },
+					{ name = "nvim_lsp_signature_help" },
+					-- { name = 'calc' },
 					-- { name = 'look'},
 				}),
 				-- experimental = {
