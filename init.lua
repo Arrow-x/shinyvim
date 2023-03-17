@@ -26,7 +26,6 @@ require("user.indent-o-matic")
 require("user.trouble")
 
 require("user.illuminate")
-require("user.nvim-surround")
 
 -- Writing regular text section
 require("user.vimwiki")

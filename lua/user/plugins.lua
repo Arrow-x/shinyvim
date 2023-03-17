@@ -37,87 +37,98 @@ packer.init({
 		end,
 	},
 })
-
+local use = packer.use
+packer.reset()
 -- Install your plugins here
-return packer.startup(function(use)
-	use({ "wbthomason/packer.nvim" })
-	use({ "nvim-lua/plenary.nvim" })
-	use({ "windwp/nvim-autopairs" })
-	use({ "numToStr/Comment.nvim" })
-	use({ "lewis6991/impatient.nvim" })
-	use({ "kylechui/nvim-surround" })
-	use({ "Darazaki/indent-o-matic" })
-	use({ "mbbill/undotree" })
-	use({ "MunifTanjim/nui.nvim" })
+use({ "wbthomason/packer.nvim" })
+use({ "nvim-lua/plenary.nvim" })
+use({ "windwp/nvim-autopairs" })
+use({ "numToStr/Comment.nvim" })
+use({ "lewis6991/impatient.nvim" })
+use({
+	"echasnovski/mini.surround",
+	config = function()
+		require('mini.surround').setup()
+	end,
+})
+use({ "Darazaki/indent-o-matic" })
+use({ "mbbill/undotree" })
+use({ "MunifTanjim/nui.nvim" })
 
-	-- ColorSchemes
-	use({ "folke/tokyonight.nvim" })
-	use({ "gruvbox-community/gruvbox" })
+-- ColorSchemes
+use({ "folke/tokyonight.nvim" })
+use({ "gruvbox-community/gruvbox" })
 
-	-- cmp plugins
-	use({ "Arrow-x/nvim-cmp" })
-	use({ "hrsh7th/cmp-buffer" })
-	use({ "hrsh7th/cmp-path" })
-	use({ "saadparwaiz1/cmp_luasnip" })
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-nvim-lua" })
-	use({ "hrsh7th/cmp-cmdline" })
-	use({ "f3fora/cmp-spell" })
+-- cmp plugins
+use({ "Arrow-x/nvim-cmp" })
+use({ "hrsh7th/cmp-buffer" })
+use({ "hrsh7th/cmp-path" })
+use({ "saadparwaiz1/cmp_luasnip" })
+use({ "hrsh7th/cmp-nvim-lsp" })
+use({ "hrsh7th/cmp-nvim-lua" })
+use({ "hrsh7th/cmp-cmdline" })
+use({ "f3fora/cmp-spell" })
 
-	-- snippets
-	use({ "L3MON4D3/LuaSnip" })
-	use({ "rafamadriz/friendly-snippets" })
+-- snippets
+use({ "L3MON4D3/LuaSnip" })
+use({ "rafamadriz/friendly-snippets" })
 
-	-- LSP
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "neovim/nvim-lspconfig" })
-	use({ "jose-elias-alvarez/null-ls.nvim" })
-	use({ "RRethy/vim-illuminate" }) -- Illuminate other uses of current word/symbol under cursor
-	use({ "folke/trouble.nvim" })
+-- LSP
+use({ "williamboman/mason.nvim" })
+use({ "williamboman/mason-lspconfig.nvim" })
+use({ "neovim/nvim-lspconfig" })
+use({ "jose-elias-alvarez/null-ls.nvim" })
+use({ "RRethy/vim-illuminate" }) -- Illuminate other uses of current word/symbol under cursor
+use({ "folke/trouble.nvim" })
 
-	--Debug
-	use({ "mfussenegger/nvim-dap" })
-	use({ "rcarriga/nvim-dap-ui" })
-	use({ "ravenxrz/DAPInstall.nvim" })
-	use({ "mfussenegger/nvim-dap-python" })
-	use({ "theHamsta/nvim-dap-virtual-text" })
+--Debug
+use({ "mfussenegger/nvim-dap" })
+use({ "rcarriga/nvim-dap-ui" })
+use({ "ravenxrz/DAPInstall.nvim" })
+use({ "mfussenegger/nvim-dap-python" })
+use({ "theHamsta/nvim-dap-virtual-text" })
 
-	-- Telescope
-	use({ "nvim-telescope/telescope.nvim" })
+-- Telescope
+use({ "nvim-telescope/telescope.nvim" })
 
-	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter" })
+-- Treesitter
+use({ "nvim-treesitter/nvim-treesitter" })
 
-	use({ "p00f/nvim-ts-rainbow" })
+use({ "p00f/nvim-ts-rainbow" })
 
-	-- Git
-	use({ "lewis6991/gitsigns.nvim" })
+-- Git
+use({ "lewis6991/gitsigns.nvim" })
 
-	-- UI
-	use({ "kyazdani42/nvim-web-devicons" })
-	-- use({ "kyazdani42/nvim-tree.lua" })
-	use({ "nvim-neo-tree/neo-tree.nvim" })
+-- UI
+use({ "kyazdani42/nvim-web-devicons" })
+-- use({ "kyazdani42/nvim-tree.lua" })
+use({ "nvim-neo-tree/neo-tree.nvim" })
 
-	use({ "ThePrimeagen/harpoon" })
+use({ "ThePrimeagen/harpoon" })
 
-	use({ "akinsho/bufferline.nvim" })
-	use({ "moll/vim-bbye" })
-	use({ "nvim-lualine/lualine.nvim" })
-	use({ "akinsho/toggleterm.nvim" })
-	use({ "ahmedkhalf/project.nvim" })
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "goolord/alpha-nvim" })
-	use({ "antoinemadec/FixCursorHold.nvim" }) -- This is needed to fix lsp doc highlight
-	use({ "folke/which-key.nvim" })
-	use({ "SmiteshP/nvim-navic" })
-	use({ "utilyre/barbecue.nvim" })
-	use({ "vimwiki/vimwiki" })
-	use({ "Pocco81/TrueZen.nvim", commit = "c88840bf8f01bdf48c55c7a7d31de806837856ff" })
-	use({ "tools-life/taskwiki" })
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
-end)
+use({ "akinsho/bufferline.nvim" })
+use({ "moll/vim-bbye" })
+use({ "nvim-lualine/lualine.nvim" })
+use({ "akinsho/toggleterm.nvim" })
+use({ "ahmedkhalf/project.nvim" })
+use({ "lukas-reineke/indent-blankline.nvim" })
+use({ "goolord/alpha-nvim" })
+use({ "antoinemadec/FixCursorHold.nvim" }) -- This is needed to fix lsp doc highlight
+use({ "folke/which-key.nvim" })
+use({ "SmiteshP/nvim-navic" })
+use({ "utilyre/barbecue.nvim" })
+use({
+	"vimwiki/vimwiki",
+	requires = {
+		"tools-life/taskwiki",
+	},
+	keys = {
+		"<leader>w",
+	},
+})
+use({ "Pocco81/TrueZen.nvim", commit = "c88840bf8f01bdf48c55c7a7d31de806837856ff" })
+-- Automatically set up your configuration after cloning packer.nvim
+-- Put this at the end after all plugins
+if PACKER_BOOTSTRAP then
+	require("packer").sync()
+end
