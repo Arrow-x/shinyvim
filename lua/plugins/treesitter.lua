@@ -3,6 +3,9 @@ return {
 	version = false, -- last release is way too old and doesn't work on Windows
 	build = ":TSUpdate",
 	event = { "BufReadPost", "BufNewFile" },
+	dependencies = {
+		"p00f/nvim-ts-rainbow",
+	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
@@ -18,7 +21,7 @@ return {
 				"c",
 				"cpp",
 				"c_sharp",
-			},              -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+			}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 			sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 			ignore_install = { "" }, -- List of parsers to ignore installing
 			-- autopairs = {
