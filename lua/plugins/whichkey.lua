@@ -44,12 +44,13 @@ return {
 				presets = { operators = false },
 			},
 			window = {
-				border = "rounded",
+				border = "double",
 				padding = { 2, 2, 2, 2 },
 			},
 		})
 	end,
 	keys = {
 		"<leader>",
+		"z=",
 	},
 }
