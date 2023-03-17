@@ -1,6 +1,12 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	config = function()
+		local telescope = require("telescope")
+		telescope.setup({
+			defaults = {
+				file_ignore_patterns = { "^.git" },
+			},
+		})
 	end,
 	keys = {
 		{
