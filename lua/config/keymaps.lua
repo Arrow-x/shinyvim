@@ -87,6 +87,10 @@ keymap("v", "p", '"_dP', opts)
 keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts)
 keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts)
 
+-- split manager
+keymap("n", "<leader>\\", ":vsplit<CR>", { desc = "split vertically" })
+keymap("n", "<leader>-", ":split<CR>", { desc = "split horizontally" })
+
 -- terminal --
 -- better terminal navigation
 keymap("t", "<A-h>", "<C-\\><C-N><C-w>h", term_opts)
