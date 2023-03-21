@@ -2,7 +2,7 @@ local O = vim.opt
 local G = vim.g
 
 -- O.clipboard = "unnamedplus" --uses all the + register for clipboard
-O.cmdheight = 0 -- more space in the neovim command line for displaying messages
+O.cmdheight = 1 -- more space in the neovim command line for displaying messages
 O.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 -- O.conceallevel = 0 -- so that `` is visible in markdown files
 O.fileencoding = "utf-8" -- the encoding written to a file
