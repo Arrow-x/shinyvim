@@ -146,3 +146,18 @@ acmd("FileType", {
 		)
 	end,
 })
+acmd("CmdLineEnter", {
+	pattern = "*",
+	group = gr.general_settings,
+	callback = function()
+		vim.opt.cmdheight = 1
+	end,
+})
+
+acmd("CmdLineLeave", {
+	pattern = "*",
+	group = gr.general_settings,
+	callback = function()
+		vim.opt.cmdheight = 0
+	end,
+})
