@@ -1,6 +1,9 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
 	ft = { "lua", "gdscript" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
 	config = function()
 		local null_ls = require("null-ls")
 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
