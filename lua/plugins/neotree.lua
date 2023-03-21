@@ -6,6 +6,12 @@ return {
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
 	},
+	init = function()
+		vim.g.loaded_netrw = true -- disable netrw
+		vim.g.loaded_netrwFileHandlers = true -- disable netrw
+		vim.g.loaded_netrwPlugin = true -- disable netrw
+		vim.g.loaded_netrwSettngs = true -- disable netrw
+	end,
 	opts = {
 		-- close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		filesystem = {
