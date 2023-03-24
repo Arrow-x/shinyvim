@@ -24,8 +24,8 @@ return {
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
-		version = false, -- last release is way too old
+		"Arrow-x/nvim-cmp", -- Using a custom branch until the enable source is merged to main
+		-- version = false, -- last release is way too old
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -132,6 +132,21 @@ return {
 						scrollbar = "┃",
 					},
 				},
+				sources = cmp.config.sources({
+					{
+						name = "nvim_lsp",
+						enabled = function(ctx)
+							local context = require("cmp.config.context")
+							return not context.in_treesitter_capture("comment")
+						end,
+					},
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
+					{ name = "nvim_lsp_signature_help" },
+					-- { name = 'calc' },
+					-- { name = 'look'},
+				}),
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
@@ -147,22 +162,6 @@ return {
 						return vim_item
 					end,
 				},
-				sources = cmp.config.sources({
-					{
-						name = "nvim_lsp",
-						--enabled = function(ctx)
-						--	local context = require("cmp.config.context")
-						--	return not context.in_treesitter_capture("comment")
-						--end,
-					},
-					{ name = "luasnip" },
-					{ name = "buffer" },
-					{ name = "path" },
-					{ name = "spell" },
-					{ name = "nvim_lsp_signature_help" },
-					-- { name = 'calc' },
-					-- { name = 'look'},
-				}),
 				-- experimental = {
 				-- 	ghost_text = {
 				-- 		hl_group = "LspCodeLens",
