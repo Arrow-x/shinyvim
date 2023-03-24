@@ -1,4 +1,13 @@
 return {
 	"mbbill/undotree",
-	event = { "BufReadPost", "BufNewFile" },
+	keys = {
+		{
+			"<leader>uu",
+			function()
+				vim.cmd("UndotreeToggle")
+				vim.cmd("UndotreeFocus")
+			end,
+			desc = "Toggle UndoTree",
+		},
+	},
 }
