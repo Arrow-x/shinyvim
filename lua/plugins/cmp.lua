@@ -33,6 +33,7 @@ return {
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"f3fora/cmp-spell",
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -143,6 +144,7 @@ return {
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
+					{ name = "spell" },
 					{ name = "nvim_lsp_signature_help" },
 					-- { name = 'calc' },
 					-- { name = 'look'},
@@ -158,6 +160,7 @@ return {
 							nvim_lsp = "[LSP]",
 							buffer = "[Buffer]",
 							path = "[Path]",
+							spell = "[Spell]",
 						})[entry.source.name]
 						return vim_item
 					end,
