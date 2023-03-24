@@ -102,7 +102,9 @@ return {
 					end
 				end
 
-				require("illuminate").on_attach(client)
+				if client.name ~= "gdscript" then
+					require("illuminate").on_attach(client)
+				end
 				require("nvim-navic").attach(client, bufnr)
 			end
 
