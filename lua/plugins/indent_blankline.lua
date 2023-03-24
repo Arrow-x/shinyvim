@@ -1,5 +1,6 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 		vim.g.indent_blankline_filetype_exclude = {
