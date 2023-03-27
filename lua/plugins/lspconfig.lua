@@ -26,10 +26,10 @@ return {
 					local illuminate = require("illuminate")
 					vim.keymap.set("n", "<a-n>", function()
 						illuminate.next_reference({ wrap = true })
-					end, { noremap = true })
+					end, { noremap = true, desc = "illuminate go to next reference" })
 					vim.keymap.set("n", "<a-p>", function()
 						illuminate.next_reference({ reverse = true, wrap = true })
-					end, { noremap = true })
+					end, { noremap = true, desc = "illuminate go to previous reference" })
 
 					illuminate.configure({
 						delay = 0,
@@ -106,6 +106,33 @@ return {
 					require("illuminate").on_attach(client)
 				end
 				require("nvim-navic").attach(client, bufnr)
+				local keymap = vim.keymap.set
+				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
+				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
+				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
+				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
+				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+				keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
+				keymap("n", "<leader>ln", vim.diagnostic.goto_next, {
+					desc = "Go to next Diagnostics",
+				})
+				keymap("n", "<leader>lp", vim.diagnostic.goto_prev, {
+					desc = "Go to prev Diagnostics",
+				})
+				keymap("n", "<leader>lh", vim.diagnostic.open_float, { desc = "Hover Diagnostics" })
+				keymap("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Diagnostics to loacal list" })
+				keymap("n", "<leader>lI", function()
+					vim.cmd("LspInfo")
+				end, { desc = "Info" })
+				keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
+				keymap("n", "<space>lwa", vim.lsp.buf.add_workspace_folder, { desc = "add Lsp workspace folder" })
+
+				keymap("n", "<space>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Revome Lsp workspace folder" })
+				keymap("n", "<space>lwl", function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end, { desc = "list lsp workspace folder" })
+				keymap("n", "<space>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 			end
 
 			-- Lsp servers that are not installed by mason
@@ -139,46 +166,6 @@ return {
 			end
 
 			handlers.setup()
-			local keymap = vim.keymap.set
-			keymap("n", "<leader>ld", function()
-				vim.lsp.buf.definition()
-			end, { desc = "go to Definition" })
-			keymap("n", "<leader>lc", function()
-				vim.lsp.buf.declaration()
-			end, { desc = "go to Declaration" })
-			keymap("n", "<leader>li", function()
-				vim.lsp.buf.implementation()
-			end, { desc = "go to Implementation" })
-			keymap("n", "<leader>lR", function()
-				vim.lsp.buf.references()
-			end, { desc = "go to references" })
-			keymap("n", "<leader>lH", function()
-				vim.lsp.buf.signature_help()
-			end, { desc = "Signature Help" })
-			keymap("n", "<leader>lr", function()
-				vim.lsp.buf.rename()
-			end, { desc = "Rename" })
-			keymap("n", "<leader>la", function()
-				vim.lsp.buf.code_action()
-			end, { desc = "Code Actions" })
-			keymap("n", "<leader>ln", function()
-				vim.diagnostic.goto_next({ border = "rounded" })
-			end, { desc = "Go to next Diagnostics" })
-			keymap("n", "<leader>lp", function()
-				vim.diagnostic.goto_prev({ border = "rounded" })
-			end, { desc = "Go to prev Diagnostics" })
-			keymap("n", "<leader>lh", function()
-				vim.diagnostic.open_float()
-			end, { desc = "Hover Diagnostics" })
-			keymap("n", "<leader>lq", function()
-				vim.diagnostic.setloclist()
-			end, { desc = "Diagnostics to loacal list" })
-			keymap("n", "<leader>lI", function()
-				vim.cmd("LspInfo")
-			end, { desc = "Info" })
-			keymap("n", "<leader>lf", function()
-				vim.lsp.buf.format()
-			end, { desc = "Format" })
 		end,
 	},
 }
