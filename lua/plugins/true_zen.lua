@@ -9,4 +9,11 @@ return {
 			},
 		})
 	end,
+	keys = { {
+		"<leader>za",
+		function()
+			vim.cmd("TZAtaraxis")
+		end,
+		desc = "Switch to TZAtaraxis",
+	} },
 }
