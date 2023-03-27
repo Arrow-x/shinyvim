@@ -61,7 +61,7 @@ return {
 		{
 			"mfussenegger/nvim-dap-python",
 			config = function()
-				require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
+				require("dap-python").setup("~/.local/share/virtualenvs/debugpy/bin/python")
 			end,
 			cond = function()
 				if vim.bo.filetype == "python" then
