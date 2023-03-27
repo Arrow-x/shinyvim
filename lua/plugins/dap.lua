@@ -107,5 +107,12 @@ return {
 			end,
 			desc = "inspect REPL",
 		},
+		{
+			"<leader>ds",
+			function()
+				require("dap").disconnect({ terminateDebuggee = true })
+			end,
+			desc = "Stop dap",
+		},
 	},
 }
