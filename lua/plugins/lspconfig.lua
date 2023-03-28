@@ -42,6 +42,17 @@ return {
 					})
 				end,
 			},
+			{
+				event = { "BufReadPre", "BufNewFile" },
+				"j-hui/fidget.nvim",
+				config = function()
+					require("fidget").setup({
+						window = {
+							blend = 0,
+						},
+					})
+				end,
+			},
 		},
 		-- BUG the options are not working
 		config = function()
