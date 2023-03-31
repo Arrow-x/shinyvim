@@ -62,8 +62,6 @@ acmd("FileType", {
 		vim.wo.list = false
 		vim.wo.virtualedit = ""
 		vim.opt.display:append("lastline")
-		vim.opt.relativenumber = false
-		vim.opt.number = false
 
 		vim.keymap.set("n", "k", "gk", { silent = true, buffer = true })
 		vim.keymap.set("n", "j", "gj", { silent = true, buffer = true })
