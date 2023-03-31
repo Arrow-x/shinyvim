@@ -54,16 +54,14 @@ return {
 				end,
 			},
 		},
-		-- BUG the options are not working
 		config = function()
 			local lspconfig = require("lspconfig")
 
 			local insert = table.insert
 			local tbl_deep_extend = vim.tbl_deep_extend
-			local handlers = {}
-			handlers.capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			handlers.setup = function()
+			local function setup()
 				local signs = {
 					{ name = "DiagnosticSignError", text = "" },
 					{ name = "DiagnosticSignWarn", text = "" },
@@ -104,7 +102,7 @@ return {
 				})
 			end
 
-			handlers.on_attach = function(client, bufnr)
+			local on_attach = function(client, bufnr)
 				local servers_to_disable_formating_for = { "tsserver", "lua_ls" }
 
 				for _, server in pairs(servers_to_disable_formating_for) do
@@ -116,7 +114,9 @@ return {
 				if client.name ~= "gdscript" then
 					require("illuminate").on_attach(client)
 				end
+
 				require("nvim-navic").attach(client, bufnr)
+
 				local keymap = vim.keymap.set
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
@@ -160,13 +160,9 @@ return {
 			for _, server in ipairs(servers) do
 				local opts = {
 					on_attach = function(client, bufnr)
-						handlers.on_attach(client, bufnr)
+						on_attach(client, bufnr)
 					end,
-					capabilities = tbl_deep_extend(
-						"force",
-						handlers.capabilities,
-						lspconfig[server].capabilities or {}
-					),
+					capabilities = tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
 				}
 
 				local present, custom_settings = pcall(require, "config.lsp.settings." .. server)
@@ -176,7 +172,7 @@ return {
 				lspconfig[server].setup(opts)
 			end
 
-			handlers.setup()
+			setup()
 		end,
 	},
 }
