@@ -108,5 +108,12 @@ return {
 			end,
 			desc = "Buffers",
 		},
+		{
+			"<leader>f*",
+			function()
+				require("telescope.builtin").grep_string()
+			end,
+			desc = "Search for word under cursor",
+		},
 	},
 }
