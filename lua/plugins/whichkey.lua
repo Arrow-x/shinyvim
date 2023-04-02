@@ -12,11 +12,13 @@ return {
 			{ plugin = "harpoon", prefix = "s", desc = "Harpoon" },
 			{ plugin = "trouble.nvim", prefix = "x", desc = "Trouble" },
 			{ plugin = "notify.nvim", prefix = "u", desc = "Norify" },
+			{ plugin = "true-zen", prefix = "z", desc = "TrueZen modes" },
 		}
 
 		local mappings = {
 			p = { name = "Paste to system clipboard" },
 			y = { name = "Copy to System clipboard" },
+			m = { name = "Manipulate current file permissions" },
 		}
 
 		local opts = {
@@ -52,5 +54,7 @@ return {
 	keys = {
 		"<leader>",
 		"z=",
+		"'",
+		'"',
 	},
 }
