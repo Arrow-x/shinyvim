@@ -1,12 +1,10 @@
-local opts = { silent = true }
-
 local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.keymap.set
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -20,70 +18,75 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Netrw Mappings
--- keymap("n", "<leader>e", ":Lex 20<cr>", opts)
+keymap("n", "<leader>e", ":Lex 20<cr>")
+
+-- Remove Highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 
 -- Resize with arrows
-keymap("n", "<A-Up>", ":resize +2<CR>", opts)
-keymap("n", "<A-Down>", ":resize -2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-Up>", ":resize +2<CR>")
+keymap("n", "<A-Down>", ":resize -2<CR>")
+keymap("n", "<A-Left>", ":vertical resize -2<CR>")
+keymap("n", "<A-Right>", ":vertical resize +2<CR>")
 
 -- Quicklist nice navigation
-keymap("n", "<Tab>", ":cnext<CR>zzzv", opts)
-keymap("n", "<S-Tab>", ":cprevious<CR>zzzv", opts)
+keymap("n", "<Tab>", ":cnext<CR>zzzv")
+keymap("n", "<S-Tab>", ":cprevious<CR>zzzv")
+
+-- Localtion list navigation
+-- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Move text up and Down
-keymap("n", "<C-j>", ":m .+1<CR>==", opts)
-keymap("n", "<C-k>", ":m .-2<CR>==", opts)
+keymap("n", "<C-j>", ":m .+1<CR>==")
+keymap("n", "<C-k>", ":m .-2<CR>==")
 
 -- Keeping it centered
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "nzzzv", opts)
-keymap("n", "J", "mzJ`z", opts)
+keymap("n", "n", "nzzzv")
+keymap("n", "N", "nzzzv")
+keymap("n", "J", "mzJ`z")
+
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
 
 -- Make Y behave like the other capital modifiers
-keymap("n", "Y", "y$", opts)
+keymap("n", "Y", "y$")
 
 -- Jumplist mutation
 vim.cmd('nnoremap <expr> k (v:count > 5 ? "m\'" . v:count : "") . \'k\'')
 vim.cmd('nnoremap <expr> j (v:count > 5 ? "m\'" . v:count : "") . \'j\'')
 
 -- quickly fix formatting
--- keymap("n", "<leader>=", "gg<S-v>G=", opts)
+-- keymap("n", "<leader>=", "gg<S-v>G=")
 
 -- Insert --
 -- Press jk to step over one in insert mode
-keymap("i", "jk", "<Esc>la", opts)
+keymap("i", "jk", "<Esc>la")
 
 -- Move text up and down
-keymap("i", "<C-j>", "<Esc>:m .+1<CR>==i", opts)
-keymap("i", "<C-k>", "<Esc>:m .-2<CR>==i ", opts)
+keymap("i", "<C-j>", "<Esc>:m .+1<CR>==i")
+keymap("i", "<C-k>", "<Esc>:m .-2 <CR>==i ")
 
 --Undo Break Points
-keymap("i", ",", ",<C-g>u", opts)
-keymap("i", ".", ".<C-g>u", opts)
-keymap("i", ";", ";<C-g>u", opts)
-keymap("i", "!", "!<C-g>u", opts)
-keymap("i", "?", "?<C-g>u", opts)
-keymap("i", "=", "=<C-g>u", opts)
+keymap("i", ",", ",<C-g>u")
+keymap("i", ".", ".<C-g>u")
+keymap("i", ";", ";<C-g>u")
+keymap("i", "!", "!<C-g>u")
+keymap("i", "?", "?<C-g>u")
+keymap("i", "=", "=<C-g>u")
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
--- Move text up and down
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
 
 -- Better Paste
-keymap("v", "p", '"_dP', opts)
+keymap("v", "p", '"_dP')
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts)
-keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts)
+keymap("x", "<C-j>", ":move '>+1<CR>gv=gv")
+keymap("x", "<C-k>", ":move '<-2<CR>gv=gv")
 
 -- split manager
 keymap("n", "<leader>\\", ":vsplit<CR>", { desc = "split vertically" })
@@ -107,5 +110,10 @@ keymap("v", "<leader>y", '"+y', { desc = "Normal Mode Copy the selected text to 
 keymap("v", "<leader>y", '"+y', { desc = "Visual mode Copy the selected text to system clipboard" })
 
 -- Paste from system clipboard
-keymap("n", "<leader>p", '"+p', opts)
-keymap("v", "<leader>p", '"+p', opts)
+keymap("n", "<leader>p", '"+p')
+keymap("v", "<leader>p", '"+p')
+-- Disable annoying command history but bigger buffer
+keymap("n", "Q", "<nop>")
+
+keymap("n", "<leader>ma", "<cmd>!chmod +x %<CR>", { silent = true, desc = "make current file excutable" })
+keymap("n", "<leader>mr", "<cmd>!chmod -x %<CR>", { silent = true, desc = "make current file not excutable" })
