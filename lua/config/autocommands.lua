@@ -92,7 +92,14 @@ acmd("User", {
 	pattern = "AlphaReady",
 	group = gr.alpha,
 	callback = function()
-		vim.cmd("set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2")
+		vim.opt.showtabline = 0
+	end,
+})
+
+acmd("BufUnload", {
+	group = gr.alpha,
+	callback = function()
+		vim.opt.showtabline = 2
 	end,
 })
 
