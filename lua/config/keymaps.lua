@@ -115,5 +115,5 @@ keymap("v", "<leader>p", '"+p')
 -- Disable annoying command history but bigger buffer
 keymap("n", "Q", "<nop>")
 
-keymap("n", "<leader>ma", "<cmd>!chmod +x %<CR>", { silent = true, desc = "make current file excutable" })
-keymap("n", "<leader>mr", "<cmd>!chmod -x %<CR>", { silent = true, desc = "make current file not excutable" })
+keymap("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "make current file excutable" })
+keymap("n", "<leader>mX", "<cmd>!chmod -x %<CR>", { silent = true, desc = "make current file not excutable" })
