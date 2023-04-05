@@ -11,6 +11,7 @@ return {
 					custom_wiki2html = "vimwiki_markdown",
 					template_ext = ".tpl",
 					links_space_char = "_",
+					auto_diary_index = 1,
 				},
 			}
 			vim.g.vimwiki_global_ext = 0
