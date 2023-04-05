@@ -24,12 +24,12 @@ return {
 				event = { "BufReadPost", "BufNewFile" },
 				config = function()
 					local illuminate = require("illuminate")
-					vim.keymap.set("n", "<a-n>", function()
-						illuminate.next_reference({ wrap = true })
-					end, { noremap = true, desc = "illuminate go to next reference" })
-					vim.keymap.set("n", "<a-p>", function()
-						illuminate.next_reference({ reverse = true, wrap = true })
-					end, { noremap = true, desc = "illuminate go to previous reference" })
+					-- vim.keymap.set("n", "<a-n>", function()
+					-- 	illuminate.next_reference({ wrap = true })
+					-- end, { noremap = true, desc = "illuminate go to next reference" })
+					-- vim.keymap.set("n", "<a-p>", function()
+					-- 	illuminate.next_reference({ reverse = true, wrap = true })
+					-- end, { noremap = true, desc = "illuminate go to previous reference" })
 
 					illuminate.configure({
 						delay = 0,

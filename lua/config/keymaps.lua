@@ -30,8 +30,8 @@ keymap("n", "<A-Left>", ":vertical resize -2<CR>")
 keymap("n", "<A-Right>", ":vertical resize +2<CR>")
 
 -- Quicklist nice navigation
-keymap("n", "<Tab>", ":cnext<CR>zzzv")
-keymap("n", "<S-Tab>", ":cprevious<CR>zzzv")
+keymap("n", "<a-n>", "<cmd>cnext<CR>zz")
+keymap("n", "<a-p>", "<cmd>cprev<CR>zz")
 
 -- Localtion list navigation
 -- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -115,5 +115,5 @@ keymap("v", "<leader>p", '"+p')
 -- Disable annoying command history but bigger buffer
 keymap("n", "Q", "<nop>")
 
-keymap("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "make current file excutable" })
-keymap("n", "<leader>mX", "<cmd>!chmod -x %<CR>", { silent = true, desc = "make current file not excutable" })
+keymap("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "make current file excutable" })
+keymap("n", "<leader>mX", "<cmd>!chmod -x %<CR>", { desc = "make current file not excutable" })
