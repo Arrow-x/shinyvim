@@ -24,12 +24,12 @@ return {
 				event = { "BufReadPost", "BufNewFile" },
 				config = function()
 					local illuminate = require("illuminate")
-					-- vim.keymap.set("n", "<a-n>", function()
-					-- 	illuminate.next_reference({ wrap = true })
-					-- end, { noremap = true, desc = "illuminate go to next reference" })
-					-- vim.keymap.set("n", "<a-p>", function()
-					-- 	illuminate.next_reference({ reverse = true, wrap = true })
-					-- end, { noremap = true, desc = "illuminate go to previous reference" })
+					vim.keymap.set("n", "<Tab>", function()
+						illuminate.next_reference({ wrap = true })
+					end, { noremap = true, desc = "illuminate go to next reference" })
+					vim.keymap.set("n", "<S-Tab>", function()
+						illuminate.next_reference({ reverse = true, wrap = true })
+					end, { noremap = true, desc = "illuminate go to previous reference" })
 
 					illuminate.configure({
 						delay = 0,
@@ -56,51 +56,46 @@ return {
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
-
-			local insert = table.insert
-			local tbl_deep_extend = vim.tbl_deep_extend
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local function setup()
-				local signs = {
-					{ name = "DiagnosticSignError", text = "" },
-					{ name = "DiagnosticSignWarn", text = "" },
-					{ name = "DiagnosticSignHint", text = "" },
-					{ name = "DiagnosticSignInfo", text = "" },
-				}
+			local signs = {
+				{ name = "DiagnosticSignError", text = "" },
+				{ name = "DiagnosticSignWarn", text = "" },
+				{ name = "DiagnosticSignHint", text = "" },
+				{ name = "DiagnosticSignInfo", text = "" },
+			}
 
-				for _, sign in ipairs(signs) do
-					vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-				end
-
-				local config = {
-					virtual_text = true,
-					signs = {
-						active = signs,
-					},
-					update_in_insert = false,
-					underline = true,
-					severity_sort = true,
-					float = {
-						focusable = false,
-						style = "minimal",
-						border = "rounded",
-						source = "always",
-						header = "",
-						prefix = "",
-					},
-				}
-
-				vim.diagnostic.config(config)
-
-				vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-					border = "rounded",
-				})
-
-				vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-					border = "rounded",
-				})
+			for _, sign in pairs(signs) do
+				vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 			end
+
+			local config = {
+				virtual_text = true,
+				signs = {
+					active = signs,
+				},
+				update_in_insert = false,
+				underline = true,
+				severity_sort = true,
+				float = {
+					focusable = false,
+					style = "minimal",
+					border = "rounded",
+					source = "always",
+					header = "",
+					prefix = "",
+				},
+			}
+
+			vim.diagnostic.config(config)
+
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+				border = "rounded",
+			})
+
+			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+				border = "rounded",
+			})
 
 			local on_attach = function(client, bufnr)
 				local servers_to_disable_formating_for = { "tsserver", "lua_ls" }
@@ -153,26 +148,24 @@ return {
 			}
 
 			local mason_lspconfig = require("mason-lspconfig")
-			for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-				insert(servers, server)
+			for _, server in pairs(mason_lspconfig.get_installed_servers()) do
+				table.insert(servers, server)
 			end
 
-			for _, server in ipairs(servers) do
+			for _, server in pairs(servers) do
 				local opts = {
 					on_attach = function(client, bufnr)
 						on_attach(client, bufnr)
 					end,
-					capabilities = tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
+					capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
 				}
 
 				local present, custom_settings = pcall(require, "config.lsp.settings." .. server)
 				if present then
-					opts = tbl_deep_extend("force", custom_settings, opts)
+					opts = vim.tbl_deep_extend("force", custom_settings, opts)
 				end
 				lspconfig[server].setup(opts)
 			end
-
-			setup()
 		end,
 	},
 }

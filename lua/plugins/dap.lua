@@ -66,10 +66,7 @@ return {
 				require("dap-python").setup("~/.local/share/virtualenvs/debugpy/bin/python")
 			end,
 			cond = function()
-				if vim.bo.filetype == "python" then
-					return true
-				end
-				return false
+				return vim.bo.filetype == "python"
 			end,
 		},
 	},
