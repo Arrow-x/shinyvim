@@ -1,6 +1,5 @@
 return {
 	"akinsho/bufferline.nvim",
-	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		options = {
 			offsets = {
