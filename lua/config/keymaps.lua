@@ -24,14 +24,14 @@ keymap("n", "<leader>e", ":Lex 20<cr>")
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 
 -- Resize with arrows
-keymap("n", "<A-Up>", ":resize +2<CR>")
-keymap("n", "<A-Down>", ":resize -2<CR>")
-keymap("n", "<A-Left>", ":vertical resize -2<CR>")
-keymap("n", "<A-Right>", ":vertical resize +2<CR>")
+keymap("n", "<A-k>", ":resize +2<CR>")
+keymap("n", "<A-j>", ":resize -2<CR>")
+keymap("n", "<A-h>", ":vertical resize +2<CR>")
+keymap("n", "<A-l>", ":vertical resize -2<CR>")
 
 -- Quicklist nice navigation
-keymap("n", "<a-n>", "<cmd>cnext<CR>zz")
-keymap("n", "<a-p>", "<cmd>cprev<CR>zz")
+keymap("n", "<A-n>", "<cmd>cnext<CR>zz")
+keymap("n", "<A-p>", "<cmd>cprev<CR>zz")
 
 -- Localtion list navigation
 -- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -94,11 +94,12 @@ keymap("n", "<leader>-", ":split<CR>", { desc = "split horizontally" })
 
 -- terminal --
 -- better terminal navigation
-keymap("t", "<A-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<A-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<A-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<A-l>", "<C-\\><C-N><C-w>l", term_opts)
-keymap("t", "<A-c>", [[<C-\><C-n>]], term_opts)
+-- keymap("t", "<M-h>", [[<C-\><C-N><C-w>h]], term_opts)
+-- keymap("t", "<M-j>", [[<C-\><C-N><C-w>j]], term_opts)
+-- keymap("t", "<M-k>", [[<C-\><C-N><C-w>k]], term_opts)
+-- keymap("t", "<M-l>", [[<C-\><C-N><C-w>l]], term_opts)
+keymap("t", "<A-q>", [[<C-\><C-n><C-w>k]], term_opts)
+keymap("n", "<A-q>", "<C-w>j")
 
 -- System Clipboard --
 -- Copy to system clipboard
