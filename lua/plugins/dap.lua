@@ -65,6 +65,7 @@ return {
 			config = function()
 				require("dap-python").setup("~/.local/share/virtualenvs/debugpy/bin/python")
 			end,
+			-- not using ft, so that it will load when dap does, not when the buffer is a python file
 			cond = function()
 				return vim.bo.filetype == "python"
 			end,
