@@ -94,14 +94,6 @@ return {
 			desc = "Find word",
 		},
 		{
-			"<leader>fp",
-			function()
-				require("telescope.builtin").projects()
-			end,
-			desc = "Projects",
-		},
-
-		{
 			"<leader>b",
 			function()
 				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
@@ -116,4 +108,5 @@ return {
 			desc = "Search for word under cursor",
 		},
 	},
+	cmd = { "Telescope" },
 }

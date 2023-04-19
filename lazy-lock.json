@@ -40,7 +40,6 @@
   "nvim-ts-rainbow": { "branch": "master", "commit": "ef95c15a935f97c65a80e48e12fe72d49aacf9b9" },
   "nvim-web-devicons": { "branch": "master", "commit": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
-  "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "taskwiki": { "branch": "master", "commit": "7a74ad8ed3743142830ba29a599c7bd23dd2b158" },
   "telescope.nvim": { "branch": "master", "commit": "6258d50b09f9ae087317e392efe7c05a7323492d" },
   "todo-comments.nvim": { "branch": "main", "commit": "8febc60a76feefd8203077ef78b6a262ea1a41f9" },
