@@ -1,15 +1,13 @@
 return {
-	-- BUG: This calls withit Toruble.nvim for some reason.
 	"lewis6991/gitsigns.nvim",
 	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		signs = {
-			add = { text = "▎" },
-			change = { text = "▎" },
-			delete = { text = "" },
-			topdelete = { text = "" },
-			changedelete = { text = "▎" },
-			untracked = { text = "▎" },
+			add = { text = "+" },
+			change = { text = "~" },
+			delete = { text = "_" },
+			topdelete = { text = " " },
+			changedelete = { text = "~" },
 		},
 		on_attach = function()
 			local gitsigns = package.loaded.gitsigns
