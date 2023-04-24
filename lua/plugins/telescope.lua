@@ -1,10 +1,24 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	cmd = { "Telescope" },
 	config = function()
 		local telescope = require("telescope")
+		local actions = require("telescope.actions")
 		telescope.setup({
 			defaults = {
 				file_ignore_patterns = { "^.git" },
+				prompt_prefix = string.format("%s ", ""),
+				selection_caret = string.format("%s ", "❯"),
+				path_display = { "truncate" },
+				mappings = {
+					i = {
+						["<C-j>"] = actions.cycle_history_next,
+						["<C-k>"] = actions.cycle_history_prev,
+						["<C-n>"] = actions.move_selection_next,
+						["<C-p>"] = actions.move_selection_previous,
+					},
+					n = { ["q"] = actions.close },
+				},
 			},
 			extensions = {
 				fzf = {
@@ -125,5 +139,4 @@ return {
 			desc = "Search for word under cursor",
 		},
 	},
-	cmd = { "Telescope" },
 }
