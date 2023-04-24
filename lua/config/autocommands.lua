@@ -76,7 +76,7 @@ acmd("FileType", {
 })
 
 acmd("FileType", {
-	pattern = "vimwiki",
+	pattern = { "vimwiki", "markdown" },
 	group = gr.writing,
 	callback = function()
 		vim.cmd("colorscheme gruvbox")
