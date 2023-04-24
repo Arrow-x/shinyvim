@@ -2,7 +2,6 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	version = false, -- last release is way too old and doesn't work on Windows
 	build = ":TSUpdate",
-	event = { "BufReadPost", "BufNewFile" },
 	dependencies = {
 		"p00f/nvim-ts-rainbow",
 	},
@@ -10,7 +9,7 @@ return {
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"vim",
-				"help",
+				"vimdoc",
 				"gdscript",
 				"python",
 				"bash",
