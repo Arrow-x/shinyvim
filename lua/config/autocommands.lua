@@ -1,7 +1,6 @@
 local gr = {
 	general_settings = vim.api.nvim_create_augroup("general_settings", { clear = true }),
 	writing = vim.api.nvim_create_augroup("writing", { clear = true }),
-	alpha = vim.api.nvim_create_augroup("alpha", { clear = true }),
 	exe_code = vim.api.nvim_create_augroup("exe_code", { clear = true }),
 }
 
@@ -85,21 +84,6 @@ acmd("FileType", {
 		if status_ok then
 			barbecue.toggle(false)
 		end
-	end,
-})
-
-acmd("User", {
-	pattern = "AlphaReady",
-	group = gr.alpha,
-	callback = function()
-		vim.opt.showtabline = 0
-	end,
-})
-
-acmd("BufUnload", {
-	group = gr.alpha,
-	callback = function()
-		vim.opt.showtabline = 2
 	end,
 })
 
