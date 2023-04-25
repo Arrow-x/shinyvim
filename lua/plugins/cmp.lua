@@ -1,5 +1,4 @@
 return {
-
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -25,7 +24,6 @@ return {
 
 	{
 		"Arrow-x/nvim-cmp", -- Using a custom branch until the enable source is merged to main
-		-- version = false, -- last release is way too old
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -151,15 +149,13 @@ return {
 					{ name = "path" },
 					{ name = "spell" },
 					{ name = "nvim_lsp_signature_help" },
-					-- { name = 'calc' },
-					-- { name = 'look'},
 				}),
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
 						-- Kind icons
 						vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-						-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+						-- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 						vim_item.menu = ({
 							luasnip = "[Snippet]",
 							nvim_lsp = "[LSP]",
@@ -170,11 +166,6 @@ return {
 						return vim_item
 					end,
 				},
-				-- experimental = {
-				-- 	ghost_text = {
-				-- 		hl_group = "LspCodeLens",
-				-- 	},
-				-- },
 				cmp.setup.cmdline("/", {
 					mapping = cmp.mapping.preset.cmdline(),
 					sources = {
