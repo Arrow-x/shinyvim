@@ -127,17 +127,11 @@ return {
 					desc = "Go to prev Diagnostics",
 				})
 				keymap("n", "<leader>lh", vim.diagnostic.open_float, { desc = "Hover Diagnostics" })
-				keymap("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Diagnostics to loacal list" })
+				keymap("n", "<leader>lq", vim.diagnostic.setqflist, { desc = "Diagnostics to quickfix list" })
 				keymap("n", "<leader>lI", function()
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
 				keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
-				keymap("n", "<space>lwa", vim.lsp.buf.add_workspace_folder, { desc = "add Lsp workspace folder" })
-
-				keymap("n", "<space>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Revome Lsp workspace folder" })
-				keymap("n", "<space>lwl", function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, { desc = "list lsp workspace folder" })
 				keymap("n", "<space>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 			end
 
