@@ -25,7 +25,7 @@ return {
 			},
 		},
 		keys = {
-			"<leader>w",
+			"<leader>ww",
 		},
 	},
 }
