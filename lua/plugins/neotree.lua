@@ -26,16 +26,31 @@ return {
 		default_component_configs = {
 			diagnostics = {
 				symbols = {
-					hint = "",
+					hint = "󰌵",
 					info = "",
 					warn = "",
 					error = "",
 				},
-				highlights = {
-					hint = "DiagnosticSignHint",
-					info = "DiagnosticSignInfo",
-					warn = "DiagnosticSignWarn",
-					error = "DiagnosticSignError",
+			},
+			indent = { padding = 0, indent_size = 1 },
+			icon = {
+				folder_closed = "",
+				folder_open = "",
+				folder_empty = "",
+				default = "󰈙",
+			},
+			modified = { symbol = "" },
+			git_status = {
+				symbols = {
+					added = "",
+					deleted = "",
+					modified = "",
+					renamed = "➜",
+					untracked = "★",
+					ignored = "◌",
+					unstaged = "✗",
+					staged = "✓",
+					conflict = "",
 				},
 			},
 		},
