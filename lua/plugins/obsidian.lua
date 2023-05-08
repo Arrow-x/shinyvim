@@ -1,7 +1,7 @@
 return {
 	"epwalsh/obsidian.nvim",
 	lazy = true,
-	event = { "BufReadPre /home/arrowx/File/Documents/Notes/**.md" },
+	event = { "BufReadPre /home/arrowx/.local/share/Obsidian/**.md" },
 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
 	-- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
 	dependencies = {
@@ -26,7 +26,7 @@ return {
 		-- "preservim/vim-markdown",
 	},
 	opts = {
-		dir = "~/File/Documents/Notes/Trail", -- no need to call 'vim.fn.expand' here
+		dir = "~/.local/share/Obsidian", -- no need to call 'vim.fn.expand' here
 		-- Optional, if you keep notes in a specific subdirectory of your vault.
 		notes_subdir = "notes",
 		-- Optional, if you keep daily notes in a separate directory.
