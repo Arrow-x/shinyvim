@@ -105,5 +105,12 @@ return {
 		vim.keymap.set("v", "<cr>", function()
 			return ":'<,'>ObsidianLinkNew<cr>"
 		end, { noremap = false, expr = true })
+
+		vim.keymap.set("n", "<leader>w<leader>w", function()
+			vim.cmd("ObsidianToday")
+		end)
+		vim.keymap.set("n", "<leader>w<leader>y", function()
+			vim.cmd("ObsidianYesterday")
+		end)
 	end,
 }
