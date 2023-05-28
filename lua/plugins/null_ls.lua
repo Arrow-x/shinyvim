@@ -1,6 +1,6 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
-	ft = { "lua", "gdscript" },
+	ft = { "lua", "gdscript", "sh" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -17,7 +17,7 @@ return {
 				-- formatting.black.with({ extra_args = { "--fast" } }),
 				formatting.gdformat.with({ extra_args = { "--fast" } }),
 				formatting.stylua,
-				--
+				formatting.beautysh.with({ extra_args = { "-s", "paronly", "-t" } }),
 				-- diagnostics.gdlint,
 				-- diagnostics.alex,
 				-- diagnostics.flake8,
