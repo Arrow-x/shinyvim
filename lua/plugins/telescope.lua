@@ -20,6 +20,11 @@ return {
 					n = { ["q"] = actions.close },
 				},
 			},
+			pickers = {
+				live_grep = {
+					additional_args = { "--hidden" },
+				},
+			},
 			extensions = {
 				fzf = {
 					fuzzy = true, -- false will only do exact matching
