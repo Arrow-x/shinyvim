@@ -32,7 +32,7 @@ return {
 					error = "",
 				},
 			},
-			indent = { padding = 0, indent_size = 1 },
+			indent = { padding = 1, indent_size = 2 },
 			icon = {
 				folder_closed = "",
 				folder_open = "",
