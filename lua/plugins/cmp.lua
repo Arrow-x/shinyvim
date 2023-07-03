@@ -23,7 +23,7 @@ return {
 	},
 
 	{
-		"Arrow-x/nvim-cmp", -- Using a custom branch until the enable source is merged to main
+		"hrsh7th/nvim-cmp", -- Using a custom branch until the enable source is merged to main
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -147,13 +147,7 @@ return {
 					},
 				},
 				sources = cmp.config.sources({
-					{
-						name = "nvim_lsp",
-						enabled = function(ctx)
-							local context = require("cmp.config.context")
-							return not context.in_treesitter_capture("comment")
-						end,
-					},
+					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },

@@ -9,7 +9,7 @@ return {
 		"nvim-lua/plenary.nvim",
 
 		-- Optional, for completion.
-		"Arrow-x/nvim-cmp",
+		"hrsh7th/nvim-cmp",
 
 		-- Optional, for search and quick-switch functionality.
 		"nvim-telescope/telescope.nvim",
