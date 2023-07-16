@@ -1,6 +1,7 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	lazy = false,
+	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -65,13 +66,13 @@ return {
 		event_handlers = {
 			{
 				event = "file_opened",
-				handler = function()
-					require("neo-tree").close_all()
+				handler = function(file_path)
+					require("neo-tree.command").execute({ action = "close" })
 				end,
 			},
 		},
 	},
 	keys = {
-		{ "<leader>e", "<cmd>NeoTreeRevealToggle<cr>", desc = "Explorer" },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer" },
 	},
 }
