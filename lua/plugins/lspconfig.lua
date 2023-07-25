@@ -16,9 +16,6 @@ return {
 			},
 			{
 				"hrsh7th/cmp-nvim-lsp",
-				cond = function()
-					return shinyvim.has("nvim-cmp")
-				end,
 			},
 			{
 				"RRethy/vim-illuminate",
@@ -46,6 +43,7 @@ return {
 			{
 				event = { "BufReadPre", "BufNewFile" },
 				"j-hui/fidget.nvim",
+				tag = "legacy",
 				config = function()
 					require("fidget").setup({
 						window = {
