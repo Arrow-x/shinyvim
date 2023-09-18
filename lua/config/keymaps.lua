@@ -113,6 +113,9 @@ keymap("v", "<leader>y", '"+y', { desc = "Visual mode Copy the selected text to 
 -- Paste from system clipboard
 keymap("n", "<leader>p", '"+p')
 keymap("v", "<leader>p", '"+p')
+keymap("n", "<leader>P", '"*p')
+keymap("v", "<leader>P", '"*p')
+
 -- Disable annoying command history but bigger buffer
 keymap("n", "Q", "<nop>")
 
