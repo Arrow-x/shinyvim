@@ -38,6 +38,12 @@ return {
 			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
 		},
 		-- Optional, customize how names/IDs for new notes are created.
+
+		-- Optional, key mappings.
+		mappings = {
+			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+			-- ["gf"] = require("obsidian.mapping").gf_passthrough(),
+		},
 		note_id_func = function(title)
 			-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
 			-- In this case a note with the title 'My new note' will given an ID that looks
