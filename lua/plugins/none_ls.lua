@@ -1,5 +1,5 @@
 return {
-	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 	ft = { "lua", "gdscript", "sh" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
