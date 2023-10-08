@@ -40,6 +40,9 @@ keymap("n", "<A-p>", "<cmd>cprev<CR>zz")
 -- Move text up and Down
 keymap("n", "<C-j>", ":m .+1<CR>==")
 keymap("n", "<C-k>", ":m .-2<CR>==")
+-- scroll through buffers
+keymap("n", "<C-l>", ":bnext<CR>")
+keymap("n", "<C-h>", ":bprevious<CR>")
 
 -- Keeping it centered
 keymap("n", "n", "nzzzv")
