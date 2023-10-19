@@ -44,7 +44,7 @@ acmd("BufWritePre", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		if vim.bo.filetype ~= "vimwiki" then
+		if vim.bo.filetype ~= "markdown" then
 			vim.lsp.buf.format()
 		end
 	end,
