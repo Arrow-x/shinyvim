@@ -1,3 +1,6 @@
+if vim.loader then
+	vim.loader.enable()
+end
 require("config.options")
 require("config.autocommands")
 require("config.utils")
