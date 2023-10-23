@@ -110,6 +110,20 @@ acmd("FileType", {
 })
 
 acmd("FileType", {
+	pattern = "rust",
+	group = gr.exe_code,
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<F5>",
+			":sp<CR> :term cargo run %<CR> :startinsert<CR>",
+			{ buffer = true, noremap = true, silent = true },
+			{ desc = "Executer the current buffer" }
+		)
+	end,
+})
+
+acmd("FileType", {
 	pattern = "go",
 	group = gr.exe_code,
 	callback = function()
