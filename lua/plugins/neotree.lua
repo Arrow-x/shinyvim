@@ -16,6 +16,11 @@ return {
 	opts = {
 		-- close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		filesystem = {
+			follow_current_file = {
+				enabled = true, -- This will find and focus the file in the active buffer every time
+				--               -- the current file is changed while the tree is open.
+				leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+			},
 			hijack_netrw_behavior = "open_current",
 			filtered_items = {
 				visible = true,
@@ -55,12 +60,58 @@ return {
 				},
 			},
 		},
+		commands = {
+			copy_selector = function(state)
+				local node = state.tree:get_node()
+				local filepath = node:get_id()
+				local filename = node.name
+				local modify = vim.fn.fnamemodify
+
+				local vals = {
+					["BASENAME"] = modify(filename, ":r"),
+					["EXTENSION"] = modify(filename, ":e"),
+					["FILENAME"] = filename,
+					["PATH (CWD)"] = modify(filepath, ":."),
+					["PATH (HOME)"] = modify(filepath, ":~"),
+					["PATH"] = filepath,
+					["URI"] = vim.uri_from_fname(filepath),
+				}
+
+				local options = vim.tbl_filter(function(val)
+					return vals[val] ~= ""
+				end, vim.tbl_keys(vals))
+				if vim.tbl_isempty(options) then
+					vim.notify("No values to copy", vim.log.levels.WARN)
+					return
+				end
+				table.sort(options)
+				vim.ui.select(options, {
+					prompt = "Choose to copy to clipboard:",
+					format_item = function(item)
+						return ("%s: %s"):format(item, vals[item])
+					end,
+				}, function(choice)
+					local result = vals[choice]
+					if result then
+						vim.notify(("Copied: `%s`"):format(result))
+						vim.fn.setreg("+", result)
+					end
+				end)
+			end,
+		},
 		window = {
 			-- see https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup for
 			-- possible options. These can also be functions that return these options.
 			width = 30, -- applies to left and right positions
 			mappings = {
 				["l"] = "open",
+				["c"] = {
+					"copy",
+					config = {
+						show_path = "absolute", -- "none", "relative", "absolute"
+					},
+				},
+				Y = "copy_selector",
 			},
 		},
 		event_handlers = {
