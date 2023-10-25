@@ -5,14 +5,12 @@ return {
 			{ plugin = "nvim-dap", prefix = "d", desc = "Debuging" },
 			{ plugin = "telescope.nvim", prefix = "f", desc = "Search" },
 			{ plugin = "gitsigns.nvim", prefix = "g", desc = "Git integration" },
-			{ plugin = "vimwiki", prefix = "w", desc = "VimWiki Notes" },
-			{ plugin = "taskwiki", prefix = "t", desc = "TaskWarrior for VimWiki" },
 			{ plugin = "toggleterm.nvim", prefix = "`", desc = "A Terminal in your Terminal" },
 			{ plugin = "nvim-lspconfig", prefix = "l", desc = "LSP" },
 			{ plugin = "harpoon", prefix = "s", desc = "Harpoon" },
-			{ plugin = "trouble.nvim", prefix = "x", desc = "Trouble" },
 			{ plugin = "notify.nvim", prefix = "u", desc = "Norify" },
-			{ plugin = "true-zen", prefix = "z", desc = "TrueZen modes" },
+			{ plugin = "true-zen.nvim", prefix = "z", desc = "TrueZen modes" },
+			{ plugin = "git-worktree.nvim", prefix = "gw", desc = "Worktrees" },
 		}
 
 		local mappings = {

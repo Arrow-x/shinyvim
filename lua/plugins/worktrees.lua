@@ -1,5 +1,5 @@
 return {
-	"ThePrimeagen/git-worktree.nvim",
+	"Arrow-x/git-worktree.nvim",
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},
@@ -8,10 +8,18 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>gw",
+			"<leader>gww",
 			function()
 				require("telescope").extensions.git_worktree.git_worktrees()
 			end,
+			desc = "List Worktrees",
+		},
+		{
+			"<leader>gwa",
+			function()
+				require("telescope").extensions.git_worktree.create_git_worktree()
+			end,
+			desc = "Create git worktree",
 		},
 	},
 }
