@@ -99,13 +99,12 @@ acmd("FileType", {
 	pattern = "python",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set(
-			"n",
-			"<F5>",
-			":sp<CR> :term python3 %<CR> :startinsert<CR>",
-			{ buffer = true, noremap = true, silent = true },
-			{ desc = "Executer the current buffer" }
-		)
+		vim.keymap.set("n", "<leader>w", ":sp<CR> :term python3 %<CR> :startinsert<CR>", {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Executer the current buffer",
+		})
 	end,
 })
 
@@ -113,12 +112,24 @@ acmd("FileType", {
 	pattern = "rust",
 	group = gr.exe_code,
 	callback = function()
+		vim.keymap.set("n", "<leader>w", ":sp<CR> :term cargo run %<CR> :startinsert<CR>", {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Executer the current buffer",
+		})
+	end,
+})
+
+acmd("FileType", {
+	pattern = "cs",
+	group = gr.exe_code,
+	callback = function()
 		vim.keymap.set(
 			"n",
-			"<F5>",
-			":sp<CR> :term cargo run %<CR> :startinsert<CR>",
-			{ buffer = true, noremap = true, silent = true },
-			{ desc = "Executer the current buffer" }
+			"<leader>w",
+			":sp<CR> :term dotnet run<CR> :startinsert<CR>",
+			{ buffer = true, noremap = true, silent = true, desc = "Executer the current buffer" }
 		)
 	end,
 })
@@ -127,25 +138,23 @@ acmd("FileType", {
 	pattern = "go",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set(
-			"n",
-			"<F5>",
-			":vsp<CR> :term go run %<CR> :startinsert<CR>",
-			{ buffer = true, noremap = true, silent = true },
-			{ desc = "Executer the current buffer" }
-		)
+		vim.keymap.set("n", "<leader>w", ":vsp<CR> :term go run %<CR> :startinsert<CR>", {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Executer the current buffer",
+		})
 	end,
 })
 acmd("FileType", {
 	pattern = { "bash", "sh" },
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set(
-			"n",
-			"<F5>",
-			":sp<CR> :term sh %<CR> :startinsert<CR>",
-			{ buffer = true, noremap = true, silent = true },
-			{ desc = "Executer the current buffer" }
-		)
+		vim.keymap.set("n", "<leader>w", ":sp<CR> :term sh %<CR> :startinsert<CR>", {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Executer the current buffer",
+		})
 	end,
 })
