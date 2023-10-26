@@ -16,6 +16,7 @@ return {
 				formatting.gdformat.with({ extra_args = { "--fast" } }),
 				formatting.stylua,
 				formatting.beautysh.with({ extra_args = { "-s", "paronly", "-t" } }),
+				formatting.shfmt.with({ extra_args = { "-ci" } }),
 				-- formatting.clang_format,
 				-- diagnostics.gdlint,
 				-- diagnostics.alex,
