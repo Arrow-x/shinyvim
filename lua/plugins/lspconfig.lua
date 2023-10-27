@@ -18,6 +18,9 @@ return {
 				"hrsh7th/cmp-nvim-lsp",
 			},
 			{
+				"Hoffs/omnisharp-extended-lsp.nvim",
+			},
+			{
 				"RRethy/vim-illuminate",
 				event = { "BufReadPost", "BufNewFile" },
 				config = function()
