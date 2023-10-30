@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		"p00f/nvim-ts-rainbow",
 	},
-	config = function()
+	config = vim.defer_fn(function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"vim",
@@ -43,5 +43,5 @@ return {
 			autotag = { enable = true },
 			context_commentstring = { enable = true, enable_autocmd = false },
 		})
-	end,
+	end, 0),
 }
