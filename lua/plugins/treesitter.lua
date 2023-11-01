@@ -1,9 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	version = false, -- last release is way too old and doesn't work on Windows
 	build = ":TSUpdate",
 	event = { "BufReadPost", "BufNewFile" },
+	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 	dependencies = {
-		"p00f/nvim-ts-rainbow",
+		{ "p00f/nvim-ts-rainbow" },
 		{
 			"nvim-treesitter/nvim-treesitter-context",
 			config = {
@@ -22,43 +24,54 @@ return {
 			},
 		},
 	},
-	config = vim.defer_fn(function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"vim",
-				"vimdoc",
-				"gdscript",
-				"python",
-				"bash",
-				"markdown",
-				"markdown_inline",
-				"rust",
-				"lua",
-				"c",
-				"cpp",
-				"c_sharp",
-			}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-			sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
-			ignore_install = { "" }, -- List of parsers to ignore installing
-			highlight = {
-				enable = true, -- false will disable the whole extension
-				disable = function(_, bufnr)
-					return vim.api.nvim_buf_line_count(bufnr) > 10000
-				end,
-				additional_vim_regex_highlighting = { "markdown" },
-			},
-			rainbow = {
-				enable = true,
-				-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-				extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-				max_file_lines = 10000, -- Do not enable for files with more than n lines, int
-				-- colors = {}, -- table of hex strings
-				-- termcolors = {} -- table of colour name strings
-			},
-			incremental_selection = { enable = true },
-			indent = { enable = true },
-			autotag = { enable = true },
-			context_commentstring = { enable = true, enable_autocmd = false },
-		})
-	end, 0),
+	opts = {
+		ensure_installed = {
+			"vim",
+			"vimdoc",
+			"gdscript",
+			"python",
+			"bash",
+			"markdown",
+			"markdown_inline",
+			"rust",
+			"lua",
+			"c",
+			"cpp",
+			"c_sharp",
+		}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+		sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
+		ignore_install = { "" }, -- List of parsers to ignore installing
+		highlight = {
+			enable = true, -- false will disable the whole extension
+			disable = function(_, bufnr)
+				return vim.api.nvim_buf_line_count(bufnr) > 10000
+			end,
+			additional_vim_regex_highlighting = { "markdown" },
+		},
+		rainbow = {
+			enable = true,
+			-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+			extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+			max_file_lines = 10000, -- Do not enable for files with more than n lines, int
+			-- colors = {}, -- table of hex strings
+			-- termcolors = {} -- table of colour name strings
+		},
+		incremental_selection = { enable = true },
+		indent = { enable = true },
+		autotag = { enable = true },
+		context_commentstring = { enable = true, enable_autocmd = false },
+	},
+	config = function(_, opts)
+		if type(opts.ensure_installed) == "table" then
+			local added = {}
+			opts.ensure_installed = vim.tbl_filter(function(lang)
+				if added[lang] then
+					return false
+				end
+				added[lang] = true
+				return true
+			end, opts.ensure_installed)
+		end
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 }
