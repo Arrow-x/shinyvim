@@ -44,8 +44,10 @@ acmd("BufWritePre", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		if vim.bo.filetype ~= "markdown" then
-			vim.lsp.buf.format()
+		if shinyvim.autoformat == true then
+			if vim.bo.filetype ~= "markdown" then
+				vim.lsp.buf.format()
+			end
 		end
 	end,
 })
@@ -146,6 +148,7 @@ acmd("FileType", {
 		})
 	end,
 })
+
 acmd("FileType", {
 	pattern = { "bash", "sh" },
 	group = gr.exe_code,

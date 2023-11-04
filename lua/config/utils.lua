@@ -1,5 +1,7 @@
 _G.shinyvim = {}
 
+shinyvim.autoformat = true
+
 function shinyvim.has(plugin)
 	return require("lazy.core.config").plugins[plugin] ~= nil
 end

@@ -66,3 +66,5 @@ G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
 
 -- vim.cmd("highlight Normal guibg=none")
+
+G.autoformat = true

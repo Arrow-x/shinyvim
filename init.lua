@@ -3,6 +3,7 @@ if vim.loader then
 end
 require("config.options")
 require("config.autocommands")
+require("config.commands")
 require("config.utils")
 require("config.keymaps")
 
