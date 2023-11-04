@@ -164,3 +164,12 @@ autocmd("FileType", {
 		})
 	end,
 })
+
+autocmd("TermOpen", {
+	group = gr.term,
+	desc = "Disable foldcolumn and signcolumn for terinals",
+	callback = function()
+		vim.opt_local.foldcolumn = "0"
+		vim.opt_local.signcolumn = "no"
+	end,
+})
