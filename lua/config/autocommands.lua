@@ -1,12 +1,15 @@
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
 local gr = {
-	general_settings = vim.api.nvim_create_augroup("general_settings", { clear = true }),
-	writing = vim.api.nvim_create_augroup("writing", { clear = true }),
-	exe_code = vim.api.nvim_create_augroup("exe_code", { clear = true }),
+	general_settings = augroup("general_settings", { clear = true }),
+	writing = augroup("writing", { clear = true }),
+	exe_code = augroup("exe_code", { clear = true }),
+	term = augroup("exe_code", { clear = true }),
+	ui = augroup("exe_code", { clear = true }),
 }
 
-local acmd = vim.api.nvim_create_autocmd
-
-acmd("TextYankPost", {
+autocmd("TextYankPost", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
@@ -14,7 +17,7 @@ acmd("TextYankPost", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = "qf",
 	group = gr.general_settings,
 	callback = function()
@@ -22,7 +25,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd({ "BufWinEnter" }, {
+autocmd({ "BufWinEnter" }, {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
@@ -30,7 +33,7 @@ acmd({ "BufWinEnter" }, {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim" },
 	group = gr.general_settings,
 	callback = function()
@@ -40,7 +43,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("BufWritePre", {
+autocmd("BufWritePre", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
@@ -52,7 +55,7 @@ acmd("BufWritePre", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = { "gitcommit", "mail", "markdown", "vimwiki" },
 	group = gr.writing,
 	callback = function()
@@ -76,7 +79,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = { "vimwiki", "markdown" },
 	group = gr.writing,
 	callback = function()
@@ -89,7 +92,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("VimResized", {
+autocmd("VimResized", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
@@ -97,7 +100,7 @@ acmd("VimResized", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = "python",
 	group = gr.exe_code,
 	callback = function()
@@ -110,7 +113,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = "rust",
 	group = gr.exe_code,
 	callback = function()
@@ -123,7 +126,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = "cs",
 	group = gr.exe_code,
 	callback = function()
@@ -136,7 +139,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = "go",
 	group = gr.exe_code,
 	callback = function()
@@ -149,7 +152,7 @@ acmd("FileType", {
 	end,
 })
 
-acmd("FileType", {
+autocmd("FileType", {
 	pattern = { "bash", "sh" },
 	group = gr.exe_code,
 	callback = function()
