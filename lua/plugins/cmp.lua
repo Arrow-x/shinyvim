@@ -170,6 +170,11 @@ return {
 						return vim_item
 					end,
 				},
+				experimental = {
+					ghost_text = {
+						hl_group = "CmpGhostText",
+					},
+				},
 				cmp.setup.cmdline("/", {
 					mapping = cmp.mapping.preset.cmdline(),
 					sources = {
