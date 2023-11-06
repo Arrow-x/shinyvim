@@ -5,6 +5,7 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		require("telescope").load_extension("fzf")
 		telescope.setup({
 			defaults = {
 				file_ignore_patterns = { "^.git" },
@@ -20,10 +21,17 @@ return {
 					},
 					n = { ["q"] = actions.close },
 				},
-			},
-			pickers = {
-				live_grep = {
-					additional_args = { "--hidden" },
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+					"--glob", -- this flag allows you to hide exclude these files and folders from your search 👇
+					"!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/.godot/**,**/.import/**}",
 				},
 			},
 			extensions = {
@@ -36,7 +44,6 @@ return {
 				},
 			},
 		})
-		require("telescope").load_extension("fzf")
 	end,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
