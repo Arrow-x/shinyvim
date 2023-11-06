@@ -70,7 +70,7 @@ return {
 		{
 			"<leader>fb",
 			function()
-				require("telescope.builtin").buffers()
+				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
 			desc = "Show Buffers",
 		},
@@ -136,13 +136,6 @@ return {
 				require("telescope.builtin").live_grep()
 			end,
 			desc = "Find word",
-		},
-		{
-			"<leader>b",
-			function()
-				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
-			end,
-			desc = "Buffers",
 		},
 		{
 			"<leader>f*",
