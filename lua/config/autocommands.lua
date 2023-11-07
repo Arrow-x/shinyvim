@@ -79,8 +79,8 @@ autocmd("FileType", {
 	end,
 })
 
-autocmd("FileType", {
-	pattern = { "vimwiki", "markdown" },
+autocmd("BufReadPre", {
+	pattern = { "**/Obsidian/**" },
 	group = gr.writing,
 	callback = function()
 		vim.cmd("colorscheme gruvbox")
