@@ -114,6 +114,11 @@ return {
 
 				require("nvim-navic").attach(client, bufnr)
 
+				local toggle_autoforamt = function()
+					shinyvim.autoformat = not shinyvim.autoformat
+					vim.notify("Autoformating is " .. tostring(shinyvim.autoformat))
+				end
+
 				local keymap = vim.keymap.set
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
@@ -135,6 +140,7 @@ return {
 				end, { desc = "Info" })
 				keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
 				keymap("n", "<space>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
+				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
 			end
 
 			-- Lsp servers that are not installed by mason
