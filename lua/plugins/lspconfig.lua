@@ -121,10 +121,11 @@ return {
 
 				local keymap = vim.keymap.set
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
+				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
-				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
 				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
 				keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
 				keymap("n", "<leader>ln", vim.diagnostic.goto_next, {
@@ -139,7 +140,6 @@ return {
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
 				keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
-				keymap("n", "<space>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
 			end
 
