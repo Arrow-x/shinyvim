@@ -31,6 +31,16 @@ return {
 		end,
 	},
 	{
-		"gruvbox-community/gruvbox",
+		"ellisonleao/gruvbox.nvim",
+		opts = {
+			contrast = "soft",
+			italic = {
+				strings = false,
+			},
+			overrides = {
+				CmpGhostText = { fg = "#a89984" },
+				BufferCurrent = { bold = true },
+			},
+		},
 	},
 }

@@ -83,8 +83,8 @@ autocmd("BufReadPre", {
 	pattern = { "**/Obsidian/**" },
 	group = gr.writing,
 	callback = function()
-		vim.cmd("colorscheme gruvbox")
-		vim.cmd("set background=light")
+		vim.o.background = "light"
+		vim.cmd([[colorscheme gruvbox]])
 		local status_ok, barbecue = pcall(require, "barbecue.ui")
 		if status_ok then
 			barbecue.toggle(false)
