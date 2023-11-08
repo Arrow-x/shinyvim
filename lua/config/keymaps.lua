@@ -24,14 +24,14 @@ keymap("n", "<leader>e", ":Lex 20<cr>")
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 
 -- Resize with arrows
-keymap("n", "<A-k>", ":resize +2<CR>")
-keymap("n", "<A-j>", ":resize -2<CR>")
-keymap("n", "<A-h>", ":vertical resize +2<CR>")
-keymap("n", "<A-l>", ":vertical resize -2<CR>")
+keymap("n", "<A-up>", ":resize +2<CR>")
+keymap("n", "<A-down>", ":resize -2<CR>")
+keymap("n", "<A-left>", ":vertical resize +2<CR>")
+keymap("n", "<A-right>", ":vertical resize -2<CR>")
 
 -- Quicklist nice navigation
-keymap("n", "<A-n>", "<cmd>cnext<CR>zz")
-keymap("n", "<A-p>", "<cmd>cprev<CR>zz")
+keymap("n", "<C-n>", "<cmd>cnext<CR>zz")
+keymap("n", "<C-p>", "<cmd>cprev<CR>zz")
 
 -- Localtion list navigation
 -- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -90,10 +90,6 @@ keymap("v", "p", '"_dP')
 -- Move text up and down
 keymap("x", "<C-j>", ":move '>+1<CR>gv=gv")
 keymap("x", "<C-k>", ":move '<-2<CR>gv=gv")
-
--- split manager
-keymap("n", "<leader>\\", ":vsplit<CR>", { desc = "split vertically" })
-keymap("n", "<leader>-", ":split<CR>", { desc = "split horizontally" })
 
 -- terminal --
 -- better terminal navigation
