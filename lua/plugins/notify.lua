@@ -10,10 +10,16 @@ return {
 			max_width = function()
 				return math.floor(vim.o.columns * 0.75)
 			end,
+			render = "wrapped-compact",
+			stages = "slide",
 		})
 		vim.notify = require("notify")
 		vim.keymap.set("n", "<leader>un", function()
 			require("notify").dismiss({ silent = true, pending = true })
 		end, { desc = "Delete all Notifications" })
+		vim.keymap.set("n", "<leader>uh", function()
+			require("telescope").load_extension("notify")
+			require("telescope").extensions.notify.notify()
+		end, { desc = "Show Notifications history in Telescope" })
 	end,
 }

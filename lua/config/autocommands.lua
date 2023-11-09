@@ -34,7 +34,7 @@ autocmd({ "BufWinEnter" }, {
 })
 
 autocmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim" },
+	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim", "notify" },
 	group = gr.general_settings,
 	callback = function()
 		vim.keymap.set("n", "q", function()
