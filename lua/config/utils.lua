@@ -1,6 +1,7 @@
 _G.shinyvim = {}
 
 shinyvim.autoformat = true
+shinyvim.ts_context_toggle = true
 
 function shinyvim.has(plugin)
 	return require("lazy.core.config").plugins[plugin] ~= nil

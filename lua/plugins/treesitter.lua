@@ -22,6 +22,22 @@ return {
 				zindex = 20, -- The Z-index of the context window
 				on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 			},
+			keys = {
+				{
+					"<leader>ut",
+					function()
+						local tsc = require("treesitter-context")
+						tsc.toggle()
+						shinyvim.ts_context_toggle = not shinyvim.ts_context_toggle
+						if shinyvim.ts_context_toggle == true then
+							vim.notify("Treesitter Context is Turned On")
+						else
+							vim.notify("Treesitter Context is Turned Off")
+						end
+					end,
+					desc = "Toggle Treesitter Context",
+				},
+			},
 		},
 	},
 	opts = {
@@ -57,7 +73,7 @@ return {
 			-- termcolors = {} -- table of colour name strings
 		},
 		incremental_selection = { enable = true },
-		indent = { enable = true },
+		indent = { enable = false },
 		autotag = { enable = true },
 		context_commentstring = { enable = true, enable_autocmd = false },
 	},
