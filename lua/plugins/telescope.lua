@@ -70,7 +70,7 @@ return {
 		{
 			"<leader>fb",
 			function()
-				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
+				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = true }))
 			end,
 			desc = "Show Buffers",
 		},
@@ -84,21 +84,23 @@ return {
 		{
 			"<leader>fc",
 			function()
-				require("telescope.builtin").colorscheme()
+				require("telescope.builtin").colorscheme(
+					require("telescope.themes").get_dropdown({ previewer = false })
+				)
 			end,
 			desc = "Colorscheme",
 		},
 		{
 			"<leader>fh",
 			function()
-				require("telescope.builtin").help_tags()
+				require("telescope.builtin").help_tags(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
 			desc = "Find Help",
 		},
 		{
 			"<leader>fM",
 			function()
-				require("telescope.builtin").man_pages()
+				require("telescope.builtin").man_pages(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
 			desc = "Man Pages",
 		},
@@ -126,7 +128,7 @@ return {
 		{
 			"<leader>fC",
 			function()
-				require("telescope.builtin").commands()
+				require("telescope.builtin").commands(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
 			desc = "Commands",
 		},
