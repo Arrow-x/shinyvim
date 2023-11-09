@@ -73,7 +73,7 @@ return {
 			-- termcolors = {} -- table of colour name strings
 		},
 		incremental_selection = { enable = true },
-		indent = { enable = false },
+		indent = { enable = true, disable = { "gdscript" } },
 		autotag = { enable = true },
 		context_commentstring = { enable = true, enable_autocmd = false },
 	},
