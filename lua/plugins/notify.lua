@@ -17,9 +17,12 @@ return {
 		vim.keymap.set("n", "<leader>un", function()
 			require("notify").dismiss({ silent = true, pending = true })
 		end, { desc = "Delete all Notifications" })
-		vim.keymap.set("n", "<leader>uh", function()
-			require("telescope").load_extension("notify")
-			require("telescope").extensions.notify.notify()
-		end, { desc = "Show Notifications history in Telescope" })
+
+		if shinyvim.has("telescope.nvim") then
+			vim.keymap.set("n", "<leader>uh", function()
+				require("telescope").load_extension("notify")
+				require("telescope").extensions.notify.notify()
+			end, { desc = "Show Notifications history in Telescope" })
+		end
 	end,
 }
