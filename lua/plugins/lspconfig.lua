@@ -18,6 +18,9 @@ return {
 				"hrsh7th/cmp-nvim-lsp",
 			},
 			{
+				"folke/neodev.nvim",
+			},
+			{
 				"Hoffs/omnisharp-extended-lsp.nvim",
 			},
 			{
