@@ -1,7 +1,10 @@
 return {
 	"epwalsh/obsidian.nvim",
 	lazy = true,
-	event = { "BufReadPre /home/arrowx/.local/share/Obsidian/**.md" },
+	event = {
+		"BufReadPre /home/arrowx/Notes-And-Tasks/Obsidian/.local/share/Obsidian/**.md",
+		"BufNewFile /home/arrowx/Notes-And-Tasks/Obsidian/.local/share/Obsidian/**.md",
+	},
 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
 	-- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
 	dependencies = {
@@ -26,7 +29,7 @@ return {
 		-- "preservim/vim-markdown",
 	},
 	opts = {
-		dir = "~/.local/share/Obsidian", -- no need to call 'vim.fn.expand' here
+		dir = "~/Notes-And-Tasks/Obsidian/.local/share/Obsidian", -- no need to call 'vim.fn.expand' here
 		-- Optional, if you keep notes in a specific subdirectory of your vault.
 		notes_subdir = "notes",
 		-- Optional, if you keep daily notes in a separate directory.
@@ -37,13 +40,18 @@ return {
 		completion = {
 			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
 		},
-		-- Optional, customize how names/IDs for new notes are created.
-
+		-- Optional, for templates (see below).
+		-- templates = {
+		-- 	subdir = "shiny-templates/",
+		-- 	date_format = "%Y-%m-%d-%a",
+		-- 	time_format = "%H:%M",
+		-- },
 		-- Optional, key mappings.
 		mappings = {
 			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
 			-- ["gf"] = require("obsidian.mapping").gf_passthrough(),
 		},
+		-- Optional, customize how names/IDs for new notes are created.
 		note_id_func = function(title)
 			-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
 			-- In this case a note with the title 'My new note' will given an ID that looks
@@ -76,12 +84,6 @@ return {
 		-- 	end
 		-- 	return out
 		-- end,
-		-- Optional, for templates (see below).
-		templates = {
-			subdir = "templates",
-			date_format = "%Y-%m-%d-%a",
-			time_format = "%H:%M",
-		},
 		-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
 		-- URL it will be ignored but you can customize this behavior here.
 		follow_url_func = function(url)
