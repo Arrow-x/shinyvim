@@ -8,3 +8,8 @@ vim.filetype.add({
 		[".xprofile"] = "sh",
 	},
 })
+vim.filetype.add({
+	extension = {
+		hx = "haxe",
+	},
+})
