@@ -40,6 +40,7 @@ return {
 			overrides = {
 				CmpGhostText = { fg = "#a89984" },
 				BufferCurrent = { bold = true },
+				BufferCurrentMod = { bold = true },
 				IlluminatedWordText = { bg = "#ebdbb2" },
 				IlluminatedWordRead = { bg = "#ebdbb2" },
 				IlluminatedWordWrite = { bg = "#ebdbb2" },
