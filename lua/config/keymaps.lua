@@ -107,7 +107,13 @@ keymap("n", "<leader>Y", '"+yg_', { desc = "Copy to system clipbaord the rest of
 keymap("n", "<leader>yy", '"+yy', { desc = "Copy the current line to system clipboard" })
 
 keymap("v", "<leader>y", '"+y', { desc = "Normal Mode Copy the selected text to system clipboard" })
-keymap("v", "<leader>y", '"+y', { desc = "Visual mode Copy the selected text to system clipboard" })
+
+-- Cut to system clipboard
+keymap("n", "<leader>d", '"+d', { desc = "Copy Action to system clipboard" })
+keymap("n", "<leader>D", '"+dg_', { desc = "Copy to system clipbaord the rest of the line" })
+keymap("n", "<leader>dd", '"+dd', { desc = "Copy the current line to system clipboard" })
+
+keymap("v", "<leader>d", '"+d', { desc = "Visual mode Copy the selected text to system clipboard" })
 
 -- Paste from system clipboard
 keymap("n", "<leader>p", '"+p')
