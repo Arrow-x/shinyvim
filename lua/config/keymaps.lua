@@ -17,6 +17,14 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+keymap("n", "<leader>q", ":confirm bd<cr>", { desc = "default buffer close" })
+keymap("n", "<leader>Q", ":confirm qall<cr>", { desc = "default buffer close" })
+keymap("n", "<leader>w", ":w<cr>", { desc = "Save File" })
+keymap("n", "<leader>n", ":enew<cr>", { desc = "New File" })
+
+keymap("n", "<C-s>", ":w!<cr>", { desc = "force save" })
+keymap("n", "<C-q>", ":qa!<cr>", { desc = "force quite" })
+
 -- Netrw Mappings
 keymap("n", "<leader>e", ":Lex 20<cr>")
 
