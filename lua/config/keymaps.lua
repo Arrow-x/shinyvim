@@ -63,7 +63,7 @@ keymap("n", "<C-u>", "<C-u>zz")
 -- Make Y behave like the other capital modifiers
 keymap("n", "Y", "y$")
 
--- Jumplist mutation
+-- Add 5 up and down movments to the jump list
 vim.cmd('nnoremap <expr> k (v:count > 5 ? "m\'" . v:count : "") . \'k\'')
 vim.cmd('nnoremap <expr> j (v:count > 5 ? "m\'" . v:count : "") . \'j\'')
 

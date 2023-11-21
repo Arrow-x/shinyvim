@@ -12,7 +12,5 @@ return {
 		-- Move buffer
 		map("n", "<C-A-h>", "<Cmd>BufferMovePrevious<CR>")
 		map("n", "<C-A-l>", "<Cmd>BufferMoveNext<CR>")
-		-- Close buffer
-		map("n", "<leader>q", "<Cmd>bd<CR>")
 	end,
 }

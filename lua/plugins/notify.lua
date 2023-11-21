@@ -14,12 +14,12 @@ return {
 			stages = "slide",
 		})
 		vim.notify = require("notify")
-		vim.keymap.set("n", "<leader>un", function()
+		vim.keymap.set("n", "<leader>mh", function()
 			require("notify").dismiss({ silent = true, pending = true })
 		end, { desc = "Delete all Notifications" })
 
 		if shinyvim.has("telescope.nvim") then
-			vim.keymap.set("n", "<leader>uh", function()
+			vim.keymap.set("n", "<leader>mH", function()
 				require("telescope").load_extension("notify")
 				require("telescope").extensions.notify.notify()
 			end, { desc = "Show Notifications history in Telescope" })
