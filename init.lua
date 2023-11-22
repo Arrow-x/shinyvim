@@ -1,10 +1,10 @@
 if vim.loader then
 	vim.loader.enable()
 end
+require("config.utils")
 require("config.options")
 require("config.autocommands")
 require("config.commands")
-require("config.utils")
 require("config.keymaps")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

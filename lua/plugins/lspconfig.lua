@@ -116,8 +116,6 @@ return {
 					require("illuminate").on_attach(client)
 				end
 
-				require("nvim-navic").attach(client, bufnr)
-
 				local toggle_autoforamt = function()
 					shinyvim.autoformat = not shinyvim.autoformat
 					vim.notify("Autoformating is " .. tostring(shinyvim.autoformat))
