@@ -5,49 +5,26 @@ return {
 		"BufReadPre /home/arrowx/Notes-And-Tasks/Obsidian/.local/share/Obsidian/**.md",
 		"BufNewFile /home/arrowx/Notes-And-Tasks/Obsidian/.local/share/Obsidian/**.md",
 	},
-	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-	-- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
 	dependencies = {
-		-- Required.
 		"nvim-lua/plenary.nvim",
-
-		-- Optional, for completion.
 		"hrsh7th/nvim-cmp",
-
-		-- Optional, for search and quick-switch functionality.
 		"nvim-telescope/telescope.nvim",
-
-		-- Optional, an alternative to telescope for search and quick-switch functionality.
-		-- "ibhagwan/fzf-lua"
-
-		-- Optional, another alternative to telescope for search and quick-switch functionality.
-		-- "junegunn/fzf",
-		-- "junegunn/fzf.vim"
-
-		-- Optional, alternative to nvim-treesitter for syntax highlighting.
-		-- "godlygeek/tabular",
-		-- "preservim/vim-markdown",
 	},
 	opts = {
 		dir = "~/Notes-And-Tasks/Obsidian/.local/share/Obsidian", -- no need to call 'vim.fn.expand' here
-		-- Optional, if you keep notes in a specific subdirectory of your vault.
-		notes_subdir = "notes",
-		-- Optional, if you keep daily notes in a separate directory.
-		daily_notes = {
+		notes_subdir = "notes", -- Optional, if you keep notes in a specific subdirectory of your vault.
+		daily_notes = { -- Optional, if you keep daily notes in a separate directory.
 			folder = "notes/dailies",
 		},
-		-- Optional, completion.
-		completion = {
+		completion = { -- Optional, completion.
 			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
 		},
-		-- Optional, for templates (see below).
-		-- templates = {
+		-- templates = { -- Optional, for templates (see below).
 		-- 	subdir = "shiny-templates/",
 		-- 	date_format = "%Y-%m-%d-%a",
 		-- 	time_format = "%H:%M",
 		-- },
-		-- Optional, key mappings.
-		mappings = {
+		mappings = { -- Optional, key mappings.
 			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
 			-- ["gf"] = require("obsidian.mapping").gf_passthrough(),
 		},
@@ -96,6 +73,66 @@ return {
 		-- use_advanced_uri = true,
 		-- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
 		open_app_foreground = false,
+
+		attachments = {
+			-- The default folder to place images in via `:ObsidianPasteImg`.
+			-- If this a relative path it will be interpreted as relative to the vault root.
+			-- You can always override this per image by passing a full path to the command instead of just a filename.
+			img_folder = "assets/imgs", -- This is the default
+			-- A function that determines the text to insert in the note when pasting an image.
+			-- It takes two arguments, the `obsidian.Client` and a plenary `Path` to the image file.
+			-- The is the default implementation.
+			---@param client obsidian.Client
+			---@param path Path the absolute path to the image file
+			---@return string
+			img_text_func = function(client, path)
+				local link_path
+				local vault_relative_path = client:vault_relative_path(path)
+				if vault_relative_path ~= nil then
+					-- Use relative path if the image is saved in the vault dir.
+					link_path = vault_relative_path
+				else
+					-- Otherwise use the absolute path.
+					link_path = tostring(path)
+				end
+				local display_name = vim.fs.basename(link_path)
+				return string.format("![%s](%s)", display_name, link_path)
+			end,
+		},
+		ui = {
+			enable = true,
+			update_debounce = 200, -- update delay after a text change (in milliseconds)
+			-- Define how various check-boxes are displayed
+			checkboxes = {
+				-- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
+				[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+				["x"] = { char = "", hl_group = "ObsidianDone" },
+				[">"] = { char = "", hl_group = "ObsidianRightArrow" },
+				["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+				-- Replace the above with this if you don't have a patched font:
+				-- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
+				-- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
+
+				-- You can also add more custom ones...
+			},
+			external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+			-- Replace the above with this if you don't have a patched font:
+			-- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+			reference_text = { hl_group = "ObsidianRefText" },
+			highlight_text = { hl_group = "ObsidianHighlightText" },
+			tags = { hl_group = "ObsidianTag" },
+			hl_groups = {
+				-- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
+				ObsidianTodo = { bold = true, fg = "#f78c6c" },
+				ObsidianDone = { bold = true, fg = "#89ddff" },
+				ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
+				ObsidianTilde = { bold = true, fg = "#ff5370" },
+				-- ObsidianRefText = { underline = true, fg = "#c792ea" },
+				ObsidianExtLinkIcon = { fg = "#c792ea" },
+				ObsidianTag = { italic = true, fg = "#89ddff" },
+				ObsidianHighlightText = { bg = "#75662e" },
+			},
+		},
 	},
 	config = function(_, opts)
 		require("obsidian").setup(opts)
