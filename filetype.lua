@@ -1,15 +1,9 @@
 vim.filetype.add({
 	extension = {
 		conf = "dosini",
+		hx = "haxe",
 	},
-})
-vim.filetype.add({
 	filename = {
 		[".xprofile"] = "sh",
-	},
-})
-vim.filetype.add({
-	extension = {
-		hx = "haxe",
 	},
 })
