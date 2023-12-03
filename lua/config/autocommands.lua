@@ -104,7 +104,7 @@ autocmd("FileType", {
 	pattern = "python",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<leader>w", ":sp<CR> :term python3 %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<F5>", ":sp<CR> :term python3 %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -117,7 +117,7 @@ autocmd("FileType", {
 	pattern = "rust",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<leader>w", ":sp<CR> :term cargo run %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<F5>", ":sp<CR> :term cargo run %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -132,7 +132,7 @@ autocmd("FileType", {
 	callback = function()
 		vim.keymap.set(
 			"n",
-			"<leader>w",
+			"<F5>",
 			":sp<CR> :term dotnet run<CR> :startinsert<CR>",
 			{ buffer = true, noremap = true, silent = true, desc = "Executer the current buffer" }
 		)
@@ -143,7 +143,7 @@ autocmd("FileType", {
 	pattern = "go",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<leader>w", ":vsp<CR> :term go run %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<F5>", ":vsp<CR> :term go run %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -156,7 +156,7 @@ autocmd("FileType", {
 	pattern = { "bash", "sh" },
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<leader>w", ":sp<CR> :term sh %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<F5>", ":sp<CR> :term sh %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
