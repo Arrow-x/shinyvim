@@ -64,4 +64,3 @@ G.loaded_zip = true -- disable zip
 G.loaded_zipPlugin = true -- disable zip
 G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
-G.autoformat = true
