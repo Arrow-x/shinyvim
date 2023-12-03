@@ -130,6 +130,7 @@ return {
 				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
 				keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
+				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
 				keymap("n", "<leader>ln", vim.diagnostic.goto_next, {
 					desc = "Go to next Diagnostics",
 				})
@@ -141,8 +142,13 @@ return {
 				keymap("n", "<leader>lI", function()
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
-				keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
-				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
+				if client.name == "gdscript" then
+					keymap("n", "<leader>lf", function()
+						vim.lsp.buf.format({ timeout_ms = 9999 })
+					end, { desc = "Format" })
+				else
+					keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
+				end
 			end
 
 			-- Lsp servers that are not installed by mason
