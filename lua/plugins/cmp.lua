@@ -11,20 +11,12 @@ return {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
-		keys = {
-			-- stylua: ignore
-			{ "<tab>", function() return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>" end,
-				"i", },
-			-- stylua: ignore
-			{ "<tab>",   function() require("luasnip").jump(1) end,  mode = "s", },
-			-- stylua: ignore
-			{ "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s", }, },
-		},
 	},
 
 	{
-		"hrsh7th/nvim-cmp", -- Using a custom branch until the enable source is merged to main
+		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
+		version = false,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -170,11 +162,11 @@ return {
 						return vim_item
 					end,
 				},
-				experimental = {
-					ghost_text = {
-						hl_group = "CmpGhostText",
-					},
-				},
+				-- experimental = {
+				-- 	ghost_text = {
+				-- 		hl_group = "CmpGhostText",
+				-- 	},
+				-- },
 				cmp.setup.cmdline("/", {
 					mapping = cmp.mapping.preset.cmdline(),
 					sources = {
@@ -185,6 +177,7 @@ return {
 					mapping = cmp.mapping.preset.cmdline(),
 					sources = cmp.config.sources({
 						{ name = "path" },
+						{ name = "buffer" },
 					}, {
 						{
 							name = "cmdline",
