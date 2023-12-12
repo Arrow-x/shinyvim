@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	ft = { "lua", "gdscript", "sh" },
+	ft = { "lua", "gdscript", "sh", "cs" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -17,7 +17,7 @@ return {
 				formatting.stylua,
 				formatting.beautysh.with({ extra_args = { "-s", "paronly", "-t" } }),
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
-				-- formatting.clang_format,
+				formatting.clang_format,
 				-- diagnostics.gdlint,
 				-- diagnostics.alex,
 				-- diagnostics.flake8,
