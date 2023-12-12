@@ -27,6 +27,7 @@ return {
 				dim_inactive = false, -- dims inactive windows
 				lualine_bold = false,
 			})
+			vim.o.termguicolors = true
 			vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
