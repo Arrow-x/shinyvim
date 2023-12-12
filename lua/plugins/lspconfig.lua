@@ -104,7 +104,7 @@ return {
 			})
 
 			local on_attach = function(client, bufnr)
-				local servers_to_disable_formating_for = { "tsserver", "lua_ls" }
+				local servers_to_disable_formating_for = { "tsserver", "lua_ls", "omnisharp" }
 
 				for _, server in pairs(servers_to_disable_formating_for) do
 					if client.name == server then
@@ -144,7 +144,7 @@ return {
 				end, { desc = "Info" })
 				if client.name == "gdscript" then
 					keymap("n", "<leader>lf", function()
-						vim.lsp.buf.format({ timeout_ms = 9999 })
+						vim.lsp.buf.format({ timeout_ms = 9999999 })
 					end, { desc = "Format" })
 				else
 					keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
