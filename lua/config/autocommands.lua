@@ -49,7 +49,7 @@ autocmd("BufWritePre", {
 	callback = function()
 		if shinyvim.autoformat == true then
 			if vim.bo.filetype ~= "markdown" then
-				vim.lsp.buf.format()
+				vim.lsp.buf.format({ timeout_ms = 90000 })
 			end
 		end
 	end,

@@ -142,13 +142,9 @@ return {
 				keymap("n", "<leader>lI", function()
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
-				if client.name == "gdscript" then
-					keymap("n", "<leader>lf", function()
-						vim.lsp.buf.format({ timeout_ms = 9999999 })
-					end, { desc = "Format" })
-				else
-					keymap("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
-				end
+				keymap("n", "<leader>lf", function()
+					vim.lsp.buf.format({ timeout_ms = 20000 })
+				end, { desc = "Format" })
 			end
 
 			-- Lsp servers that are not installed by mason
