@@ -24,6 +24,25 @@ return {
 				"Hoffs/omnisharp-extended-lsp.nvim",
 			},
 			{
+				"smjonas/inc-rename.nvim",
+				config = function()
+					require("inc_rename").setup({
+						cmd_name = "IncRename", -- the name of the command
+						hl_group = "Substitute", -- the highlight group used for highlighting the identifier's new name
+						preview_empty_name = false, -- whether an empty new name should be previewed; if false the command preview will be cancelled instead
+						show_message = true, -- whether to display a `Renamed m instances in n files` message after a rename operation
+						input_buffer_type = nil, -- the type of the external input buffer to use (the only supported value is currently "dressing")
+						post_hook = nil, -- callback to run after renaming, receives the result table (from LSP handler) as an argument
+					})
+					vim.keymap.set("n", "<leader>lr", function()
+						return ":IncRename " .. vim.fn.expand("<cword>")
+					end, { expr = true })
+					vim.keymap.set("n", "<leader>lqr", function()
+						return "q:IncRename " .. vim.fn.expand("<cword>")
+					end, { expr = true })
+				end,
+			},
+			{
 				"RRethy/vim-illuminate",
 				event = { "BufReadPost", "BufNewFile" },
 				config = function()
@@ -128,7 +147,7 @@ return {
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
 				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
-				keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+				-- keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
 				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
 				keymap("n", "<leader>ln", vim.diagnostic.goto_next, {
