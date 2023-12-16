@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
+		ft = { "lua", "gdscript", "sh", "bash", "cs", "haxe", "python" },
 		dependencies = {
 			{
 				"williamboman/mason.nvim",
@@ -44,7 +44,6 @@ return {
 			},
 			{
 				"RRethy/vim-illuminate",
-				event = { "BufReadPost", "BufNewFile" },
 				config = function()
 					local illuminate = require("illuminate")
 					vim.keymap.set("n", "<Tab>", function()
