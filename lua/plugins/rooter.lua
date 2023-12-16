@@ -1,5 +1,7 @@
 return {
 	"notjedi/nvim-rooter.lua",
 	-- cmd = { "Rooter" },
-	config = true,
+	opts = {
+		rooter_patterns = { ".git", ".hg", ".svn", "*.csproj" },
+	},
 }
