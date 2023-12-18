@@ -133,3 +133,5 @@ keymap("n", "Q", "<nop>")
 
 keymap("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "make current file excutable" })
 keymap("n", "<leader>mX", "<cmd>!chmod -x %<CR>", { desc = "make current file not excutable" })
+
+keymap("n", "<leader>zz", "<cmd>Lazy<cr>", { desc = "show lazy" })
