@@ -48,9 +48,13 @@ autocmd("BufWritePre", {
 	group = gr.general_settings,
 	callback = function()
 		if shinyvim.autoformat == true then
-			if vim.bo.filetype ~= "markdown" then
-				vim.lsp.buf.format({ timeout_ms = 90000 })
+			local filetype_ban = { "markdown", "oil" }
+			for _, f in pairs(filetype_ban) do
+				if vim.bo.filetype == f then
+					return
+				end
 			end
+			vim.lsp.buf.format({ timeout_ms = 90000 })
 		end
 	end,
 })
