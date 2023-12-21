@@ -1,9 +1,5 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	version = false, -- last release is way too old and doesn't work on Windows
-	build = ":TSUpdate",
-	event = { "BufReadPost", "BufNewFile" },
-	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 	config = vim.defer_fn(function()
 		local opts = {
 			ensure_installed = {
@@ -29,9 +25,6 @@ return {
 					return vim.api.nvim_buf_line_count(bufnr) > 10000
 				end,
 				additional_vim_regex_highlighting = { "markdown" },
-			},
-			rainbow = {
-				enable = false,
 			},
 			incremental_selection = { enable = true },
 			indent = { enable = true, disable = { "gdscript" } },
