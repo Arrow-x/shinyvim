@@ -14,14 +14,57 @@ return {
 					require("mason-lspconfig")
 				end,
 			},
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "folke/neodev.nvim" },
+			{ "Hoffs/omnisharp-extended-lsp.nvim" },
 			{
-				"hrsh7th/cmp-nvim-lsp",
-			},
-			{
-				"folke/neodev.nvim",
-			},
-			{
-				"Hoffs/omnisharp-extended-lsp.nvim",
+				"folke/trouble.nvim",
+				dependencies = { "nvim-tree/nvim-web-devicons" },
+				-- Lua
+				keys = {
+					{
+						"<leader>xx",
+						function()
+							require("trouble").toggle()
+						end,
+						desc = "Trouble Toggle",
+					},
+					{
+						"<leader>xw",
+						function()
+							require("trouble").toggle("workspace_diagnostics")
+						end,
+						desc = "Workspace Diagnostics",
+					},
+					{
+						"<leader>xd",
+						function()
+							require("trouble").toggle("document_diagnostics")
+						end,
+						desc = "Document Diagnostics",
+					},
+					{
+						"<leader>xq",
+						function()
+							require("trouble").toggle("quickfix")
+						end,
+						desc = "Trouble Quickfix",
+					},
+					{
+						"<leader>xl",
+						function()
+							require("trouble").toggle("loclist")
+						end,
+						desc = "Trouble Locallist",
+					},
+					{
+						"<leader>lR",
+						function()
+							require("trouble").toggle("lsp_references")
+						end,
+						desc = "Lsp Refernces",
+					},
+				},
 			},
 			{
 				"smjonas/inc-rename.nvim",
@@ -142,6 +185,7 @@ return {
 				border = "rounded",
 			})
 
+			---@diagnostic disable-next-line: unused-local
 			local on_attach = function(client, bufnr)
 				local servers_to_disable_formating_for = { "tsserver", "lua_ls", "omnisharp" }
 
@@ -167,8 +211,8 @@ return {
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
 				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
 				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
+				-- keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
 				-- keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
 				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })

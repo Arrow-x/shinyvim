@@ -11,6 +11,7 @@ return {
 			{ plugin = "notify.nvim", prefix = "u", desc = "Norify" },
 			{ plugin = "true-zen.nvim", prefix = "z", desc = "TrueZen modes" },
 			{ plugin = "git-worktree.nvim", prefix = "gw", desc = "Worktrees" },
+			{ plugin = "trouble.nvim", prefix = "x", desc = "Trouble" },
 		}
 
 		local mappings = {
