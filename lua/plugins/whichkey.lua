@@ -17,6 +17,7 @@ return {
 			p = { name = "Paste to system clipboard" },
 			y = { name = "Copy to System clipboard" },
 			m = { name = "Manipulate current file permissions" },
+			K = { name = "Hover" },
 		}
 
 		local opts = {
