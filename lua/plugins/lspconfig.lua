@@ -147,7 +147,8 @@ return {
 
 				for _, server in pairs(servers_to_disable_formating_for) do
 					if client.name == server then
-						client.server_capabilities.document_formatting = false
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentRangeFormattingProvider = false
 					end
 				end
 
