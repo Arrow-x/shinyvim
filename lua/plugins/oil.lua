@@ -49,6 +49,7 @@ return {
 		keymaps = {
 			["g?"] = "actions.show_help",
 			["<CR>"] = "actions.select",
+			["L"] = "actions.select",
 			["<C-s>"] = "actions.select_vsplit",
 			["<C-h>"] = "actions.select_split",
 			["<C-t>"] = "actions.select_tab",
@@ -56,6 +57,7 @@ return {
 			["<C-c>"] = "actions.close",
 			["<C-l>"] = "actions.refresh",
 			["-"] = "actions.parent",
+			["H"] = "actions.parent",
 			["_"] = "actions.open_cwd",
 			["`"] = "actions.cd",
 			["~"] = "actions.tcd",
@@ -68,7 +70,7 @@ return {
 		use_default_keymaps = true,
 		view_options = {
 			-- Show files and directories that start with "."
-			show_hidden = false,
+			show_hidden = true,
 			-- This function defines what is considered a "hidden" file
 			is_hidden_file = function(name, bufnr)
 				return vim.startswith(name, ".")
@@ -141,6 +143,6 @@ return {
 		},
 	},
 	keys = {
-		{ "~", "<CMD>Oil<CR>", { desc = "Open parent directory" } },
+		{ "<leader>e", "<CMD>Oil<CR>", desc = "Open parent directory" },
 	},
 }
