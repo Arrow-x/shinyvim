@@ -65,6 +65,22 @@ return {
 				end,
 			},
 			{
+				"nvim-telescope/telescope-ui-select.nvim",
+				dependencies = {
+					"nvim-telescope/telescope.nvim",
+				},
+				config = function()
+					require("telescope").setup({
+						extensions = {
+							["ui-select"] = {
+								require("telescope.themes").get_dropdown({}),
+							},
+						},
+					})
+					require("telescope").load_extension("ui-select")
+				end,
+			},
+			{
 				event = { "BufReadPre", "BufNewFile" },
 				"j-hui/fidget.nvim",
 				config = function()
@@ -96,7 +112,12 @@ return {
 			local config = {
 				virtual_text = true,
 				signs = {
-					active = signs,
+					text = {
+						["INFO"] = "",
+						["ERROR"] = "",
+						["WARN"] = "",
+						["HINT"] = "󰌵",
+					},
 				},
 				update_in_insert = false,
 				underline = true,
@@ -146,6 +167,7 @@ return {
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
 				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
+				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
 				-- keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
 				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
