@@ -79,10 +79,10 @@ return {
 					})
 					vim.keymap.set("n", "<leader>lr", function()
 						return ":IncRename " .. vim.fn.expand("<cword>")
-					end, { expr = true })
+					end, { expr = true, desc = "inc-rename" })
 					vim.keymap.set("n", "<leader>lqr", function()
 						return "q:IncRename " .. vim.fn.expand("<cword>")
-					end, { expr = true })
+					end, { expr = true, desc = "inc-rename-buffer-cmd" })
 				end,
 			},
 			{
@@ -228,7 +228,7 @@ return {
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
 				keymap("n", "<leader>lf", function()
-					vim.lsp.buf.format({ timeout_ms = 20000 })
+					vim.lsp.buf.format({ timeout_ms = 90000, async = true })
 				end, { desc = "Format" })
 			end
 
