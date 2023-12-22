@@ -145,5 +145,12 @@ return {
 			end,
 			desc = "Search for word under cursor",
 		},
+		{
+			"<leader>fs",
+			function()
+				require("telescope.builtin").git_status()
+			end,
+			desc = "search currently modified files",
+		},
 	},
 }
