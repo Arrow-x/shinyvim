@@ -69,7 +69,11 @@ return {
 		{
 			"<leader>fb",
 			function()
-				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = true }))
+				require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({
+					previewer = true,
+					sort_mru = true,
+					ignore_current_buffer = true,
+				}))
 			end,
 			desc = "Show Buffers",
 		},
@@ -84,7 +88,7 @@ return {
 			"<leader>fc",
 			function()
 				require("telescope.builtin").colorscheme(
-					require("telescope.themes").get_dropdown({ previewer = false })
+					require("telescope.themes").get_dropdown({ enable_preview = true })
 				)
 			end,
 			desc = "Colorscheme",
