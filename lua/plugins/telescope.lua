@@ -156,5 +156,12 @@ return {
 			end,
 			desc = "search currently modified files",
 		},
+		{
+			"<leader>f'",
+			function()
+				require("telescope.builtin").marks(require("telescope.themes").get_dropdown({ previewer = true }))
+			end,
+			desc = "current marks",
+		},
 	},
 }
