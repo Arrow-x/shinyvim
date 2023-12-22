@@ -8,11 +8,11 @@ return {
 		local diagnostics = {
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn" },
-			symbols = { error = " ", warn = " " },
-			colored = false,
+			sections = { "error", "warn", "hint" },
+			symbols = { error = " ", warn = " ", hint = "󰌵 " },
+			colored = true,
 			update_in_insert = false,
-			always_visible = true,
+			always_visible = false,
 		}
 
 		local diff = {
@@ -20,19 +20,6 @@ return {
 			colored = true,
 			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 			cond = hide_in_width,
-		}
-
-		local mode = {
-			"mode",
-			fmt = function(str)
-				return "-- " .. str .. " --"
-			end,
-		}
-
-		local filetype = {
-			"filetype",
-			icons_enabled = false,
-			icon = nil,
 		}
 
 		local branch = {
@@ -48,7 +35,7 @@ return {
 
 		local filename = {
 			"filename",
-			path = 1,
+			path = 0,
 		}
 
 		-- cool function for progress
@@ -61,35 +48,22 @@ return {
 			return chars[index]
 		end
 
-		local spaces = function()
-			return "spaces: " .. vim.api.nvim_get_option_value("shiftwidth", {})
-		end
-
 		require("lualine").setup({
 			options = {
 				globalstatus = true,
 				icons_enabled = true,
-				theme = "auto",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "dashboard", "toggleterm" },
 				always_divide_middle = true,
+				theme = "auto",
+				component_separators = { "" },
+				section_separators = { "" },
+				disabled_filetypes = { "alpha", "dashboard", "toggleterm", "oil" },
 			},
 			sections = {
-				lualine_a = { branch, diagnostics },
-				lualine_b = { mode },
-				lualine_c = {},
-				lualine_x = { diff, spaces, "encoding", filetype },
+				lualine_a = { "mode" },
+				lualine_b = { branch },
+				lualine_c = { diff, filename, diagnostics },
 				lualine_y = { location },
 				lualine_z = { progress },
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = { "location" },
-				lualine_y = {},
-				lualine_z = {},
 			},
 			tabline = {},
 			extensions = {},
