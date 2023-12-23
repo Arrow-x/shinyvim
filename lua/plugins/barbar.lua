@@ -1,8 +1,7 @@
 return {
 	"romgrk/barbar.nvim",
-	-- event = { "BufReadPost", "BufNewFile" },
+	event = { "VeryLazy" },
 	dependencies = {
-		"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
 		"nvim-tree/nvim-web-devicons", -- optional dependency
 	},
 	config = function()

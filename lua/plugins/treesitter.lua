@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	event = { "VeryLazy" },
 	config = vim.defer_fn(function()
 		local opts = {
 			ensure_installed = {
