@@ -251,7 +251,7 @@ return {
 					capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
 				}
 
-				local present, custom_settings = pcall(require, "config.lsp.settings." .. server)
+				local present, custom_settings = pcall(require, "config.lsp." .. server)
 				if present then
 					opts = vim.tbl_deep_extend("force", custom_settings, opts)
 				end
