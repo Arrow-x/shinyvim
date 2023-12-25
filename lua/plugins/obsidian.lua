@@ -15,15 +15,16 @@ return {
 		notes_subdir = "notes", -- Optional, if you keep notes in a specific subdirectory of your vault.
 		daily_notes = { -- Optional, if you keep daily notes in a separate directory.
 			folder = "notes/dailies",
+			templates = "daily.md",
 		},
 		completion = { -- Optional, completion.
-			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+			nvim_cmp = false, -- if using nvim-cmp, otherwise set to false
 		},
-		-- templates = { -- Optional, for templates (see below).
-		-- 	subdir = "shiny-templates/",
-		-- 	date_format = "%Y-%m-%d-%a",
-		-- 	time_format = "%H:%M",
-		-- },
+		templates = { -- Optional, for templates (see below).
+			subdir = "templates/",
+			date_format = "%Y-%m-%d-%a",
+			time_format = "%H:%M",
+		},
 		mappings = { -- Optional, key mappings.
 			-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
 			-- ["gf"] = require("obsidian.mapping").gf_passthrough(),

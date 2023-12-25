@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	ft = { "lua", "gdscript", "sh", "cs" },
+	event = { "VeryLazy" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -18,6 +18,10 @@ return {
 				formatting.beautysh.with({ extra_args = { "-s", "paronly", "-t" } }),
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
 				formatting.clang_format,
+				formatting.markdownlint,
+				diagnostics.markdownlint.with({
+					extra_args = { "--config", "/home/arrowx/.config/nvim/lua/config/lsp/markdownlint.json" },
+				}),
 				-- diagnostics.gdlint,
 				-- diagnostics.alex,
 				-- diagnostics.flake8,
