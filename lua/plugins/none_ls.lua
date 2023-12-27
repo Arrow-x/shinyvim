@@ -8,12 +8,14 @@ return {
 		local null_ls = require("null-ls")
 		local formatting = null_ls.builtins.formatting
 		local diagnostics = null_ls.builtins.diagnostics
+
+		vim.keymap.set("n", "<leader>lf", function()
+			vim.lsp.buf.format({ timeout_ms = 90000, async = true })
+		end, { desc = "Format" })
 		null_ls.setup({
 			debug = false,
 			sources = {
-				-- formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
-				-- formatting.black.with({ extra_args = { "--fast" } }),
-				formatting.gdformat.with({ extra_args = { "--fast" } }),
+				formatting.gdformat,
 				formatting.stylua,
 				formatting.beautysh.with({ extra_args = { "-s", "paronly", "-t" } }),
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
@@ -22,6 +24,9 @@ return {
 				diagnostics.markdownlint.with({
 					extra_args = { "--config", "/home/arrowx/.config/nvim/lua/config/lsp/markdownlint.json" },
 				}),
+
+				-- formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
+				-- formatting.black.with({ extra_args = { "--fast" } }),
 				-- diagnostics.gdlint,
 				-- diagnostics.alex,
 				-- diagnostics.flake8,
