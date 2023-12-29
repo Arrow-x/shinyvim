@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	event = { "VeryLazy" },
+	ft = { "lua", "gdscript", "markdown", "sh", "bash", "python", "cs" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
