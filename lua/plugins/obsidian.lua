@@ -21,7 +21,7 @@ return {
 			nvim_cmp = false, -- if using nvim-cmp, otherwise set to false
 		},
 		templates = { -- Optional, for templates (see below).
-			subdir = "templates/",
+			subdir = "templates",
 			date_format = "%Y-%m-%d-%a",
 			time_format = "%H:%M",
 		},
@@ -48,7 +48,7 @@ return {
 			-- return string(os.time()) .. "-" .. suffix
 		end,
 		-- Optional, set to true if you don't want Obsidian to manage frontmatter.
-		disable_frontmatter = true,
+		disable_frontmatter = false,
 		-- Optional, alternatively you can customize the frontmatter data.
 		-- note_frontmatter_func = function(note)
 		-- 	-- This is equivalent to the default frontmatter function.
@@ -150,11 +150,24 @@ return {
 			return ":'<,'>ObsidianLinkNew<cr>"
 		end, { noremap = false, expr = true })
 
-		vim.keymap.set("n", "<leader>w<leader>w", function()
+		vim.keymap.set("n", "<leader>ow", function()
 			vim.cmd("ObsidianToday")
-		end)
-		vim.keymap.set("n", "<leader>w<leader>y", function()
+		end, { desc = "Add Today's Diary" })
+
+		vim.keymap.set("n", "<leader>oy", function()
 			vim.cmd("ObsidianYesterday")
-		end)
+		end, { desc = "Add yesterday Diary" })
+
+		vim.keymap.set("n", "<leader>on", function()
+			vim.cmd("ObsidianNew")
+		end, { desc = "New Obsidian Note" })
+
+		vim.keymap.set("n", "<leader>ot", function()
+			vim.cmd("ObsidianTemplate")
+		end, { desc = "Add Obsidian Template" })
+
+		vim.keymap.set("n", "<leader>ob", function()
+			vim.cmd("ObsidianBackLinks")
+		end, { desc = "Show back links" })
 	end,
 }
