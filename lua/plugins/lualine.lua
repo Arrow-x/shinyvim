@@ -41,7 +41,7 @@ return {
 				lualine_z = { progress },
 			},
 			tabline = {},
-			extensions = { "oil", "lazy", "toggleterm", "mason" },
+			extensions = { "oil", "lazy", "toggleterm", "mason", "trouble", "nvim-dap-ui" },
 		})
 	end,
 }
