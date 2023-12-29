@@ -2,36 +2,10 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = { "VeryLazy" },
 	config = function()
-		local hide_in_width = function()
-			return vim.fn.winwidth(0) > 80
-		end
-
-		local diagnostics = {
-			"diagnostics",
-			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn", "hint" },
-			symbols = { error = " ", warn = " ", hint = "󰌵 " },
-			colored = true,
-			update_in_insert = false,
-			always_visible = false,
-		}
-
 		local diff = {
 			"diff",
 			colored = true,
-			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-			cond = hide_in_width,
-		}
-
-		local branch = {
-			"branch",
-			icons_enabled = true,
-			icon = "",
-		}
-
-		local location = {
-			"location",
-			padding = 0,
+			symbols = { added = " ", modified = " ", removed = " " },
 		}
 
 		local filename = {
@@ -57,17 +31,17 @@ return {
 				theme = "auto",
 				component_separators = { "" },
 				section_separators = { "" },
-				disabled_filetypes = { "alpha", "dashboard", "toggleterm", "oil" },
+				disabled_filetypes = { "alpha", "dashboard" },
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { branch },
-				lualine_c = { diff, filename, diagnostics },
-				lualine_y = { location },
+				lualine_b = { "branch" },
+				lualine_c = { diff, filename, "diagnostics" },
+				lualine_y = { "location" },
 				lualine_z = { progress },
 			},
 			tabline = {},
-			extensions = {},
+			extensions = { "oil", "lazy", "toggleterm", "mason" },
 		})
 	end,
 }
