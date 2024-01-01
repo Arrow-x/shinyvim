@@ -164,5 +164,22 @@ return {
 			end,
 			desc = "current marks",
 		},
+		{
+			"<leader>f/",
+			function()
+				require("telescope.builtin").live_grep({
+					grep_open_files = true,
+					prompt_title = "Live Grep in Open Files",
+				})
+			end,
+			{ desc = "[F]ind Grep in Open Files" },
+		},
+		{
+			"<leader>fp",
+			function()
+				require("telescope.builtin").resume()
+			end,
+			{ desc = "[F]ind from the [P]revious search" },
+		},
 	},
 }
