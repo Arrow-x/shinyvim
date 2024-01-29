@@ -23,7 +23,7 @@ return {
 			highlight = {
 				enable = true, -- false will disable the whole extension
 				disable = function(_, bufnr)
-					return vim.api.nvim_buf_line_count(bufnr) > 10000
+					return vim.api.nvim_buf_line_count(bufnr) > 1000
 				end,
 				additional_vim_regex_highlighting = { "markdown" },
 			},
@@ -32,17 +32,6 @@ return {
 			autotag = { enable = true },
 			context_commentstring = { enable = true, enable_autocmd = false },
 		}
-
-		if type(opts.ensure_installed) == "table" then
-			local added = {}
-			opts.ensure_installed = vim.tbl_filter(function(lang)
-				if added[lang] then
-					return false
-				end
-				added[lang] = true
-				return true
-			end, opts.ensure_installed)
-		end
 
 		require("nvim-treesitter.configs").setup(opts)
 
