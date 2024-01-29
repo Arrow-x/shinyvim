@@ -15,7 +15,6 @@ return {
 				end,
 			},
 			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "folke/neodev.nvim", config = true },
 			{ "Hoffs/omnisharp-extended-lsp.nvim" },
 			{
 				"folke/trouble.nvim",
