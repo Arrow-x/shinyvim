@@ -70,6 +70,8 @@ autocmd("FileType", {
 		vim.wo.list = false
 		vim.wo.virtualedit = ""
 		vim.opt.display:append("lastline")
+		vim.opt.number = false
+		vim.opt.relativenumber = false
 
 		vim.keymap.set("n", "k", "gk", { silent = true, buffer = true })
 		vim.keymap.set("n", "j", "gj", { silent = true, buffer = true })
