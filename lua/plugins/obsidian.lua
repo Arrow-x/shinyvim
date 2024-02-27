@@ -146,11 +146,11 @@ return {
 			return ":'<,'>ObsidianLinkNew<cr>"
 		end, { noremap = false, expr = true })
 
-		vim.keymap.set("n", "<leader>ow", function()
+		vim.keymap.set("n", "<leader>odw", function()
 			vim.cmd("ObsidianToday")
 		end, { desc = "Add Today's Diary" })
 
-		vim.keymap.set("n", "<leader>oy", function()
+		vim.keymap.set("n", "<leader>ody", function()
 			vim.cmd("ObsidianYesterday")
 		end, { desc = "Add yesterday Diary" })
 
