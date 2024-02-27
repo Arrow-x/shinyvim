@@ -17,7 +17,6 @@ return {
 			sources = {
 				formatting.gdformat,
 				formatting.stylua,
-				formatting.beautysh.with({ extra_args = { "-s", "paronly", "-t" } }),
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
 				formatting.clang_format,
 				formatting.markdownlint,
