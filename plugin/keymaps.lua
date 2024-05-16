@@ -5,8 +5,6 @@ local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>")
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
@@ -25,16 +23,16 @@ keymap("n", "<C-s>", ":w!<cr>", { desc = "force save" })
 keymap("n", "<C-q>", ":qa!<cr>", { desc = "force quite" })
 
 -- Netrw Mappings
-keymap("n", "<leader>e", ":Lex 20<cr>")
+-- keymap("n", "<leader>e", ":Lex 20<cr>")
 
 -- Remove Highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 
 -- Resize with arrows
-keymap("n", "<A-up>", ":resize +2<CR>")
-keymap("n", "<A-down>", ":resize -2<CR>")
-keymap("n", "<A-left>", ":vertical resize +2<CR>")
-keymap("n", "<A-right>", ":vertical resize -2<CR>")
+keymap("n", "<A-k>", ":resize +2<CR>")
+keymap("n", "<A-j>", ":resize -2<CR>")
+keymap("n", "<A-h>", ":vertical resize +2<CR>")
+keymap("n", "<A-l>", ":vertical resize -2<CR>")
 
 -- Quicklist nice navigation
 keymap("n", "<C-n>", "<cmd>cnext<CR>zz")

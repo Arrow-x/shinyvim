@@ -18,7 +18,7 @@ return {
 			templates = "daily.md",
 		},
 		completion = { -- Optional, completion.
-			nvim_cmp = false, -- if using nvim-cmp, otherwise set to false
+			nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
 		},
 		templates = { -- Optional, for templates (see below).
 			subdir = "templates",

@@ -30,9 +30,14 @@ return {
 			noremap = true,
 			nowait = true,
 		}
+
+		local function has(plugin)
+			return require("lazy.core.config").plugins[plugin] ~= nil
+		end
+
 		local function check()
 			for _, p in pairs(pluging_keymaps) do
-				if shinyvim.has(p.plugin) then
+				if has(p.plugin) then
 					if not mappings[p.prefix] then
 						mappings[p.prefix] = { name = p.desc }
 					end
@@ -52,10 +57,4 @@ return {
 			},
 		})
 	end,
-	keys = {
-		"<leader>",
-		"z=",
-		"'",
-		'"',
-	},
 }

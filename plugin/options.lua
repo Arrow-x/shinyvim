@@ -37,6 +37,7 @@ O.autoread = true
 O.hlsearch = true -- highlight all matches on previous search pattern
 O.incsearch = true
 O.ignorecase = false -- ignore case in search patterns
+O.inccommand = "split" -- interactive commands (like grep and sed)
 
 O.expandtab = false -- convert tabs to spaces
 O.tabstop = 4 -- insert 4 spaces for a tab

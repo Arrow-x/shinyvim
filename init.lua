@@ -2,14 +2,9 @@ if vim.loader then
 	vim.loader.enable()
 end
 
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
-
 require("config.utils")
-require("config.options")
-require("config.autocommands")
-require("config.commands")
-require("config.keymaps")
+
+vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
