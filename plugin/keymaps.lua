@@ -3,9 +3,6 @@ local term_opts = { silent = true }
 -- Shorten function name
 local keymap = vim.keymap.set
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>")
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
