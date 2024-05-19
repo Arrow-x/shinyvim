@@ -15,10 +15,10 @@ return {
 		null_ls.setup({
 			debug = false,
 			sources = {
+				formatting.clang_format,
 				formatting.gdformat,
 				formatting.stylua,
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
-				formatting.clang_format,
 				formatting.markdownlint,
 				diagnostics.markdownlint.with({
 					extra_args = { "--config", "/home/arrowx/.config/nvim/lua/config/lsp/markdownlint.json" },
