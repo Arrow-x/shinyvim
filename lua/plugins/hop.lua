@@ -1,6 +1,5 @@
 return {
 	"smoka7/hop.nvim",
-	version = "*",
 	config = function()
 		-- place this in one of your configuration file(s)
 		local hop = require("hop")
@@ -22,5 +21,5 @@ return {
 			hop.hint_words({})
 		end, { remap = true })
 	end,
-	opts = {},
+	keys = { "f", "F", "t", "T", "<leader>j" },
 }
