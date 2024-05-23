@@ -185,7 +185,7 @@ return {
 
 			---@diagnostic disable-next-line: unused-local
 			local on_attach = function(client, bufnr)
-				local servers_to_disable_formating_for = { "tsserver", "lua_ls", "omnisharp", "csharp-ls" }
+				local servers_to_disable_formating_for = { "tsserver", "lua_ls", "omnisharp", "csharp_ls" }
 
 				for _, server in pairs(servers_to_disable_formating_for) do
 					if client.name == server then
