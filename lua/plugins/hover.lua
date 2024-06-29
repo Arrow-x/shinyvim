@@ -34,7 +34,7 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>K",
+			"<leader>k",
 			function()
 				require("hover").hover()
 			end,
