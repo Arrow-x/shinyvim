@@ -165,5 +165,9 @@ return {
 		vim.keymap.set("n", "<leader>ob", function()
 			vim.cmd("ObsidianBackLinks")
 		end, { desc = "Show back links" })
+
+		vim.keymap.set("n", "<leader>oc", function()
+			vim.cmd("ObsidianToggleCheckbox")
+		end, { desc = "Toggle CheckBoxes" })
 	end,
 }
