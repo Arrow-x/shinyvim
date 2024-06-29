@@ -38,7 +38,7 @@ autocmd("FileType", {
 	group = gr.general_settings,
 	callback = function()
 		vim.keymap.set("n", "q", function()
-			vim.cmd("close")
+			vim.cmd("bd")
 		end, { silent = true, buffer = true })
 	end,
 })
