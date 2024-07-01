@@ -214,12 +214,12 @@ return {
 				-- keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
 				keymap("n", "<leader>lF", toggle_autoforamt, { desc = "toggle format on save" })
-				keymap("n", "<leader>ln", vim.diagnostic.goto_next, {
-					desc = "Go to next Diagnostics",
-				})
-				keymap("n", "<leader>lp", vim.diagnostic.goto_prev, {
-					desc = "Go to prev Diagnostics",
-				})
+				keymap("n", "<leader>ln", function()
+					vim.diagnostic.jump({ count = 1 })
+				end, { desc = "Go to next Diagnostics" })
+				keymap("n", "<leader>lp", function()
+					vim.diagnostic.jump({ count = -1 })
+				end, { desc = "Go to prev Diagnostics" })
 				keymap("n", "<leader>lh", vim.diagnostic.open_float, { desc = "Hover Diagnostics" })
 				keymap("n", "<leader>lq", vim.diagnostic.setqflist, { desc = "Diagnostics to quickfix list" })
 				keymap("n", "<leader>lI", function()
