@@ -9,6 +9,9 @@ end
 
 -- other custom logic
 function shinyvim.tprint(tbl, indent)
+	if not tbl then
+		return
+	end
 	if not indent then
 		indent = 0
 	end
