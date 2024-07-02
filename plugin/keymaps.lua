@@ -12,8 +12,7 @@ local keymap = vim.keymap.set
 --   command_mode = "c",
 
 -- Normal --
-keymap("n", "<leader>q", ":confirm bd<cr>", { desc = "default buffer close" })
-keymap("n", "<leader>Q", ":confirm qall<cr>", { desc = "default buffer close" })
+keymap("n", "<leader>q", ":confirm bd<cr>", { desc = "close buffer" })
 keymap("n", "<leader>n", ":enew<cr>", { desc = "New File" })
 
 keymap("n", "<C-s>", ":w!<cr>", { desc = "force save" })
@@ -111,9 +110,9 @@ keymap("n", "<leader>yy", '"+yy', { desc = "Copy the current line to system clip
 keymap("v", "<leader>y", '"+y', { desc = "Normal Mode Copy the selected text to system clipboard" })
 
 -- Cut to system clipboard
-keymap("n", "<leader>d", '"+d', { desc = "Copy Action to system clipboard" })
-keymap("n", "<leader>D", '"+dg_', { desc = "Copy to system clipbaord the rest of the line" })
-keymap("n", "<leader>dd", '"+dd', { desc = "Copy the current line to system clipboard" })
+keymap("n", "<leader>d", '"+d', { desc = "Cut to system clipboard" })
+keymap("n", "<leader>D", '"+dg_', { desc = "Cut to system clipbaord the rest of the line" })
+keymap("n", "<leader>dd", '"+dd', { desc = "Cut the current line to system clipboard" })
 
 keymap("v", "<leader>d", '"+d', { desc = "Visual mode Copy the selected text to system clipboard" })
 

@@ -14,7 +14,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	keys = { {
-		"<leader>t",
+		"<leader>a",
 		function()
 			vim.cmd("AerialToggle!")
 		end,

@@ -1,7 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	lazy = false,
-	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -130,6 +129,6 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer" },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Open Neotree" },
 	},
 }

@@ -8,18 +8,22 @@ return {
 			{ plugin = "toggleterm.nvim", prefix = "`", desc = "A Terminal in your Terminal" },
 			{ plugin = "nvim-lspconfig", prefix = "l", desc = "LSP" },
 			{ plugin = "harpoon", prefix = "s", desc = "Harpoon" },
-			{ plugin = "notify.nvim", prefix = "u", desc = "Norify" },
 			{ plugin = "true-zen.nvim", prefix = "z", desc = "TrueZen modes" },
 			{ plugin = "git-worktree.nvim", prefix = "gw", desc = "Worktrees" },
 			{ plugin = "trouble.nvim", prefix = "x", desc = "Trouble" },
 			{ plugin = "obsidian.nvim", prefix = "o", desc = "Obsidian" },
+			{ plugin = "aerial.nvim", prefix = "a", desc = "Aerial Toggle" },
+			{ plugin = "undotree", prefix = "u", desc = "UndoTree" },
+			{ plugin = "lazy.nvim", prefix = "z", desc = "Toggle Lazy" },
+			{ plugin = "hop.nvim", prefix = "j", desc = "Toggle Hop" },
+			{ plugin = "hover.nvim", prefix = "k", desc = "Toggle Hover" },
 		}
 
 		local mappings = {
-			p = { name = "Paste to system clipboard" },
+			p = { name = "Paste from primary system clipboard" },
+			P = { name = "Paste from scondary system clipboard" },
 			y = { name = "Copy to System clipboard" },
-			m = { name = "Manipulate current file permissions" },
-			K = { name = "Hover" },
+			m = { name = "Misc" },
 		}
 
 		local opts = {

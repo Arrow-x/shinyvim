@@ -143,6 +143,6 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>E", "<CMD>Oil<CR>", desc = "Open parent directory" },
+		{ "<leader>E", "<CMD>Oil<CR>", desc = "Open Oil File Manager" },
 	},
 }
