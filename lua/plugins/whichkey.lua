@@ -2,7 +2,7 @@ return {
 	"folke/which-key.nvim",
 	config = function()
 		local pluging_keymaps = {
-			{ plugin = "nvim-dap", prefix = "d", desc = "Debuging" },
+			{ plugin = "nvim-dap", prefix = "b", desc = "Debuging" },
 			{ plugin = "telescope.nvim", prefix = "f", desc = "Search" },
 			{ plugin = "gitsigns.nvim", prefix = "g", desc = "Git integration" },
 			{ plugin = "toggleterm.nvim", prefix = "`", desc = "A Terminal in your Terminal" },

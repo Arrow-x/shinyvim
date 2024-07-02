@@ -88,42 +88,42 @@ return {
 	},
 	keys = {
 		{
-			"<leader>dc",
+			"<leader>bc",
 			function()
 				require("dap").continue()
 			end,
 			desc = "Continue",
 		},
 		{
-			"<leader>db",
+			"<leader>bb",
 			function()
 				require("dap").toggle_breakpoint()
 			end,
 			desc = "Breakpoint",
 		},
 		{
-			"<leader>do",
+			"<leader>bo",
 			function()
 				require("dap").step_over()
 			end,
 			desc = "Step Over",
 		},
 		{
-			"<leader>di",
+			"<leader>bi",
 			function()
 				require("dap").step_into()
 			end,
 			desc = "Step Into",
 		},
 		{
-			"<leader>dr",
+			"<leader>br",
 			function()
 				require("dap").repl.open()
 			end,
 			desc = "inspect REPL",
 		},
 		{
-			"<leader>ds",
+			"<leader>bs",
 			function()
 				require("dap").disconnect({ terminateDebuggee = true })
 			end,
