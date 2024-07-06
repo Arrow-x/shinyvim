@@ -1,7 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "VeryLazy" },
-	config = vim.defer_fn(function()
+	event = { "BufAdd" },
+	config = function()
 		local opts = {
 			ensure_installed = {
 				"vim",
@@ -18,7 +18,7 @@ return {
 				"c_sharp",
 				"gitcommit",
 			}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-			sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
+			sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 			ignore_install = { "" }, -- List of parsers to ignore installing
 			highlight = {
 				enable = true, -- false will disable the whole extension
@@ -45,5 +45,5 @@ return {
 			},
 			filetype = "haxe",
 		}
-	end, 0),
+	end,
 }
