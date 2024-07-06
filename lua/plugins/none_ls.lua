@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	ft = { "lua", "gdscript", "sh", "bash", "python", "cs", "cpp" },
+	ft = { "lua", "gdscript", "sh", "bash", "python", "cpp" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
