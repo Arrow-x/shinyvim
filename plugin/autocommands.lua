@@ -159,6 +159,19 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
+	pattern = "cpp",
+	group = gr.exe_code,
+	callback = function()
+		vim.keymap.set("n", "<F5>", ":vsp<CR> :term g++ % && ./a.out <CR> :startinsert<CR>", {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Executer the current buffer",
+		})
+	end,
+})
+
+autocmd("FileType", {
 	pattern = { "bash", "sh" },
 	group = gr.exe_code,
 	callback = function()
