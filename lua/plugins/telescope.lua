@@ -76,7 +76,7 @@ return {
 					ignore_current_buffer = true,
 				}))
 			end,
-			desc = "Show Buffers",
+			desc = "Find Buffers",
 		},
 		{
 			"<leader>fF",
@@ -92,49 +92,49 @@ return {
 					require("telescope.themes").get_dropdown({ enable_preview = true })
 				)
 			end,
-			desc = "Colorscheme",
+			desc = "Find Colorscheme",
 		},
 		{
 			"<leader>fh",
 			function()
 				require("telescope.builtin").help_tags(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
-			desc = "Find Help",
+			desc = "Find in Help",
 		},
 		{
 			"<leader>fM",
 			function()
 				require("telescope.builtin").man_pages(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
-			desc = "Man Pages",
+			desc = "Find in Man Pages",
 		},
 		{
 			"<leader>fr",
 			function()
 				require("telescope.builtin").oldfiles()
 			end,
-			desc = "Open Recent File",
+			desc = "Find Recent File",
 		},
 		{
 			"<leader>fR",
 			function()
 				require("telescope.builtin").registers()
 			end,
-			desc = "Registers",
+			desc = "Find in Registers",
 		},
 		{
 			"<leader>fk",
 			function()
 				require("telescope.builtin").keymaps()
 			end,
-			desc = "Keymaps",
+			desc = "Find in Keymaps",
 		},
 		{
 			"<leader>fC",
 			function()
 				require("telescope.builtin").commands(require("telescope.themes").get_dropdown({ previewer = false }))
 			end,
-			desc = "Commands",
+			desc = "Find in Commands",
 		},
 		{
 			"<leader>fg",
@@ -148,21 +148,21 @@ return {
 			function()
 				require("telescope.builtin").grep_string()
 			end,
-			desc = "Search for word under cursor",
+			desc = "Find in for word under cursor",
 		},
 		{
 			"<leader>fs",
 			function()
 				require("telescope.builtin").git_status()
 			end,
-			desc = "search currently modified files",
+			desc = "Find in currently modified files",
 		},
 		{
 			"<leader>f'",
 			function()
 				require("telescope.builtin").marks(require("telescope.themes").get_dropdown({ previewer = true }))
 			end,
-			desc = "current marks",
+			desc = "Find in current marks",
 		},
 		{
 			"<leader>f/",
@@ -172,14 +172,14 @@ return {
 					prompt_title = "Live Grep in Open Files",
 				})
 			end,
-			{ desc = "[F]ind Grep in Open Files" },
+			desc = "Find Grep in Open Files",
 		},
 		{
 			"<leader>fp",
 			function()
 				require("telescope.builtin").resume()
 			end,
-			{ desc = "[F]ind from the [P]revious search" },
+			desc = "Find from the [P]revious search",
 		},
 	},
 }
