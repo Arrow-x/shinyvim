@@ -143,6 +143,6 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>E", "<CMD>Oil<CR>", desc = "Open Oil File Manager" },
+		{ "<leader>e", "<CMD>Oil<CR>", desc = "Open Oil File Manager" },
 	},
 }
