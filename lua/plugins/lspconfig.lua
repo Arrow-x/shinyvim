@@ -18,49 +18,42 @@ return {
 			{ "Hoffs/omnisharp-extended-lsp.nvim" },
 			{
 				"folke/trouble.nvim",
-				dependencies = { "nvim-tree/nvim-web-devicons" },
-				-- Lua
+				opts = {}, -- for default options, refer to the configuration section for custom setup.
+				cmd = "Trouble",
 				keys = {
 					{
 						"<leader>xx",
-						function()
-							require("trouble").toggle()
-						end,
-						desc = "Trouble Toggle",
+						"<cmd>Trouble diagnostics toggle<cr>",
+						desc = "Diagnostics (Trouble)",
 					},
 					{
-						"<leader>xw",
-						function()
-							require("trouble").toggle("workspace_diagnostics")
-						end,
-						desc = "Workspace Diagnostics",
+						"<leader>xX",
+						"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+						desc = "Buffer Diagnostics (Trouble)",
 					},
 					{
-						"<leader>xd",
-						function()
-							require("trouble").toggle("document_diagnostics")
-						end,
-						desc = "Document Diagnostics",
+						"<leader>cs",
+						"<cmd>Trouble symbols toggle focus=false<cr>",
+						desc = "Symbols (Trouble)",
 					},
 					{
-						"<leader>xq",
-						function()
-							require("trouble").toggle("quickfix")
-						end,
-						desc = "Trouble Quickfix",
+						"<leader>cl",
+						"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+						desc = "LSP Definitions / references / ... (Trouble)",
 					},
 					{
-						"<leader>xl",
-						function()
-							require("trouble").toggle("loclist")
-						end,
-						desc = "Trouble Locallist",
+						"<leader>xL",
+						"<cmd>Trouble loclist toggle<cr>",
+						desc = "Location List (Trouble)",
 					},
 					{
-						"<leader>lR",
-						function()
-							require("trouble").toggle("lsp_references")
-						end,
+						"<leader>xQ",
+						"<cmd>Trouble qflist toggle<cr>",
+						desc = "Quickfix List (Trouble)",
+					},
+					{
+						"<leader>xr",
+						"<cmd>Trouble lsp_references toggle<cr>",
 						desc = "Lsp Refernces",
 					},
 				},
@@ -208,6 +201,7 @@ return {
 				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
+				keymap("n", "<leader>lr", vim.lsp.buf.references, { desc = "get references" })
 				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
 				-- keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
