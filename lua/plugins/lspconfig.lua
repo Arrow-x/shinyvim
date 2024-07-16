@@ -32,12 +32,12 @@ return {
 						desc = "Buffer Diagnostics (Trouble)",
 					},
 					{
-						"<leader>cs",
+						"<leader>xs",
 						"<cmd>Trouble symbols toggle focus=false<cr>",
 						desc = "Symbols (Trouble)",
 					},
 					{
-						"<leader>cl",
+						"<leader>xl",
 						"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 						desc = "LSP Definitions / references / ... (Trouble)",
 					},
@@ -201,7 +201,7 @@ return {
 				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
-				keymap("n", "<leader>lr", vim.lsp.buf.references, { desc = "get references" })
+				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "get references" })
 				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
 				-- keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
