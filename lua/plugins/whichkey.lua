@@ -1,5 +1,6 @@
 return {
 	"folke/which-key.nvim",
+	event = "VeryLazy",
 	dependencies = {
 		"https://github.com/echasnovski/mini.icons",
 	},

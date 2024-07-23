@@ -1,7 +1,7 @@
 return {
 	"stevearc/oil.nvim",
+	event = "VeryLazy",
 	-- Optional dependencies
-	lazy = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	init = function()
 		vim.g.loaded_netrw = true -- disable netrw
