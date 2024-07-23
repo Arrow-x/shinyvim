@@ -38,12 +38,14 @@ return {
 			function()
 				require("hover").hover()
 			end,
+			desc = "Hover info",
 		},
 		{
-			"<leader>gK",
+			"<leader>K",
 			function()
 				require("hover").hover_select()
 			end,
+			desc = "Hover Select source",
 		},
 	},
 }
