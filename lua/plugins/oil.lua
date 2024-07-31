@@ -9,7 +9,7 @@ return {
 		vim.g.loaded_netrwPlugin = true -- disable netrw
 		vim.g.loaded_netrwSettngs = true -- disable netrw
 	end,
-	config = {
+	opts = {
 		-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 		-- Set to false if you still want to use netrw.
 		default_file_explorer = true,
