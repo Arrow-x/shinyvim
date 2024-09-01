@@ -1,10 +1,5 @@
 return {
 	"mfussenegger/nvim-dap",
-	config = function()
-		-- TODO: find a way to get all the files under config/dap automaticaly
-		require("config.dap.dotnet")
-		require("config.dap.gdscript")
-	end,
 	dependencies = {
 		{
 			"rcarriga/cmp-dap",
@@ -85,8 +80,147 @@ return {
 				require("dap-python").setup("~/.local/share/virtualenvs/debugpy/bin/python")
 			end,
 		},
+		{
+			"nvim-telescope/telescope.nvim",
+		},
 	},
+	config = function()
+		local pickers = require("telescope.pickers")
+		local finders = require("telescope.finders")
+		local conf = require("telescope.config").values
+		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
+		local dap = require("dap")
+		local dap_utils = require("dap.utils")
+
+		local icons = {
+			Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+			Breakpoint = " ",
+			BreakpointCondition = " ",
+			BreakpointRejected = { " ", "DiagnosticError" },
+			LogPoint = ".>",
+		}
+
+		for name, sign in pairs(icons) do
+			sign = type(sign) == "table" and sign or { sign }
+			vim.fn.sign_define(
+				"Dap" .. name,
+				{ text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+			)
+		end
+		local config = {
+			{
+				type = "coreclr",
+				name = "DOTNET: Launch",
+				request = "launch",
+				program = function()
+					return coroutine.create(function(coro)
+						local opts = {}
+						pickers
+							.new(opts, {
+								prompt_title = "Select DLL",
+								finder = finders.new_oneshot_job({ "fd", "--no-ignore", "-e", "dll" }, {}),
+								sorter = conf.generic_sorter(opts),
+								attach_mappings = function(buffer_number)
+									actions.select_default:replace(function()
+										actions.close(buffer_number)
+										coroutine.resume(coro, action_state.get_selected_entry()[1])
+									end)
+									return true
+								end,
+							})
+							:find()
+					end)
+				end,
+			},
+			{
+				type = "godotCLR",
+				name = "Godot: Launch Scene",
+				request = "launch",
+				program = function()
+					return coroutine.create(function(coro)
+						local opts = {}
+						pickers
+							.new(opts, {
+								prompt_title = "Select Scene",
+								finder = finders.new_oneshot_job({ "fd", "--no-ignore", "-e", "tscn" }, {}),
+								sorter = conf.generic_sorter(opts),
+								attach_mappings = function(buffer_number)
+									actions.select_default:replace(function()
+										actions.close(buffer_number)
+										coroutine.resume(coro, action_state.get_selected_entry()[1])
+									end)
+									return true
+								end,
+							})
+							:find()
+					end)
+				end,
+			},
+			{
+				type = "coreclr",
+				name = "Dotnet/Godot: Attach",
+				request = "attach",
+				processId = dap_utils.pick_process,
+			},
+		}
+		dap.adapters.coreclr = {
+			type = "executable",
+			command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"),
+			args = { "--interpreter=vscode" },
+		}
+
+		dap.adapters.godotCLR = {
+			type = "executable",
+			command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"),
+			args = { "--interpreter=vscode", "--", "godot" },
+		}
+
+		dap.configurations.cs = config
+	end,
 	keys = {
+		{
+			"<F5>",
+			function()
+				require("dap").continue()
+			end,
+			desc = "Continue",
+		},
+		{
+			"<F9>",
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			desc = "Breakpoint",
+		},
+		{
+			"<F10>",
+			function()
+				require("dap").step_over()
+			end,
+			desc = "Step Over",
+		},
+		{
+			"<F11>",
+			function()
+				require("dap").step_into()
+			end,
+			desc = "Step Into",
+		},
+		{
+			"<S-F11>",
+			function()
+				require("dap").step_out()
+			end,
+			desc = "Step Out",
+		},
+		{
+			"<S-F5>",
+			function()
+				require("dap").disconnect({ terminateDebuggee = true })
+			end,
+			desc = "Stop dap",
+		},
 		{
 			"<leader>bc",
 			function()
