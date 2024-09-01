@@ -110,7 +110,7 @@ autocmd("FileType", {
 	pattern = "python",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<F5>", ":sp<CR> :term python3 %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<C-F5>", ":sp<CR> :term python3 %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -123,7 +123,7 @@ autocmd("FileType", {
 	pattern = "rust",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<F5>", ":sp<CR> :term cargo run %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<C-F5>", ":sp<CR> :term cargo run %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -138,8 +138,20 @@ autocmd("FileType", {
 	callback = function()
 		vim.keymap.set(
 			"n",
-			"<F5>",
+			"<C-F5>",
 			":sp<CR> :term dotnet run<CR> :startinsert<CR>",
+			{ buffer = true, noremap = true, silent = true, desc = "Executer the current buffer" }
+		)
+	end,
+})
+autocmd("FileType", {
+	pattern = "cs",
+	group = gr.exe_code,
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<C-F7>",
+			":sp<CR> :term dotnet build<CR> :startinsert<CR>",
 			{ buffer = true, noremap = true, silent = true, desc = "Executer the current buffer" }
 		)
 	end,
@@ -149,7 +161,7 @@ autocmd("FileType", {
 	pattern = "go",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<F5>", ":vsp<CR> :term go run %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<C-F5>", ":vsp<CR> :term go run %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -162,7 +174,20 @@ autocmd("FileType", {
 	pattern = "cpp",
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<F5>", ":vsp<CR> :term g++ % && ./a.out <CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<C-F5>", ":vsp<CR> :term g++ % && ./a.out <CR> :startinsert<CR>", {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Executer the current buffer",
+		})
+	end,
+})
+
+autocmd("FileType", {
+	pattern = "cpp",
+	group = gr.exe_code,
+	callback = function()
+		vim.keymap.set("n", "<C-F7>", ":vsp<CR> :term g++ %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
@@ -175,7 +200,7 @@ autocmd("FileType", {
 	pattern = { "bash", "sh" },
 	group = gr.exe_code,
 	callback = function()
-		vim.keymap.set("n", "<F5>", ":sp<CR> :term sh %<CR> :startinsert<CR>", {
+		vim.keymap.set("n", "<C-F5>", ":sp<CR> :term sh %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
