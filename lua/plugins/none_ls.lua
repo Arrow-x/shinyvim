@@ -16,7 +16,9 @@ return {
 			debug = false,
 			sources = {
 				formatting.clang_format,
-				formatting.gdformat,
+				formatting.gdformat.with({
+					extra_args = {"--fast"}
+				}),
 				formatting.stylua,
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
 				formatting.markdownlint,
