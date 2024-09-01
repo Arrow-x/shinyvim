@@ -1,6 +1,5 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufAdd" },
 	config = function()
 		local opts = {
 			ensure_installed = {
@@ -32,18 +31,6 @@ return {
 			autotag = { enable = true },
 			context_commentstring = { enable = true, enable_autocmd = false },
 		}
-
 		require("nvim-treesitter.configs").setup(opts)
-
-		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-		parser_config.haxe = {
-			install_info = {
-				url = "https://github.com/vantreeseba/tree-sitter-haxe",
-				files = { "src/parser.c" },
-				-- optional entries:
-				branch = "main",
-			},
-			filetype = "haxe",
-		}
 	end,
 }
