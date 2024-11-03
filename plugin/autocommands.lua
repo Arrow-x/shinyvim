@@ -13,7 +13,7 @@ autocmd("TextYankPost", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		require("vim.highlight").on_yank({ higroup = "Visual", timeout = 200 })
+		require("vim.hl").on_yank({ higroup = "Visual", timeout = 300 })
 	end,
 })
 
