@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		ft = { "lua", "gdscript", "sh", "bash", "haxe", "python", "cs", "c", "cpp" },
+		ft = { "lua", "gdscript", "sh", "bash", "python", "cs", "c", "cpp", "markdown" },
 		dependencies = {
 			{
 				"williamboman/mason.nvim",
