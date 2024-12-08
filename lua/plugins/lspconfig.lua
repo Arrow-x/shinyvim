@@ -10,9 +10,6 @@ return {
 			},
 			{
 				"williamboman/mason-lspconfig.nvim",
-				config = function()
-					require("mason-lspconfig")
-				end,
 			},
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "Hoffs/omnisharp-extended-lsp.nvim" },

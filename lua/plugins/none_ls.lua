@@ -9,11 +9,7 @@ return {
 		local formatting = null_ls.builtins.formatting
 		local diagnostics = null_ls.builtins.diagnostics
 
-		vim.keymap.set("n", "<leader>lf", function()
-			vim.lsp.buf.format({ timeout_ms = 90000, async = true })
-		end, { desc = "Format" })
 		null_ls.setup({
-			debug = false,
 			sources = {
 				formatting.clang_format,
 				formatting.gdformat.with({
