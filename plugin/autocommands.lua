@@ -13,7 +13,7 @@ autocmd("TextYankPost", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		require("vim.hl").on_yank({ higroup = "Visual", timeout = 300 })
+		require("vim.highlight").on_yank({ higroup = "Visual", timeout = 200 })
 	end,
 })
 
@@ -213,33 +213,9 @@ autocmd("TermOpen", {
 	group = gr.term,
 	desc = "Disable foldcolumn and signcolumn for terinals",
 	callback = function()
-		vim.opt_local.foldcolumn = "0"
-		vim.opt_local.signcolumn = "no"
+		vim.opt.foldcolumn = "0"
+		vim.opt.signcolumn = "no"
+		vim.opt.number = false
+		vim.opt.relativenumber = false
 	end,
 })
-
-autocmd("TermClose", {
-	pattern = "*lazygit*",
-	desc = "Refresh Neo-Tree when closing lazygit",
-	group = gr.ui,
-	callback = function()
-		local manager_avail, manager = pcall(require, "neo-tree.sources.manager")
-		if manager_avail then
-			for _, source in ipairs({ "filesystem", "git_status", "document_symbols" }) do
-				local module = "neo-tree.sources." .. source
-				if package.loaded[module] then
-					manager.refresh(require(module).name)
-				end
-			end
-		end
-	end,
-})
-
--- autocmd("WinLeave", {
--- 	group = gr.general_settings,
--- 	callback = function()
--- 		if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
--- 			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "i", false)
--- 		end
--- 	end,
--- })
