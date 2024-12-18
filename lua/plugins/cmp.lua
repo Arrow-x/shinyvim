@@ -1,20 +1,5 @@
 return {
 	{
-		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
-		},
-		opts = {
-			history = true,
-			delete_check_events = "TextChanged",
-		},
-	},
-
-	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		version = false,
@@ -180,8 +165,9 @@ return {
 				cmp.setup.cmdline(":", {
 					mapping = cmp.mapping.preset.cmdline(),
 					sources = cmp.config.sources({
-						{ name = "buffer" },
+						{ name = "nvim_lsp" },
 						{ name = "path" },
+						{ name = "buffer" },
 					}, {
 						{
 							name = "cmdline",
