@@ -11,7 +11,7 @@ return {
 			{
 				"williamboman/mason-lspconfig.nvim",
 			},
-			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "saghen/blink.cmp" },
 			{ "Hoffs/omnisharp-extended-lsp.nvim" },
 			{
 				"folke/trouble.nvim",
@@ -127,7 +127,7 @@ return {
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local signs = {
 				{ name = "DiagnosticSignError", text = "" },
