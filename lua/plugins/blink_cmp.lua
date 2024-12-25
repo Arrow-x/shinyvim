@@ -3,9 +3,21 @@ return {
 	-- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"ribru17/blink-cmp-spell",
+		{
+			"saghen/blink.compat",
+			-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
+			version = "*",
+			-- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+			lazy = true,
+			-- make sure to set opts so that lazy.nvim calls blink.compat's setup
+			opts = {},
+		},
+		"f3fora/cmp-spell",
 	},
-	event = "InsertEnter",
+	event = {
+		"InsertEnter",
+		"CmdlineEnter",
+	},
 
 	-- use a release tag to download pre-built binaries
 	version = "v0.*",
@@ -31,17 +43,25 @@ return {
 			-- cmdline = {},
 			providers = {
 				spell = {
-					name = "Spell",
-					module = "blink-cmp-spell",
+					name = "spell",
+					module = "blink.compat.source",
 					opts = {
-						max_entries = 15,
+						-- max_entries = 15,
+						keep_all_entries = false,
+						enable_in_context = function()
+							return true
+						end,
+						preselect_correct_word = true,
 					},
 				},
 			},
 		},
 		completion = {
 			list = {
-				selection = "preselect",
+				selection = function(ctx)
+					local mode = ctx.mode
+					return "preselect"
+				end,
 			},
 			documentation = {
 				auto_show = true,
@@ -50,24 +70,13 @@ return {
 				},
 			},
 		},
-		fuzzy = {
-			sorts = {
-				function(a, b)
-					local sort = require("blink.cmp.fuzzy.sort")
-					if a.source_id == "spell" and b.source_id == "spell" then
-						return sort.label(a, b)
-					end
-				end,
-				-- This is the normal default order, which we fall back to
-				"score",
-				"kind",
-				"label",
+		-- experimental signature help support
+		signature = {
+			enabled = true,
+			window = {
+				border = "single",
 			},
 		},
-		-- experimental signature help support
-		signature = { enabled = true, window = {
-			border = "single",
-		} },
 	},
 	-- allows extending the providers array elsewhere in your config
 	-- without having to redefine it
