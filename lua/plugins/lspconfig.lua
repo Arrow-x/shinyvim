@@ -3,16 +3,14 @@ return {
 		"neovim/nvim-lspconfig",
 		ft = { "lua", "gdscript", "sh", "bash", "python", "cs", "c", "cpp", "markdown" },
 		dependencies = {
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "saghen/blink.cmp" },
+			{ "Hoffs/omnisharp-extended-lsp.nvim" },
 			{
 				"williamboman/mason.nvim",
 				config = true,
 				cmd = { "Mason" },
 			},
-			{
-				"williamboman/mason-lspconfig.nvim",
-			},
-			{ "saghen/blink.cmp" },
-			{ "Hoffs/omnisharp-extended-lsp.nvim" },
 			{
 				"folke/trouble.nvim",
 				opts = {}, -- for default options, refer to the configuration section for custom setup.
