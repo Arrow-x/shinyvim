@@ -20,14 +20,18 @@ return {
 	},
 
 	-- use a release tag to download pre-built binaries
-	version = "v0.*",
+	version = "*",
 	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
 	-- build = 'nix run .#build-plugin',
 
 	opts = {
-		keymap = { preset = "default", ["<C-l>"] = { "select_and_accept" } },
+		keymap = {
+			preset = "default",
+			["<C-l>"] = { "select_and_accept" },
+			["<C-h>"] = { "cancel" },
+		},
 		appearance = {
 			use_nvim_cmp_as_default = true,
 			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -46,7 +50,6 @@ return {
 					name = "spell",
 					module = "blink.compat.source",
 					opts = {
-						-- max_entries = 15,
 						keep_all_entries = false,
 						enable_in_context = function()
 							return true
@@ -60,7 +63,7 @@ return {
 			list = {
 				selection = function(ctx)
 					local mode = ctx.mode
-					return "preselect"
+					return "auto_insert"
 				end,
 			},
 			documentation = {
@@ -69,6 +72,7 @@ return {
 					border = "single",
 				},
 			},
+			menu = { draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } } } },
 		},
 		-- experimental signature help support
 		signature = {
