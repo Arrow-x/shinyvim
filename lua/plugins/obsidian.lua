@@ -19,9 +19,9 @@ return {
 				folder = "notes/dailies",
 				templates = "daily.md",
 			},
-			-- completion = { -- Optional, completion.
-			-- 	nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
-			-- },
+			completion = { -- Optional, completion.
+				nvim_cmp = false, -- if using nvim-cmp, otherwise set to false
+			},
 			templates = { -- Optional, for templates (see below).
 				subdir = "templates",
 				date_format = "%Y-%m-%d-%a",
