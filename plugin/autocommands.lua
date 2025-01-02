@@ -1,6 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+
 local gr = {
 	general_settings = augroup("general_settings", { clear = true }),
 	writing = augroup("writing", { clear = true }),
@@ -34,7 +35,7 @@ autocmd({ "BufWinEnter" }, {
 })
 
 autocmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim", "notify" },
+	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim", "notify", "snipe-menu" },
 	group = gr.general_settings,
 	callback = function()
 		vim.keymap.set("n", "q", function()
