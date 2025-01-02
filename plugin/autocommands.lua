@@ -43,22 +43,6 @@ autocmd("FileType", {
 	end,
 })
 
-autocmd("BufWritePre", {
-	pattern = "*",
-	group = gr.general_settings,
-	callback = function()
-		if shinyvim.autoformat == true then
-			local filetype_ban = { "markdown", "oil" }
-			for _, f in pairs(filetype_ban) do
-				if vim.bo.filetype == f then
-					return
-				end
-			end
-			vim.lsp.buf.format({ timeout_ms = 90000 })
-		end
-	end,
-})
-
 autocmd("FileType", {
 	pattern = { "gitcommit", "mail", "markdown", "vimwiki" },
 	group = gr.writing,

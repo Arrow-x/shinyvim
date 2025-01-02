@@ -170,17 +170,37 @@ return {
 			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 				border = "rounded",
 			})
+			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+			local lsp_formatting = function(bufnr, async)
+				vim.lsp.buf.format({
+					filter = function(client)
+						for _, server in pairs({ "tsserver", "lua_ls", "omnisharp", "csharp_ls" }) do
+							if client.name == server then
+								return false
+							end
+						end
+						return true
+					end,
+					bufnr = bufnr,
+					timeout_ms = 90000,
+					async = async,
+				})
+			end
 			---@diagnostic disable-next-line: unused-local
 			local on_attach = function(client, bufnr)
-				local servers_to_disable_formating_for = { "tsserver", "lua_ls", "omnisharp", "csharp_ls" }
-
-				for _, server in pairs(servers_to_disable_formating_for) do
-					if client.name == server then
-						client.server_capabilities.documentFormattingProvider = false
-						client.server_capabilities.documentRangeFormattingProvider = false
-					end
-				end
+				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					group = augroup,
+					buffer = bufnr,
+					callback = function()
+						if shinyvim.autoformat == true then
+							if client.supports_method("textDocument/formatting") then
+								lsp_formatting(bufnr, false)
+							end
+						end
+					end,
+				})
 
 				if client.name ~= "gdscript" then
 					require("illuminate").on_attach(client)
@@ -190,7 +210,6 @@ return {
 					shinyvim.autoformat = not shinyvim.autoformat
 					vim.notify("Autoformating is " .. tostring(shinyvim.autoformat))
 				end
-
 				local keymap = vim.keymap.set
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
 				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
@@ -215,7 +234,7 @@ return {
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
 				keymap("n", "<leader>lf", function()
-					vim.lsp.buf.format({ timeout_ms = 90000, async = true })
+					lsp_formatting(bufnr, true)
 				end, { desc = "Format" })
 			end
 
