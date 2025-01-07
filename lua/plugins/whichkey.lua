@@ -17,6 +17,8 @@ return {
 			{ plugin = "lazy.nvim", prefix = "<leader>z", group = "Lazy" },
 			{ plugin = "hop.nvim", prefix = "<leader>j", group = "Hop" },
 			{ plugin = "hover.nvim", prefix = "<leader>k", group = "Hover" },
+			{ plugin = "vim-godot", prefix = "<leader>r", group = "Vim-Godot" },
+			{ plugin = "vim-dispatch", prefix = "<leader>d", group = "Vim-Dispatch" },
 		}
 
 		local mappings = {
