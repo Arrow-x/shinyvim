@@ -61,10 +61,9 @@ return {
 		},
 		completion = {
 			list = {
-				selection = function(ctx)
-					local mode = ctx.mode
-					return "auto_insert"
-				end,
+				selection = {
+					auto_insert = true,
+				}
 			},
 			documentation = {
 				auto_show = true,
