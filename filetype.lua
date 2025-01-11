@@ -6,4 +6,5 @@ vim.filetype.add({
 	filename = {
 		[".xprofile"] = "sh",
 	},
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
