@@ -129,3 +129,4 @@ keymap("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "make current file ex
 keymap("n", "<leader>mX", "<cmd>!chmod -x %<CR>", { desc = "make current file not excutable" })
 
 keymap("n", "<leader>zz", "<cmd>Lazy<cr>", { desc = "show lazy" })
+keymap("n", "<leader>zm", "<cmd>Mason<cr>", {desc = "Mason UI"})
