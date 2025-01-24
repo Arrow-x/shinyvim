@@ -8,7 +8,7 @@ return {
 			require("telescope").load_extension("fzf")
 			telescope.setup({
 				defaults = {
-					file_ignore_patterns = { "^.git" },
+					file_ignore_patterns = { "^.git", ".*.uid$" },
 					prompt_prefix = string.format("%s ", ""),
 					selection_caret = string.format("%s ", "❯"),
 					path_display = { "truncate" },
