@@ -15,7 +15,7 @@ local keymap = vim.keymap.set
 keymap("n", "<leader>q", ":confirm bd<cr>", { desc = "close buffer" })
 keymap("n", "<leader>n", ":enew<cr>", { desc = "New File" })
 
-keymap("n", "<C-s>", ":w!<cr>", { desc = "force save" })
+keymap("n", "<C-s>", ":wa!<cr>", { desc = "force save" })
 keymap("n", "<C-q>", ":qa!<cr>", { desc = "force quite" })
 
 -- Netrw Mappings
