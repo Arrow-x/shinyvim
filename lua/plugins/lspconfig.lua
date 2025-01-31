@@ -200,9 +200,7 @@ return {
 					buffer = bufnr,
 					callback = function()
 						if shinyvim.autoformat == true then
-							if client.supports_method("textDocument/formatting") then
-								lsp_formatting(bufnr, false)
-							end
+							lsp_formatting(bufnr, false)
 						end
 					end,
 				})
