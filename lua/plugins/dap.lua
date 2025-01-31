@@ -97,7 +97,7 @@ return {
 				{ text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
 			)
 		end
-		local config = {
+		local config_cs = {
 			{
 				type = "coreclr",
 				name = "DOTNET: Launch",
@@ -153,6 +153,7 @@ return {
 				processId = dap_utils.pick_process,
 			},
 		}
+		dap.adapters.godot = { type = "server", host = "127.0.0.1", port = 6006 }
 		dap.adapters.coreclr = {
 			type = "executable",
 			command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"),
@@ -165,7 +166,16 @@ return {
 			args = { "--interpreter=vscode", "--", "godot" },
 		}
 
-		dap.configurations.cs = config
+		dap.configurations.cs = config_cs
+		dap.configurations.gdscript = {
+			{
+				type = "godot",
+				request = "launch",
+				name = "Launch scene",
+				project = "${workspaceFolder}",
+				launch_scene = true,
+			},
+		}
 	end,
 	keys = {
 		{
