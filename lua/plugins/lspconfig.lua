@@ -177,7 +177,7 @@ return {
 			})
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-			local lsp_formatting = function(bufnr, async)
+			local function lsp_formatting(bufnr, async)
 				vim.lsp.buf.format({
 					filter = function(client)
 						for _, server in pairs({ "tsserver", "lua_ls", "omnisharp", "csharp_ls" }) do
