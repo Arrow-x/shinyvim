@@ -168,13 +168,6 @@ return {
 
 			vim.diagnostic.config(config)
 
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "rounded",
-			})
-
-			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-				border = "rounded",
-			})
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 			local function lsp_formatting(bufnr, async)
@@ -209,13 +202,23 @@ return {
 					require("illuminate").on_attach(client)
 				end
 
+				local _hover = vim.lsp.buf.hover
+
+				vim.lsp.buf.hover = function(opts)
+					opts = opts or {}
+					opts.border = opts.border or "single"
+					return _hover(opts)
+				end
+
 				local keymap = vim.keymap.set
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
 				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
 				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "get references" })
-				keymap("n", "<leader>lH", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+				keymap("n", "<leader>lH", function()
+					vim.lsp.buf.signature_help({ border = "single" })
+				end, { desc = "Signature Help" })
 				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
 				-- keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
 				-- keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
