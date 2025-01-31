@@ -6,6 +6,15 @@ return {
 			dependencies = {
 				"nvim-neotest/nvim-nio",
 			},
+			keys = {
+				{
+					"<leader>bt",
+					function()
+						require("dapui").toggle()
+					end,
+					desc = "Toggle dapui UI"
+				}
+			},
 			config = function()
 				local dap, dapui = require("dap"), require("dapui")
 				dapui.setup({
