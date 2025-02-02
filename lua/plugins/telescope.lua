@@ -55,19 +55,45 @@ return {
 					return vim.fn.executable("make") == 1
 				end,
 			},
+			{
+				"nvim-telescope/telescope-frecency.nvim",
+				config = function()
+					require("telescope").setup({
+						extensions = {
+							frecency = {
+								show_filter_column = false,
+							},
+							auto_validate = true,
+						},
+						require("telescope").load_extension("frecency"),
+					})
+				end,
+			},
 		},
 		keys = {
 			{
 				"<leader>ff",
 				function()
-					local fopts = { hidden = true } -- define here if you want to define something
-					local ok = pcall(require("telescope.builtin").git_files)
-					if not ok then
-						require("telescope.builtin").find_files(fopts)
-					end
+					require("telescope").extensions.frecency.frecency({
+						workspace = "CWD",
+						path_display = { "shorten" },
+						theme = "ivy",
+						hide_current_buffer = true,
+					})
 				end,
-				desc = "Find Files Git",
+				desc = "Telescope frecency",
 			},
+			-- {
+			-- 	"<leader>ff",
+			-- 	function()
+			-- 		local fopts = { hidden = true } -- define here if you want to define something
+			-- 		local ok = pcall(require("telescope.builtin").git_files)
+			-- 		if not ok then
+			-- 			require("telescope.builtin").find_files(fopts)
+			-- 		end
+			-- 	end,
+			-- 	desc = "Find Files Git",
+			-- },
 			{
 				"<leader>fb",
 				function()
@@ -187,41 +213,6 @@ return {
 					require("telescope.builtin").resume()
 				end,
 				desc = "Find from the [P]revious search",
-			},
-		},
-	},
-
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function()
-			require("telescope").setup({
-
-				extensions = {
-					frecency = {
-						show_scores = true,
-						-- Show the path of the active filter before file paths.
-						-- So if I'm in the `dotfiles-latest` directory it will show me that
-						-- before the name of the file
-						show_filter_column = false,
-					},
-				},
-				require("telescope").load_extension("frecency"),
-			})
-		end,
-		keys = {
-			{
-				"<leader>fr",
-				function()
-					require("telescope").extensions.frecency.frecency({
-						workspace = "CWD",
-						path_display = { "shorten" },
-						theme = "ivy",
-					})
-				end,
-				desc = "Telescope frecency",
 			},
 		},
 	},
