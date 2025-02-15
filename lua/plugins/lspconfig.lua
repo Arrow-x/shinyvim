@@ -2,6 +2,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		ft = { "lua", "gdscript", "sh", "bash", "python", "cs" },
+		cmd = {"LspStart"},
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
@@ -145,6 +146,7 @@ return {
 
 			local config = {
 				virtual_text = true,
+				virtual_lines = true,
 				signs = {
 					text = {
 						["INFO"] = "",
