@@ -1,12 +1,12 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		ft = { "lua", "gdscript", "sh", "bash", "python", "cs", "c", "cpp", "markdown" },
+		ft = { "lua", "gdscript", "sh", "bash", "python", "cs" },
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
 				config = {
-					ensure_installed = { "lua_ls", "bashls", "pylsp", "clangd", "marksman" },
+					ensure_installed = { "lua_ls", "bashls", "pylsp", "clangd"},
 				},
 			},
 			{ "saghen/blink.cmp" },

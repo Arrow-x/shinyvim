@@ -17,10 +17,10 @@ return {
 				}),
 				formatting.stylua,
 				formatting.shfmt.with({ extra_args = { "-ci" } }),
-				formatting.markdownlint,
-				diagnostics.markdownlint.with({
-					extra_args = { "--config", "/home/arrowx/.config/nvim/lua/config/lsp/markdownlint.json" },
-				}),
+				-- formatting.markdownlint,
+				-- diagnostics.markdownlint.with({
+				-- 	extra_args = { "--config", "/home/arrowx/.config/nvim/lua/config/lsp/markdownlint.json" },
+				-- }),
 
 				-- formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
 				-- formatting.black.with({ extra_args = { "--fast" } }),
