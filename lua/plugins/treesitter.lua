@@ -24,7 +24,7 @@ return {
 		highlight = {
 			enable = true, -- false will disable the whole extension
 			disable = function(_, bufnr)
-				return vim.api.nvim_buf_line_count(bufnr) > 1000
+				return vim.api.nvim_buf_line_count(bufnr) > 10000
 			end,
 			additional_vim_regex_highlighting = { "markdown", "ruby" },
 		},
