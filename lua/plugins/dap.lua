@@ -12,7 +12,13 @@ return {
 					function()
 						require("dapui").toggle()
 					end,
-					desc = "Toggle dapui UI"
+					desc = "Toggle dapui UI",
+				},
+				{
+					"<leader>b?",
+					function ()
+						require("dapui").eval(nil, {enter = true})
+					end
 				}
 			},
 			config = function()
