@@ -31,6 +31,7 @@ return {
 			preset = "default",
 			["<C-l>"] = { "select_and_accept" },
 			["<C-h>"] = { "cancel" },
+			["<C-k>"] = {},
 		},
 		appearance = {
 			use_nvim_cmp_as_default = false,
@@ -44,8 +45,13 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "spell" },
 			-- optionally disable cmdline completions
-			-- cmdline = {},
 			providers = {
+				cmdline = {
+					-- ignores cmdline completions when executing shell commands
+					enabled = function()
+						return vim.fn.getcmdtype() ~= ":" or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
+					end,
+				},
 				spell = {
 					name = "spell",
 					module = "blink.compat.source",
