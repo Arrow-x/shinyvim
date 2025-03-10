@@ -47,7 +47,7 @@ keymap("n", "<C-h>", ":bprevious<CR>", { silent = true })
 
 -- Keeping it centered
 keymap("n", "n", "nzzzv")
-keymap("n", "N", "nzzzv")
+keymap("n", "N", "Nzzzv")
 keymap("n", "J", "mzJ`z")
 
 keymap("n", "<C-d>", "<C-d>zz")
