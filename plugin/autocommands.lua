@@ -71,7 +71,7 @@ autocmd("FileType", {
 })
 
 autocmd("BufReadPre", {
-	pattern = { "**/Obsidian/**" },
+	pattern = { "/home/arrowx/Sources/Vault/**" },
 	group = gr.writing,
 	callback = function()
 		vim.o.background = "light"
@@ -147,32 +147,6 @@ autocmd("FileType", {
 	group = gr.exe_code,
 	callback = function()
 		vim.keymap.set("n", "<C-F5>", ":vsp<CR> :term go run %<CR> :startinsert<CR>", {
-			buffer = true,
-			noremap = true,
-			silent = true,
-			desc = "Executer the current buffer",
-		})
-	end,
-})
-
-autocmd("FileType", {
-	pattern = "cpp",
-	group = gr.exe_code,
-	callback = function()
-		vim.keymap.set("n", "<C-F5>", ":vsp<CR> :term g++ % && ./a.out <CR> :startinsert<CR>", {
-			buffer = true,
-			noremap = true,
-			silent = true,
-			desc = "Executer the current buffer",
-		})
-	end,
-})
-
-autocmd("FileType", {
-	pattern = "cpp",
-	group = gr.exe_code,
-	callback = function()
-		vim.keymap.set("n", "<C-F7>", ":vsp<CR> :term g++ %<CR> :startinsert<CR>", {
 			buffer = true,
 			noremap = true,
 			silent = true,
