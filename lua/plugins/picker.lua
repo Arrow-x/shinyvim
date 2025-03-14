@@ -2,29 +2,25 @@ return {
 	"folke/snacks.nvim",
 	opts = {
 		picker = {
-			layout = "left",
+			layout = "ivy",
 		},
 	},
 	keys = {
-		-- Top Pickers & Explorer
 		{
-			"<leader>ff",
+			"<leader>fF",
 			function()
-				Snacks.picker.smart()
+				Snacks.picker.files({ exclude = { "^.git", "^.godot", "*.uid" }, hidden = true, ignored = false })
 			end,
-			desc = "Smart Find Files",
+			desc = "Find Files",
 		},
-		-- {
-		-- 	"<leader>ff",
-		-- 	function()
-		-- 		Snacks.picker.files({ exclude = { "^.git", "^.godot", "*.uid" } })
-		-- 	end,
-		-- 	desc = "Find Files",
-		-- },
 		{
 			"<leader>fb",
 			function()
-				Snacks.picker.buffers()
+				Snacks.picker.buffers({
+					layout = {
+						preset = "vscode",
+					},
+				})
 			end,
 			desc = "Buffers",
 		},
@@ -40,7 +36,7 @@ return {
 			function()
 				Snacks.picker.command_history({
 					layout = {
-						preset = "select",
+						preset = "vscode",
 					},
 				})
 			end,
@@ -51,16 +47,16 @@ return {
 			function()
 				Snacks.picker.notifications({
 					layout = {
-						preset = "select",
+						preset = "vscode",
 					},
 				})
 			end,
 			desc = "Notification History",
 		},
 		{
-			"<leader>fG",
+			"<leader>ff",
 			function()
-				Snacks.picker.git_files()
+				Snacks.picker.git_files({ exclude = { "^.git", "^.godot", "*.uid" } })
 			end,
 			desc = "Find Git Files",
 		},
@@ -147,6 +143,20 @@ return {
 				Snacks.picker.help()
 			end,
 			desc = "Help Pages",
+		},
+		{
+			"<leader>fl",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "LSP Symbols",
+		},
+		{
+			"<leader>fL",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			desc = "LSP Workspace Symbols",
 		},
 		-- 	{
 		-- 		"<leader>e",
@@ -376,20 +386,6 @@ return {
 		-- 			Snacks.picker.lsp_type_definitions()
 		-- 		end,
 		-- 		desc = "Goto T[y]pe Definition",
-		-- 	},
-		-- 	{
-		-- 		"<leader>ss",
-		-- 		function()
-		-- 			Snacks.picker.lsp_symbols()
-		-- 		end,
-		-- 		desc = "LSP Symbols",
-		-- 	},
-		-- 	{
-		-- 		"<leader>sS",
-		-- 		function()
-		-- 			Snacks.picker.lsp_workspace_symbols()
-		-- 		end,
-		-- 		desc = "LSP Workspace Symbols",
 		-- 	},
 	},
 }
