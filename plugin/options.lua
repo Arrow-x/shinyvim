@@ -33,6 +33,7 @@ O.scrolloff = 8 -- is one of my fav
 O.sidescrolloff = 8
 O.autoread = true
 -- O.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+O.foldlevel= 8
 
 O.hlsearch = true -- highlight all matches on previous search pattern
 O.incsearch = true
