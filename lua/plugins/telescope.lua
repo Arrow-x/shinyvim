@@ -55,20 +55,6 @@ return {
 					return vim.fn.executable("make") == 1
 				end,
 			},
-			{
-				"nvim-telescope/telescope-frecency.nvim",
-				config = function()
-					require("telescope").setup({
-						extensions = {
-							frecency = {
-								show_filter_column = false,
-							},
-							auto_validate = true,
-						},
-						require("telescope").load_extension("frecency"),
-					})
-				end,
-			},
 		},
 		-- keys = {
 		-- 	{
