@@ -56,7 +56,7 @@ return {
 		{
 			"<leader>ff",
 			function()
-				Snacks.picker.git_files({ exclude = { "^.git", "^.godot", "*.uid" } })
+				Snacks.picker.git_files({ untracked = true })
 			end,
 			desc = "Find Git Files",
 		},
