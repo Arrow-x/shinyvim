@@ -66,3 +66,13 @@ G.loaded_zip = true -- disable zip
 G.loaded_zipPlugin = true -- disable zip
 G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
+if vim.fn.has("nvim-0.10") then
+	O.smoothscroll = true
+	O.foldexpr = "v:lua.shinyvim.foldexpr()"
+	O.foldmethod = "expr"
+	O.foldtext = ""
+else
+	O.foldmethod = "indent"
+	O.foldexpr = "v:lua.shinyvim.foldtext()"
+end
+G.markdown_recommended_style = 0
