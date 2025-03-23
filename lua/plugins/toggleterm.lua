@@ -23,15 +23,15 @@ return {
 		},
 	},
 	keys = {
-		{
-			"<leader>gg",
-			function()
-				require("toggleterm.terminal").Terminal
-					:new({ direction = "float", cmd = "lazygit", hidden = true })
-					:toggle()
-			end,
-			desc = "Lazygit",
-		},
+		-- {
+		-- 	"<leader>gg",
+		-- 	function()
+		-- 		require("toggleterm.terminal").Terminal
+		-- 			:new({ direction = "float", cmd = "lazygit", hidden = true })
+		-- 			:toggle()
+		-- 	end,
+		-- 	desc = "Lazygit",
+		-- },
 		{
 			"<leader>`t",
 			function()

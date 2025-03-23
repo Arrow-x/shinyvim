@@ -12,7 +12,7 @@ local keymap = vim.keymap.set
 --   command_mode = "c",
 
 -- Normal --
-keymap("n", "<leader>q", ":confirm bd<cr>", { desc = "close buffer" })
+-- keymap("n", "<leader>q", ":confirm bd<cr>", { desc = "close buffer" })
 keymap("n", "<leader>n", ":enew<cr>", { desc = "New File" })
 
 keymap("n", "<C-s>", ":wa!<cr>", { desc = "force save" })
@@ -129,4 +129,4 @@ keymap("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { desc = "make current file ex
 keymap("n", "<leader>mX", "<cmd>!chmod -x %<CR>", { desc = "make current file not excutable" })
 
 keymap("n", "<leader>zz", "<cmd>Lazy<cr>", { desc = "show lazy" })
-keymap("n", "<leader>zm", "<cmd>Mason<cr>", {desc = "Mason UI"})
+keymap("n", "<leader>zm", "<cmd>Mason<cr>", { desc = "Mason UI" })

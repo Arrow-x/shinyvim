@@ -19,11 +19,10 @@ return {
 			require("notify").dismiss({ silent = true, pending = true })
 		end, { desc = "Delete all Notifications" })
 
-		if shinyvim.has("telescope.nvim") then
+		if shinyvim.has("snacks.nvim") then
 			vim.keymap.set("n", "<leader>mH", function()
-				require("telescope").load_extension("notify")
-				require("telescope").extensions.notify.notify()
-			end, { desc = "Show Notifications history in Telescope" })
+				Snacks.notifier.show_history()
+			end, { desc = "Show Notifications history" })
 		end
 	end,
 }
