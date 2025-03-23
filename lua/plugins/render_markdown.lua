@@ -7,15 +7,22 @@ return {
     ---@type render.md.UserConfig
     opts = {
         heading = {
-            sign = false
+            sign = false,
+            render_modes = true,
         },
         code = {
-            sign = false
+            sign = false,
+            render_modes = true,
+        },
+        dash = {
+            render_modes = true,
         },
         bullet = {
+            render_modes = true,
             right_pad= 1,
         },
         link = {
+            render_modes = true,
             image = '󰥶  ',
             -- Inlined with 'email_autolink' elements.
             email = '󰀓  ',
