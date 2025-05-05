@@ -76,10 +76,6 @@ autocmd("BufReadPre", {
 	callback = function()
 		vim.o.background = "light"
 		vim.cmd([[colorscheme gruvbox]])
-		local status_ok, barbecue = pcall(require, "barbecue.ui")
-		if status_ok then
-			barbecue.toggle(false)
-		end
 	end,
 })
 
