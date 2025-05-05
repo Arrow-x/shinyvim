@@ -4,6 +4,9 @@ return {
 	init = function()
 		vim.g.godot_executable = "~/.local/bin/godot"
 	end,
+	dependencies = {
+		"tpope/vim-dispatch",
+	},
 	keys = {
 		{
 			"<leader>rr",
