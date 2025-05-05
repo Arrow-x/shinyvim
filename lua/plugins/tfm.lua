@@ -4,10 +4,10 @@ return {
 	opts = {
 		-- TFM to use
 		-- Possible choices: "ranger" | "nnn" | "lf" | "vifm" | "yazi" (default)
-		file_manager = "yazi",
+		file_manager = "lf",
 		-- Replace netrw entirely
 		-- Default: false
-		replace_netrw = true,
+		replace_netrw = false,
 		-- Customise UI. The below options are the default
 		ui = {
 			border = "rounded",
@@ -25,29 +25,29 @@ return {
             end,
             desc = "TFM",
         },
-        {
-            "<leader>mh",
-            function()
-                local tfm = require("tfm")
-                tfm.open(nil, tfm.OPEN_MODE.split)
-            end,
-            desc = "TFM - horizontal split",
-        },
-        {
-            "<leader>mv",
-            function()
-                local tfm = require("tfm")
-                tfm.open(nil, tfm.OPEN_MODE.vsplit)
-            end,
-            desc = "TFM - vertical split",
-        },
-        {
-            "<leader>mt",
-            function()
-                local tfm = require("tfm")
-                tfm.open(nil, tfm.OPEN_MODE.tabedit)
-            end,
-            desc = "TFM - new tab",
-        },
+        -- {
+        --     "<leader>mh",
+        --     function()
+        --         local tfm = require("tfm")
+        --         tfm.open(nil, tfm.OPEN_MODE.split)
+        --     end,
+        --     desc = "TFM - horizontal split",
+        -- },
+        -- {
+        --     "<leader>mv",
+        --     function()
+        --         local tfm = require("tfm")
+        --         tfm.open(nil, tfm.OPEN_MODE.vsplit)
+        --     end,
+        --     desc = "TFM - vertical split",
+        -- },
+        -- {
+        --     "<leader>mt",
+        --     function()
+        --         local tfm = require("tfm")
+        --         tfm.open(nil, tfm.OPEN_MODE.tabedit)
+        --     end,
+        --     desc = "TFM - new tab",
+        -- },
     },
 }
