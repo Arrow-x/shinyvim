@@ -1,6 +1,6 @@
 return {
 	"rolv-apneseth/tfm.nvim",
-	lazy = false,
+	-- lazy = false,
 	opts = {
 		-- TFM to use
 		-- Possible choices: "ranger" | "nnn" | "lf" | "vifm" | "yazi" (default)
