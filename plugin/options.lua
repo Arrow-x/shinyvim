@@ -34,6 +34,7 @@ O.sidescrolloff = 8
 O.autoread = true
 -- O.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 O.foldlevel= 8
+O.title = true
 
 O.hlsearch = true -- highlight all matches on previous search pattern
 O.incsearch = true
@@ -50,7 +51,12 @@ O.whichwrap:append("<,>,[,],h,l")
 O.iskeyword:append("-")
 -- O.path:append("**")
 
+-- Folds
+O.foldmethod = "indent"
+O.foldexpr = "v:lua.shinyvim.foldtext()"
+
 G.highlighturl_enabled = true -- highlight URLs by default
+
 G.zipPlugin = false -- disable zip
 G.load_black = false -- disable black
 G.loaded_2html_plugin = true -- disable 2html
@@ -66,13 +72,9 @@ G.loaded_zip = true -- disable zip
 G.loaded_zipPlugin = true -- disable zip
 G.loaded_vimball = true -- disable vimball
 G.loaded_vimballPlugin = true -- disable vimball
-if vim.fn.has("nvim-0.10") then
-	O.smoothscroll = true
-	O.foldexpr = "v:lua.shinyvim.foldexpr()"
-	O.foldmethod = "expr"
-	O.foldtext = ""
-else
-	O.foldmethod = "indent"
-	O.foldexpr = "v:lua.shinyvim.foldtext()"
-end
+
+G.netrw_banner = 0
+G.netrw_brows_split = 4
+G.netrw_liststyle = 3
+
 G.markdown_recommended_style = 0
