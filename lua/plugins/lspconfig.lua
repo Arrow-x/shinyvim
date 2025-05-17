@@ -2,12 +2,12 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		ft = { "lua", "gdscript", "sh", "bash", "python", "cs" },
-		cmd = {"LspStart"},
+		cmd = { "LspStart" },
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
 				config = {
-					ensure_installed = { "lua_ls", "bashls", "pylsp", "clangd"},
+					ensure_installed = { "lua_ls", "bashls", "pylsp", "clangd" },
 				},
 			},
 			{ "saghen/blink.cmp" },
@@ -130,9 +130,6 @@ return {
 			},
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 			local signs = {
 				{ name = "DiagnosticSignError", text = "" },
 				{ name = "DiagnosticSignWarn", text = "" },
@@ -206,6 +203,7 @@ return {
 
 				local _hover = vim.lsp.buf.hover
 
+				---@diagnostic disable-next-line: duplicate-set-field
 				vim.lsp.buf.hover = function(opts)
 					opts = opts or {}
 					opts.border = opts.border or "single"
@@ -256,20 +254,24 @@ return {
 				table.insert(servers, server)
 			end
 
-			for _, server in pairs(servers) do
-				local opts = {
-					on_attach = function(client, bufnr)
-						on_attach(client, bufnr)
-					end,
-					capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
-				}
+			local lspconfig = require("lspconfig")
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+			local opts = {
+				on_attach = function(client, bufnr)
+					on_attach(client, bufnr)
+				end,
+			}
+
+			for _, server in pairs(servers) do
 				local present, custom_settings = pcall(require, "config.lsp." .. server)
+				opts.capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {})
 				if present then
 					opts = vim.tbl_deep_extend("force", custom_settings, opts)
 				end
-				lspconfig[server].setup(opts)
+				vim.lsp.config(server, opts)
 			end
+			vim.lsp.enable(servers)
 		end,
 	},
 }
