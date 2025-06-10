@@ -74,6 +74,10 @@ autocmd("BufReadPre", {
 	pattern = { "/home/arrowx/Sources/Vault/**" },
 	group = gr.writing,
 	callback = function()
+		if vim.g.neovide then
+			vim.g.neovide_opacity = 1
+			vim.g.neovide_floating_shadow = false
+		end
 		vim.o.background = "light"
 		vim.cmd([[colorscheme gruvbox]])
 	end,
