@@ -55,6 +55,9 @@ O.iskeyword:append("-")
 O.foldmethod = "indent"
 O.foldexpr = "v:lua.shinyvim.foldtext()"
 
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 G.highlighturl_enabled = true -- highlight URLs by default
 
 G.zipPlugin = false -- disable zip
@@ -76,7 +79,6 @@ G.loaded_vimballPlugin = true -- disable vimball
 G.netrw_banner = 0
 G.netrw_brows_split = 4
 G.netrw_liststyle = 3
-
 G.markdown_recommended_style = 0
 
 if vim.g.neovide then
