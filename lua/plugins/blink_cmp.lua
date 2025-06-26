@@ -46,12 +46,12 @@ return {
 			default = { "lsp", "path", "snippets", "buffer", "spell" },
 			-- optionally disable cmdline completions
 			providers = {
-				cmdline = {
-					-- ignores cmdline completions when executing shell commands
-					enabled = function()
-						return vim.fn.getcmdtype() ~= ":" or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
-					end,
-				},
+				-- cmdline = {
+				-- 	-- ignores cmdline completions when executing shell commands
+				-- 	enabled = function()
+				-- 		return vim.fn.getcmdtype() ~= ":" or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
+				-- 	end,
+				-- },
 				spell = {
 					name = "spell",
 					module = "blink.compat.source",
@@ -75,6 +75,17 @@ return {
 							end, vim.api.nvim_list_bufs())
 						end,
 					},
+				},
+			},
+		},
+		cmdline = {
+			keymap = {
+				preset = "inherit",
+			},
+			completion = {
+				menu = {
+					auto_show = true,
+					-- min_keyword_length = 2,
 				},
 			},
 		},
