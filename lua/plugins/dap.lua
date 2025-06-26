@@ -136,12 +136,26 @@ return {
 					end,
 					cwd = "${workspaceFolder}",
 				},
+
 				{
 					type = "codelldb",
 					request = "attach",
 					name = "Attach to process",
 					pid = require("dap.utils").pick_process,
 					cwd = "${workspaceFolder}",
+				},
+
+				{
+					name = "GDextension",
+					type = "codelldb",
+					request = "launch",
+					program = "/home/arrowx/.local/bin/godot",
+					args = {
+						"--path",
+						"${workspaceFolder}/demo/",
+					},
+					cwd = "${workspaceFolder}",
+					console = "internalConsole",
 				},
 			}
 		end
