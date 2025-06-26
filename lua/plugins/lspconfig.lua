@@ -41,6 +41,8 @@ return {
 					return _hover(opts)
 				end
 
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+
 				local keymap = vim.keymap.set
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
 				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
@@ -66,11 +68,19 @@ return {
 					vim.cmd("LspInfo")
 				end, { desc = "Info" })
 
-				local function client_supports_method(client, method, bufnr)
+				if client ~= nil then
+					if client.name == "clangd" then
+						keymap("n", "<leader>ls", function()
+							vim.cmd("LspClangdSwitchSourceHeader")
+						end, { desc = "use clangd to switch between header and implemntation" })
+					end
+				end
+
+				local function client_supports_method(_client, method, bufnr)
 					if vim.fn.has("nvim-0.11") == 1 then
-						return client:supports_method(method, bufnr)
+						return _client:supports_method(method, bufnr)
 					else
-						return client.supports_method(method, { bufnr = bufnr })
+						return _client.supports_method(method, { bufnr = bufnr })
 					end
 				end
 
@@ -79,7 +89,6 @@ return {
 				--    See `:help CursorHold` for information about when this is executed
 				--
 				-- When you move your cursor, the highlights will be cleared (the second autocommand).
-				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if
 					client
 					and client_supports_method(
