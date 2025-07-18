@@ -1,6 +1,6 @@
 _G.shinyvim = {}
 
-shinyvim.autoformat = false
+shinyvim.autoformat = true
 shinyvim.ts_context_toggle = true
 
 function shinyvim.has(plugin)
