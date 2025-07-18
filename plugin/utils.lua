@@ -93,7 +93,7 @@ function shinyvim.foldexpr()
 		if vim.bo[buf].filetype == "" then
 			return "0"
 		end
-		if vim.bo[buf].filetype:find("dashboard") then
+		if vim.bo[buf].filetype:find("dashboard") or vim.bo[buf].filetype == "oil" then
 			vim.b[buf].ts_folds = false
 		else
 			vim.b[buf].ts_folds = pcall(vim.treesitter.get_parser, buf)
