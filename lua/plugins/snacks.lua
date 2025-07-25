@@ -106,7 +106,14 @@ return {
 			{
 				"<leader>fg",
 				function()
-					Snacks.picker.grep({ exclude = { "^.git", "^.godot", "*.uid" } })
+					Snacks.picker.git_grep()
+				end,
+				desc = "Grep",
+			},
+			{
+				"<leader>fG",
+				function()
+					Snacks.picker.grep_buffers()
 				end,
 				desc = "Grep",
 			},
