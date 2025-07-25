@@ -1,7 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-
 local gr = {
 	general_settings = augroup("general_settings", { clear = true }),
 	writing = augroup("writing", { clear = true }),
@@ -71,7 +70,7 @@ autocmd("FileType", {
 })
 
 autocmd("BufReadPre", {
-	pattern = { "/home/arrowx/Sources/Vault/**" },
+	pattern = { "/home/arrow-x/Sources/Vault/**" },
 	group = gr.writing,
 	callback = function()
 		if vim.g.neovide then

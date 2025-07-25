@@ -204,7 +204,7 @@ return {
 								-- here.
 								-- '${3rd}/luv/library'
 								-- '${3rd}/busted/library'
-								-- "/home/arrowx/.local/share/nvim/lazy/snacks.nvim"
+								-- "~/.local/share/nvim/lazy/snacks.nvim"
 							},
 							-- Or pull in all of 'runtimepath'.
 							-- NOTE: this is a lot slower and will cause issues when working on

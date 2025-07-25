@@ -149,7 +149,7 @@ return {
 					name = "GDextension",
 					type = "codelldb",
 					request = "launch",
-					program = "/home/arrowx/.local/bin/godot",
+					program = "~/.local/bin/godot",
 					args = {
 						"--path",
 						"${workspaceFolder}/demo/",

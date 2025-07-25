@@ -3,8 +3,8 @@ return {
 	lazy = true,
 	version = "*", -- recommended, use latest release instead of latest commit
 	event = {
-		"BufReadPre /home/arrowx/Sources/Vault/**",
-		"BufNewFile /home/arrowx/Sources/Vault/**",
+		"BufReadPre /home/arrow-x/Sources/Vault/**",
+		"BufNewFile /home/arrow-x/Sources/Vault/**",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
