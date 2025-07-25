@@ -153,6 +153,7 @@ return {
 					args = {
 						"--path",
 						"${workspaceFolder}/demo/",
+						"-s",
 					},
 					cwd = "${workspaceFolder}",
 					console = "internalConsole",
