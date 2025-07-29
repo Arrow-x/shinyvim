@@ -323,13 +323,13 @@ return {
 			-- 		end,
 			-- 		desc = "Grep Open Buffers",
 			-- 	},
-			-- 	{
-			-- 		"<leader>sg",
-			-- 		function()
-			-- 			Snacks.picker.grep()
-			-- 		end,
-			-- 		desc = "Grep",
-			-- 	},
+			{
+				"<leader>fp",
+				function()
+					Snacks.picker.grep()
+				end,
+				desc = "Grep",
+			},
 			-- 	{
 			-- 		"<leader>sa",
 			-- 		function()
