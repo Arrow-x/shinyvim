@@ -32,18 +32,9 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
-				local _hover = vim.lsp.buf.hover
-
-				---@diagnostic disable-next-line: duplicate-set-field
-				vim.lsp.buf.hover = function(opts)
-					opts = opts or {}
-					opts.border = opts.border or "single"
-					return _hover(opts)
-				end
-
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-
 				local keymap = vim.keymap.set
+
 				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
 				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
 				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })

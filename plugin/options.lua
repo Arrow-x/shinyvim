@@ -55,6 +55,8 @@ O.iskeyword:append("-")
 O.foldmethod = "indent"
 O.foldexpr = "v:lua.shinyvim.foldtext()"
 
+O.winborder = "rounded"
+
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
