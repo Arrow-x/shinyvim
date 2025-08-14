@@ -135,6 +135,9 @@ return {
 					[vim.diagnostic.severity.HINT] = "󰌶 ",
 				},
 			},
+			virtual_lines = {
+				current_line = true,
+			},
 			virtual_text = {
 				source = "if_many",
 				spacing = 2,
