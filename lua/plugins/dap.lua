@@ -119,7 +119,13 @@ return {
 		},
 	},
 	config = function()
+		local pickers = require("telescope.pickers")
+		local finders = require("telescope.finders")
+		local conf = require("telescope.config").values
+		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
 		local dap = require("dap")
+		local dap_utils = require("dap.utils")
 		local icons = {
 			Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
 			Breakpoint = " ",
@@ -135,12 +141,107 @@ return {
 				{ text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
 			)
 		end
+
+		local function pick_file(filter, title)
+			-- run fd to list files, pipe to fzf
+			local cmd = string.format("fd --no-ignore -e %s | fzf --prompt='%s> '", filter, title)
+			local handle = io.popen(cmd)
+			if not handle then
+				return nil
+			end
+			local selection = handle:read("*l") -- read first line (user selection)
+			handle:close()
+			return selection
+		end
+
+		local config_cs = {
+
+			{
+				name = "Dotnet/Godot: Launch Project",
+				type = "coreclrP",
+				request = "launch",
+			},
+			{
+				name = "DOTNET: Launch",
+				type = "coreclr",
+				request = "launch",
+				program = function()
+					return coroutine.create(function(coro)
+						local opts = {}
+						pickers
+							.new(opts, {
+								prompt_title = "Select DLL",
+								finder = finders.new_oneshot_job({ "fd", "--no-ignore", "-e", "dll" }, {}),
+								sorter = conf.generic_sorter(opts),
+								attach_mappings = function(buffer_number)
+									actions.select_default:replace(function()
+										actions.close(buffer_number)
+										coroutine.resume(coro, action_state.get_selected_entry()[1])
+									end)
+									return true
+								end,
+							})
+							:find()
+					end)
+				end,
+			},
+			{
+				name = "Godot: Launch Scene",
+				type = "godotCLR",
+				request = "launch",
+				program = function()
+					return coroutine.create(function(coro)
+						local opts = {}
+						pickers
+							.new(opts, {
+								prompt_title = "Select Scene",
+								finder = finders.new_oneshot_job({ "fd", "--no-ignore", "-e", "tscn" }, {}),
+								sorter = conf.generic_sorter(opts),
+								attach_mappings = function(buffer_number)
+									actions.select_default:replace(function()
+										actions.close(buffer_number)
+										coroutine.resume(coro, action_state.get_selected_entry()[1])
+									end)
+									return true
+								end,
+							})
+							:find()
+					end)
+				end,
+			},
+			{
+				type = "coreclr",
+				name = "Dotnet/Godot: Attach",
+				request = "attach",
+				processId = dap_utils.pick_process,
+			},
+		}
+		dap.adapters.coreclr = {
+			type = "executable",
+			command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"),
+			args = { "--interpreter=vscode" },
+		}
+
+		dap.adapters.godotCLR = {
+			type = "executable",
+			command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"),
+			args = { "--interpreter=vscode", "--", "godot_cs" },
+		}
+		dap.adapters.coreclrP = {
+			type = "executable",
+			command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/bin/netcoredbg"),
+			cwd = "${workspaceFolder}",
+			args = { "--interpreter=vscode", "--", "godot_cs", "--path", ".", "-s" },
+		}
+
+		dap.configurations.cs = config_cs
+
 		dap.adapters.godot = { type = "server", host = "127.0.0.1", port = 6006 }
 		dap.configurations.gdscript = {
 			{
+				name = "Launch scene",
 				type = "godot",
 				request = "launch",
-				name = "Launch scene",
 				project = "${workspaceFolder}",
 				launch_scene = true,
 			},
@@ -155,9 +256,9 @@ return {
 		for _, lang in ipairs({ "c", "cpp" }) do
 			dap.configurations[lang] = {
 				{
+					name = "Launch file",
 					type = "codelldb",
 					request = "launch",
-					name = "Launch file",
 					program = function()
 						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 					end,
@@ -165,18 +266,20 @@ return {
 				},
 
 				{
+					name = "Attach to process",
 					type = "codelldb",
 					request = "attach",
-					name = "Attach to process",
 					pid = require("dap.utils").pick_process,
 					cwd = "${workspaceFolder}",
 				},
-
 				{
-					name = "GDextension",
+					name = "GDextensionProject",
 					type = "codelldb",
 					request = "launch",
-					program = "~/.local/bin/godot",
+					program = function()
+						vim.cmd("make")
+						return "~/.local/bin/godot"
+					end,
 					args = {
 						"--path",
 						"${workspaceFolder}/demo/",
@@ -184,6 +287,22 @@ return {
 					},
 					cwd = "${workspaceFolder}",
 					console = "internalConsole",
+				},
+				{
+					name = "GDextensionFile",
+					type = "codelldb",
+					request = "launch",
+					cwd = "${workspaceFolder}",
+					console = "internalConsole",
+					program = "~/.local/bin/godot",
+					args = function()
+						local chosen = pick_file("tscn", "Select Scene")
+						local last = chosen
+						if chosen then
+							last = chosen:match("([^/]+)$")
+						end
+						return { "--path", "demo", last }
+					end,
 				},
 			}
 		end
