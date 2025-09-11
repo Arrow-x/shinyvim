@@ -81,7 +81,7 @@ return {
 			-- This function defines what is considered a "hidden" file
 			---@diagnostic disable-next-line: unused-local
 			is_hidden_file = function(name, bufnr)
-				return vim.startswith(name, ".") or vim.endswith(name, ".uid")
+				return vim.startswith(name, ".") or vim.endswith(name, ".uid") or vim.endswith(name, ".os")
 			end,
 			-- This function defines what will never be shown, even when `show_hidden` is set
 			---@diagnostic disable-next-line: unused-local
