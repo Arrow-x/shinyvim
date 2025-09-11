@@ -2,6 +2,32 @@ return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
 		{
+			"ibhagwan/fzf-lua",
+			keys = {
+				{
+					"<leader>fdv",
+					function()
+						require("fzf-lua").dap_variables()
+					end,
+					desc = "Dap variables",
+				},
+				{
+					"<leader>fdc",
+					function()
+						require("fzf-lua").dap_commands()
+					end,
+					desc = "Dap commands",
+				},
+				{
+					"<leader>fdf",
+					function()
+						require("fzf-lua").dap_frames()
+					end,
+					desc = "Dap frames",
+				},
+			},
+		},
+		{
 			"rcarriga/nvim-dap-ui",
 			dependencies = {
 				"nvim-neotest/nvim-nio",
