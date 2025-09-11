@@ -52,6 +52,7 @@ return { -- Autoformat
 			cs = { "clang-format" },
 			gdscript = { "gdformat" },
 			sh = { "shfmt" },
+			toml = { "taplo" },
 			["_"] = { "trim_whitespace", "trim_newlines", lsp_format = "fallback" },
 
 			-- Conform can also run multiple formatters sequentially

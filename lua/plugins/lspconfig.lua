@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	ft = { "lua", "gdscript", "sh", "bash", "python", "cs" },
+	ft = { "lua", "gdscript", "sh", "bash", "python", "toml" },
 	cmd = { "LspStart" },
 	dependencies = {
 		{
