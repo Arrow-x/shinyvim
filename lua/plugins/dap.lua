@@ -29,6 +29,7 @@ return {
 		},
 		{
 			"rcarriga/nvim-dap-ui",
+
 			dependencies = {
 				"nvim-neotest/nvim-nio",
 			},
@@ -64,7 +65,7 @@ return {
 						{
 							elements = {
 								"repl",
-								"console",
+								-- "console",
 							},
 							size = 10,
 							position = "bottom",
