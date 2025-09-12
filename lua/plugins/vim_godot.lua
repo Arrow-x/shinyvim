@@ -6,12 +6,21 @@ return {
 	end,
 	dependencies = {
 		"tpope/vim-dispatch",
+		"junegunn/fzf",
+		"junegunn/fzf.vim",
 	},
 	keys = {
 		{
 			"<leader>rr",
 			function()
 				vim.cmd("GodotRun")
+			end,
+			desc = "Run the initial Godot Scene",
+		},
+		{
+			"<leader>rf",
+			function()
+				vim.cmd("GodotRunFZF")
 			end,
 			desc = "Run the initial Godot Scene",
 		},
