@@ -115,15 +115,10 @@ return {
 			-- Ensure C/C++ debugger is installed
 			"williamboman/mason.nvim",
 			optional = true,
-			opts = { ensure_installed = { "codelldb" } },
+			opts = { ensure_installed = { "codelldb", "netcoredbg" } },
 		},
 	},
 	config = function()
-		local pickers = require("telescope.pickers")
-		local finders = require("telescope.finders")
-		local conf = require("telescope.config").values
-		local actions = require("telescope.actions")
-		local action_state = require("telescope.actions.state")
 		local dap = require("dap")
 		local dap_utils = require("dap.utils")
 		local icons = {
@@ -142,47 +137,24 @@ return {
 			)
 		end
 
-		local function pick_file(filter, title)
-			-- run fd to list files, pipe to fzf
-			local cmd = string.format("fd --no-ignore -e %s | fzf --prompt='%s> '", filter, title)
-			local handle = io.popen(cmd)
-			if not handle then
-				return nil
-			end
-			local selection = handle:read("*l") -- read first line (user selection)
-			handle:close()
-			return selection
-		end
-
 		local config_cs = {
-
 			{
-				name = "Dotnet/Godot: Launch Project",
+				name = "Godot: Launch Project",
 				type = "coreclrP",
 				request = "launch",
 			},
 			{
-				name = "DOTNET: Launch",
+				name = "Dotnet: Attach",
+				type = "coreclr",
+				request = "attach",
+				processId = dap_utils.pick_process,
+			},
+			{
+				name = "Dotnet: Launch dll",
 				type = "coreclr",
 				request = "launch",
 				program = function()
-					return coroutine.create(function(coro)
-						local opts = {}
-						pickers
-							.new(opts, {
-								prompt_title = "Select DLL",
-								finder = finders.new_oneshot_job({ "fd", "--no-ignore", "-e", "dll" }, {}),
-								sorter = conf.generic_sorter(opts),
-								attach_mappings = function(buffer_number)
-									actions.select_default:replace(function()
-										actions.close(buffer_number)
-										coroutine.resume(coro, action_state.get_selected_entry()[1])
-									end)
-									return true
-								end,
-							})
-							:find()
-					end)
+					return dap_utils.pick_file({ filter = ".%.dll$", executables = true })
 				end,
 			},
 			{
@@ -190,30 +162,8 @@ return {
 				type = "godotCLR",
 				request = "launch",
 				program = function()
-					return coroutine.create(function(coro)
-						local opts = {}
-						pickers
-							.new(opts, {
-								prompt_title = "Select Scene",
-								finder = finders.new_oneshot_job({ "fd", "--no-ignore", "-e", "tscn" }, {}),
-								sorter = conf.generic_sorter(opts),
-								attach_mappings = function(buffer_number)
-									actions.select_default:replace(function()
-										actions.close(buffer_number)
-										coroutine.resume(coro, action_state.get_selected_entry()[1])
-									end)
-									return true
-								end,
-							})
-							:find()
-					end)
+					return dap_utils.pick_file({ filter = ".%.tscn$", executables = false })
 				end,
-			},
-			{
-				type = "coreclr",
-				name = "Dotnet/Godot: Attach",
-				request = "attach",
-				processId = dap_utils.pick_process,
 			},
 		}
 		dap.adapters.coreclr = {
@@ -247,65 +197,79 @@ return {
 			},
 		}
 
-		if not dap.adapters["codelldb"] then
-			require("dap").adapters["codelldb"] = {
-				type = "executable",
-				command = "codelldb",
-			}
-		end
-		for _, lang in ipairs({ "c", "cpp" }) do
-			dap.configurations[lang] = {
-				{
-					name = "Launch file",
-					type = "codelldb",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
-				},
+		dap.adapters["codelldb"] = {
+			type = "executable",
+			command = "codelldb",
+		}
 
-				{
-					name = "Attach to process",
-					type = "codelldb",
-					request = "attach",
-					pid = require("dap.utils").pick_process,
-					cwd = "${workspaceFolder}",
+		dap.configurations["c"] = {
+			{
+				name = "Launch file",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return dap_utils.pick_file({ executables = true })
+				end,
+				cwd = "${workspaceFolder}",
+			},
+			{
+				name = "Attach to process",
+				type = "codelldb",
+				request = "attach",
+				pid = dap_utils.pick_process,
+				cwd = "${workspaceFolder}",
+			},
+		}
+		dap.configurations["cpp"] = {
+			{
+				name = "Launch file",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return dap_utils.pick_file({ executables = true })
+				end,
+				cwd = "${workspaceFolder}",
+			},
+			{
+				name = "Attach to process",
+				type = "codelldb",
+				request = "attach",
+				pid = dap_utils.pick_process,
+				cwd = "${workspaceFolder}",
+			},
+			{
+				name = "GDextensionProject",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					vim.cmd("make")
+					return "~/.local/bin/godot"
+				end,
+				args = {
+					"--path",
+					"${workspaceFolder}/demo/",
+					"-s",
 				},
-				{
-					name = "GDextensionProject",
-					type = "codelldb",
-					request = "launch",
-					program = function()
-						vim.cmd("make")
-						return "~/.local/bin/godot"
-					end,
-					args = {
-						"--path",
-						"${workspaceFolder}/demo/",
-						"-s",
-					},
-					cwd = "${workspaceFolder}",
-					console = "internalConsole",
-				},
-				{
-					name = "GDextensionFile",
-					type = "codelldb",
-					request = "launch",
-					cwd = "${workspaceFolder}",
-					console = "internalConsole",
-					program = "~/.local/bin/godot",
-					args = function()
-						local chosen = pick_file("tscn", "Select Scene")
-						local last = chosen
-						if chosen then
-							last = chosen:match("([^/]+)$")
-						end
-						return { "--path", "demo", last }
-					end,
-				},
-			}
-		end
+				cwd = "${workspaceFolder}",
+				console = "internalConsole",
+			},
+			{
+				name = "GDextensionScene",
+				type = "codelldb",
+				request = "launch",
+				cwd = "${workspaceFolder}",
+				console = "internalConsole",
+				program = "~/.local/bin/godot",
+				args = function()
+					local chosen = dap_utils.pick_file({ filter = ".%.tscn$", executables = false })
+					local last = chosen
+					if chosen then
+						last = chosen:match("([^/]+)$")
+					end
+					return { "--path", "demo", last }
+				end,
+			},
+		}
 	end,
 	keys = {
 		{
