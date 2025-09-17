@@ -44,33 +44,15 @@ return {
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				local keymap = vim.keymap.set
 
-				keymap("n", "<leader>ld", vim.lsp.buf.definition, { desc = "go to Definition" })
-				keymap("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Type definition" })
-				keymap("n", "<leader>lc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
-				keymap("n", "<leader>li", vim.lsp.buf.implementation, { desc = "go to Implementation" })
-				keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "get references" })
-				keymap("n", "<leader>lH", function()
-					vim.lsp.buf.signature_help({ border = "single" })
-				end, { desc = "Signature Help" })
+				keymap("n", "grd", vim.lsp.buf.definition, { desc = "go to Definition" })
+				keymap("n", "grD", vim.lsp.buf.type_definition, { desc = "Type definition" })
+				keymap("n", "grq", vim.diagnostic.setqflist, { desc = "Diagnostics to quickfix list" })
+				keymap("n", "grc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
-				-- keymap("n", "<leader>lR", vim.lsp.buf.references, { desc = "go to references" })
-				-- keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
-				keymap("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
-				keymap("n", "<leader>ln", function()
-					vim.diagnostic.jump({ count = 1 })
-				end, { desc = "Go to next Diagnostics" })
-				keymap("n", "<leader>lp", function()
-					vim.diagnostic.jump({ count = -1 })
-				end, { desc = "Go to prev Diagnostics" })
-				keymap("n", "<leader>lh", vim.diagnostic.open_float, { desc = "Hover Diagnostics" })
-				keymap("n", "<leader>lq", vim.diagnostic.setqflist, { desc = "Diagnostics to quickfix list" })
-				keymap("n", "<leader>lI", function()
-					vim.cmd("LspInfo")
-				end, { desc = "Info" })
 
 				if client ~= nil then
 					if client.name == "clangd" then
-						keymap("n", "<leader>ls", function()
+						keymap("n", "grh", function()
 							vim.cmd("LspClangdSwitchSourceHeader")
 						end, { desc = "use clangd to switch between header and implemntation" })
 					end
