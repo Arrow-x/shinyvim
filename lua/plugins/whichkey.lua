@@ -1,13 +1,16 @@
 return {
 	"folke/which-key.nvim",
+	lazy = false,
 	config = function()
 		local pluging_keymaps = {
 			{ plugin = "nvim-dap", prefix = "<leader>b", group = "Debuging" },
 			{ plugin = "telescope.nvim", prefix = "<leader>f", group = "Search" },
+			{ plugin = "fzf-lua", prefix = "<leader>f", group = "Search" },
 			{ plugin = "gitsigns.nvim", prefix = "<leader>g", group = "Git" },
 			{ plugin = "toggleterm.nvim", prefix = "<leader>`", group = "Terminal" },
 			{ plugin = "nvim-lspconfig", prefix = "<leader>l", group = "LSP" },
 			{ plugin = "harpoon", prefix = "<leader>s", group = "Harpoon" },
+			{ plugin = "snipe.nvim", prefix = "<leader>s", group = "Snipe" },
 			{ plugin = "true-zen.nvim", prefix = "<leader>z", group = "TrueZen" },
 			{ plugin = "git-worktree.nvim", prefix = "gw", group = "Worktrees" },
 			{ plugin = "trouble.nvim", prefix = "<leader>x", group = "Trouble" },
@@ -17,7 +20,7 @@ return {
 			{ plugin = "hop.nvim", prefix = "<leader>j", group = "Hop" },
 			{ plugin = "hover.nvim", prefix = "<leader>k", group = "Hover" },
 			{ plugin = "vim-godot", prefix = "<leader>r", group = "Vim-Godot" },
-			{ plugin = "vim-dispatch", prefix = "<leader>d", group = "Vim-Dispatch" },
+			{ plugin = "bufferline.nvim", prefix = "<leader>t", group = "Bufferline" },
 		}
 
 		local mappings = {
