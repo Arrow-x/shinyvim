@@ -42,8 +42,8 @@ keymap("n", "<C-p>", "<cmd>cprev<CR>zz")
 keymap("n", "<C-j>", ":m .+1<CR>==")
 keymap("n", "<C-k>", ":m .-2<CR>==")
 -- scroll through buffers
-keymap("n", "<C-l>", ":bnext<CR>", { silent = true })
-keymap("n", "<C-h>", ":bprevious<CR>", { silent = true })
+-- keymap("n", "<C-l>", ":bnext<CR>", { silent = true })
+-- keymap("n", "<C-h>", ":bprevious<CR>", { silent = true })
 
 -- Keeping it centered
 keymap("n", "n", "nzzzv")

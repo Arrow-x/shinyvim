@@ -51,14 +51,14 @@ return {
 			{ "sn", desc = "Change number of neighbor lines" },
 		},
 	},
-	{
-		"echasnovski/mini.tabline",
-		version = false,
-
-		config = function()
-			require("mini.tabline").setup()
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.tabline",
+	-- 	version = false,
+	--
+	-- 	config = function()
+	-- 		require("mini.tabline").setup()
+	-- 	end,
+	-- },
 	{
 		"echasnovski/mini.trailspace",
 		version = false,
