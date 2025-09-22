@@ -240,14 +240,13 @@ return {
 		-- none Mason lsp servers
 		servers.gdscript = {}
 
-		local lspconfig = require("lspconfig")
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		local opts = {}
 
 		for _, server in pairs(vim.tbl_keys(servers)) do
 			local custom_settings = servers[server] or {}
-			opts.capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {})
+			opts.capabilities = vim.tbl_deep_extend("force", capabilities, vim.lsp.config[server].capabilities or {})
 			opts = vim.tbl_deep_extend("force", custom_settings, opts)
 			vim.lsp.config(server, opts)
 		end
