@@ -70,6 +70,7 @@ return {
 			["~"] = "actions.tcd",
 			["gs"] = "actions.change_sort",
 			["gx"] = "actions.open_external",
+			["gX"] = "actions.open_cmdline",
 			["g."] = "actions.toggle_hidden",
 			["g\\"] = "actions.toggle_trash",
 		},
