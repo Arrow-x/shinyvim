@@ -40,7 +40,7 @@ return {
 		{
 			"<leader>fF",
 			function()
-				require("fzf-lua").files()
+				require("fzf-lua").files({ cmd = "fd --type f --no-ignore-vcs" })
 			end,
 			desc = "Find Files",
 		},
@@ -61,7 +61,7 @@ return {
 		{
 			"<leader>fG",
 			function()
-				require("fzf-lua").grep_curbuf()
+				require("fzf-lua").live_grep({ cmd = "rg --no-ignore --line-number --column" })
 			end,
 			desc = "Grep",
 		},
