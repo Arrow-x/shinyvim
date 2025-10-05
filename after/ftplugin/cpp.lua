@@ -11,7 +11,5 @@ elseif vim.fn.filereadable(project_root .. "/SConstruct") == 1 then
 	vim.bo.makeprg = "scons target=template_debug debug_symbols=yes"
 else
 	-- Default: compile current file with g++
-	local file = vim.fn.expand("%")
-	local output = vim.fn.expand("%:r") -- filename without extension
-	vim.bo.makeprg = string.format("g++ -Wall %s -o %s", file, output)
+	vim.bo.makeprg = "clang++ -g -std=c++2a -Wall -Wextra *.cpp -o main"
 end
