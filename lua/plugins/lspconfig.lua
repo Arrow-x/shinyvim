@@ -27,11 +27,11 @@ return {
 					input_buffer_type = nil, -- the type of the external input buffer to use (the only supported value is currently "dressing")
 					post_hook = nil, -- callback to run after renaming, receives the result table (from LSP handler) as an argument
 				})
-				vim.keymap.set("n", "<leader>lr", function()
+				vim.keymap.set("n", "grn", function()
 					return ":IncRename " .. vim.fn.expand("<cword>")
 				end, { expr = true, desc = "inc-rename" })
-				vim.keymap.set("n", "<leader>lqr", function()
-					return "q:IncRename " .. vim.fn.expand("<cword>")
+				vim.keymap.set("n", "grN", function()
+					return "q:IIncRename " .. vim.fn.expand("<cword>")
 				end, { expr = true, desc = "inc-rename-buffer-cmd" })
 			end,
 		},
@@ -105,7 +105,7 @@ return {
 					client
 					and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
 				then
-					keymap("n", "<leader>mi", function()
+					keymap("n", "grI", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, { desc = "[M]is Toggle [i]nlay hints" })
 				end
