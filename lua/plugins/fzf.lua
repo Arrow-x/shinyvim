@@ -7,9 +7,9 @@ return {
 	config = function()
 		require("fzf-lua").setup({
 			file_ignore_patterns = { "%.uid$" },
-			winopts = {
-				split = "belowright new",
-			},
+			-- winopts = {
+			-- 	split = "belowright new",
+			-- },
 			keymap = {
 				fzf = {
 					true,
@@ -31,16 +31,16 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>ff",
+			"<leader>fF",
 			function()
 				require("fzf-lua").git_files()
 			end,
 			desc = "Find Git Files",
 		},
 		{
-			"<leader>fF",
+			"<leader>ff",
 			function()
-				require("fzf-lua").files({ cmd = "fd --type f --no-ignore-vcs" })
+				require("fzf-lua").files({ hidden = true })
 			end,
 			desc = "Find Files",
 		},
@@ -61,7 +61,7 @@ return {
 		{
 			"<leader>fG",
 			function()
-				require("fzf-lua").live_grep({ cmd = "rg --no-ignore --line-number --column" })
+				require("fzf-lua").live_grep({ cmd = "rg --no-ignore --line-number --column --hidden" })
 			end,
 			desc = "Grep",
 		},
