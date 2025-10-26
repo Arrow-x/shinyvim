@@ -2,7 +2,8 @@ return {
 	"stevearc/oil.nvim",
 	lazy = false,
 	-- Optional dependencies
-	dependencies = { "echasnovski/mini.icons" },
+	-- dependencies = { "echasnovski/mini.icons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	init = function()
 		vim.g.loaded_netrw = true -- disable netrw
 		vim.g.loaded_netrwFileHandlers = true -- disable netrw
