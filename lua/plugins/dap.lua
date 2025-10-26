@@ -105,13 +105,6 @@ return {
 			},
 		},
 		{
-			"mfussenegger/nvim-dap-python",
-			lazy = true,
-			config = function()
-				require("dap-python").setup("~/.local/share/virtualenvs/debugpy/bin/python")
-			end,
-		},
-		{
 			-- Ensure C/C++ debugger is installed
 			"williamboman/mason.nvim",
 			optional = true,
