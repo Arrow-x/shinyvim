@@ -50,6 +50,11 @@ return {
 				keymap("n", "grc", vim.lsp.buf.declaration, { desc = "go to Declaration" })
 				keymap("n", "K", vim.lsp.buf.hover, { desc = "hover" })
 
+				keymap("n", "grF", function()
+					shinyvim.autoformat = not shinyvim.autoformat
+					vim.notify("Autoformating is " .. tostring(shinyvim.autoformat))
+				end, { desc = "toggle format on save" })
+
 				if client ~= nil then
 					if client.name == "clangd" then
 						keymap("n", "grh", function()
