@@ -270,6 +270,11 @@ return {
 					if devicons_ok then
 						icon, icon_hl = devicons.get_icon(component)
 					end
+
+					if icon == nil or icon_hl == nil then
+						return
+					end
+
 					table.insert(
 						breadcrumbs,
 						"%#" .. icon_hl .. "#" .. (icon or file_icon) .. "%#Normal#" .. " " .. component
