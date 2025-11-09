@@ -190,6 +190,9 @@ return {
 		}
 
 		local function range_contains_pos(range, line, char)
+			if range == nil then
+				return
+			end
 			local start = range.start
 			local stop = range["end"]
 
