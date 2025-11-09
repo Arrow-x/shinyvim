@@ -315,6 +315,18 @@ return {
 			desc = "Continue",
 		},
 		{
+			"<leader>bB",
+			function()
+				local condition = vim.fn.input("Enter breakpoint condition: ")
+				local hit_condition = vim.fn.input("Enter how many times should be hit: ")
+				local log_message = vim.fn.input("Enter log message: ")
+				if condition ~= "" then
+					require("dap").set_breakpoint(condition, hit_condition, log_message)
+				end
+			end,
+			desc = "Conditional Breakpoint",
+		},
+		{
 			"<leader>bb",
 			function()
 				require("dap").toggle_breakpoint()
