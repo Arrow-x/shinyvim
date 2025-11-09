@@ -190,7 +190,7 @@ return {
 			},
 		}
 
-		dap.adapters["codelldb"] = {
+		dap.adapters.codelldb = {
 			type = "executable",
 			command = "codelldb",
 		}
@@ -236,7 +236,7 @@ return {
 				request = "launch",
 				program = function()
 					vim.cmd("make")
-					return "~/.local/bin/godot"
+					return "/home/arrow-x/.local/bin/godot"
 				end,
 				args = {
 					"--path",
@@ -252,7 +252,7 @@ return {
 				request = "launch",
 				cwd = "${workspaceFolder}",
 				console = "internalConsole",
-				program = "~/.local/bin/godot",
+				program = "/home/arrow-x/.local/bin/godot",
 				args = function()
 					local chosen = dap_utils.pick_file({ filter = ".%.tscn$", executables = false })
 					local last = chosen
