@@ -350,7 +350,7 @@ return {
 		{
 			"<leader>br",
 			function()
-				require("dap").repl.open()
+				require("dapui").elements.watches.add(vim.fn.expand("<cword>"))
 			end,
 			desc = "inspect REPL",
 		},
