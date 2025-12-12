@@ -5,6 +5,9 @@ return {
 	opts = {
 		options = {
 			diagnostics = "nvim_lsp",
+			pick = {
+				alphabet = "asdfghjkl;'\\",
+			},
 		},
 	},
 	keys = {
@@ -37,14 +40,14 @@ return {
 			desc = "Cycle to Previous buffer",
 		},
 		{
-			"<leader>tp",
+			"<leader>s",
 			function()
 				vim.cmd("BufferLinePick")
 			end,
 			desc = "Interactive Pick",
 		},
 		{
-			"<leader>tP",
+			"<leader>S",
 			function()
 				vim.cmd("BufferLineTogglePin")
 			end,
