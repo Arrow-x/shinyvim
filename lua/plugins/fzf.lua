@@ -47,7 +47,9 @@ return {
 		{
 			"<leader>fb",
 			function()
-				require("fzf-lua").buffers()
+				require("fzf-lua").buffers({ winopts = {
+					split = "belowright new",
+				} })
 			end,
 			desc = "Buffers",
 		},
