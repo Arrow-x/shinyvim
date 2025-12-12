@@ -13,7 +13,6 @@ return {
 			},
 			cmd = { "Mason" },
 		},
-		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		{
@@ -64,11 +63,7 @@ return {
 				end
 
 				local function client_supports_method(_client, method, bufnr)
-					if vim.fn.has("nvim-0.11") == 1 then
-						return _client:supports_method(method, bufnr)
-					else
-						return _client.supports_method(method, { bufnr = bufnr })
-					end
+					return _client:supports_method(method, bufnr)
 				end
 
 				-- The following two autocommands are used to highlight references of the
@@ -98,6 +93,7 @@ return {
 					})
 
 					vim.api.nvim_create_autocmd("LspDetach", {
+
 						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
 						callback = function(event2)
 							vim.lsp.buf.clear_references()
@@ -114,6 +110,9 @@ return {
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, { desc = "[M]is Toggle [i]nlay hints" })
 				end
+				-- if client and client.name == "clangd" then
+				-- 	client.server_capabilities.semanticTokensProvider = nil
+				-- end
 			end,
 		})
 
@@ -148,196 +147,17 @@ return {
 				end,
 			},
 		})
-		-- Breadcrumbs:
-		local devicons_ok, devicons = pcall(require, "nvim-web-devicons")
-		local folder_icon = "%#Conditional#" .. "󰉋" .. "%#Normal#"
-		local file_icon = "󰈙"
 
-		local kind_icons = {
-			"%#File#" .. "󰈙" .. "%#Normal#", -- file
-			"%#Module#" .. "" .. "%#Normal#", -- module
-			"%#Structure#" .. "" .. "%#Normal#", -- namespace
-			"%#Keyword#" .. "󰌋" .. "%#Normal#", -- keyword
-			"%#Class#" .. "󰠱" .. "%#Normal#", -- class
-			"%#Method#" .. "󰆧" .. "%#Normal#", -- method
-			"%#Property#" .. "󰜢" .. "%#Normal#", -- property
-			"%#Field#" .. "󰇽" .. "%#Normal#", -- field
-			"%#Function#" .. "" .. "%#Normal#", -- constructor
-			"%#Enum#" .. "" .. "%#Normal#", -- enum
-			"%#Type#" .. "" .. "%#Normal#", -- interface
-			"%#Function#" .. "󰊕" .. "%#Normal#", -- function
-			"%#None#" .. "󰂡" .. "%#Normal#", -- variable
-			"%#Constant#" .. "󰏿" .. "%#Normal#", -- constant
-			"%#String#" .. "" .. "%#Normal#", -- string
-			"%#Number#" .. "" .. "%#Normal#", -- number
-			"%#Boolean#" .. "" .. "%#Normal#", -- boolean
-			"%#Array#" .. "" .. "%#Normal#", -- array
-			"%#Class#" .. "" .. "%#Normal#", -- object
-			"", -- package
-			"󰟢", -- null
-			"", -- enum-member
-			"%#Struct#" .. "" .. "%#Normal#", -- struct
-			"", -- event
-			"", -- operator
-			"󰅲", -- type-parameter
-			"",
-			"",
-			"󰎠",
-			"",
-			"󰏘",
-			"",
-			"󰉋",
-		}
-
-		local function range_contains_pos(range, line, char)
-			if range == nil then
-				return
-			end
-			local start = range.start
-			local stop = range["end"]
-
-			if line < start.line or line > stop.line then
-				return false
-			end
-
-			if line == start.line and char < start.character then
-				return false
-			end
-
-			if line == stop.line and char > stop.character then
-				return false
-			end
-
-			return true
-		end
-
-		local function find_symbol_path(symbol_list, line, char, path)
-			if not symbol_list or #symbol_list == 0 then
-				return false
-			end
-
-			for _, symbol in ipairs(symbol_list) do
-				if range_contains_pos(symbol.range, line, char) then
-					local icon = kind_icons[symbol.kind] or ""
-					table.insert(path, icon .. " " .. symbol.name)
-					find_symbol_path(symbol.children, line, char, path)
-					return true
-				end
-			end
-			return false
-		end
-
-		local function lsp_callback(err, symbols, ctx, config)
-			if err or not symbols then
-				vim.o.winbar = ""
-				return
-			end
-
-			local winnr = vim.api.nvim_get_current_win()
-			local pos = vim.api.nvim_win_get_cursor(0)
-			local cursor_line = pos[1] - 1
-			local cursor_char = pos[2]
-
-			local file_path = vim.fn.bufname(ctx.bufnr)
-			if not file_path or file_path == "" then
-				vim.o.winbar = "[No Name]"
-				return
-			end
-
-			local relative_path
-
-			local clients = vim.lsp.get_clients({ bufnr = ctx.bufnr })
-
-			if #clients > 0 and clients[1].root_dir then
-				local root_dir = clients[1].root_dir
-				if root_dir == nil then
-					relative_path = file_path
-				else
-					relative_path = vim.fs.relpath(root_dir, file_path)
-				end
-			else
-				local root_dir = vim.fn.getcwd(0)
-				relative_path = vim.fs.relpath(root_dir, file_path)
-			end
-
-			local breadcrumbs = {}
-
-			local path_components = vim.split(relative_path, "[/\\]", { trimempty = true })
-			local num_components = #path_components
-
-			for i, component in ipairs(path_components) do
-				if i == num_components then
-					local icon
-					local icon_hl
-
-					if devicons_ok then
-						icon, icon_hl = devicons.get_icon(component)
-					end
-
-					if icon == nil or icon_hl == nil then
-						return
-					end
-
-					table.insert(
-						breadcrumbs,
-						"%#" .. icon_hl .. "#" .. (icon or file_icon) .. "%#Normal#" .. " " .. component
-					)
-				else
-					table.insert(breadcrumbs, folder_icon .. " " .. component)
-				end
-			end
-			find_symbol_path(symbols, cursor_line, cursor_char, breadcrumbs)
-
-			local breadcrumb_string = table.concat(breadcrumbs, " > ")
-
-			if breadcrumb_string ~= "" then
-				vim.api.nvim_set_option_value("winbar", breadcrumb_string, { win = winnr })
-			else
-				vim.api.nvim_set_option_value("winbar", " ", { win = winnr })
-			end
-		end
-
-		local function breadcrumbs_set()
-			local bufnr = vim.api.nvim_get_current_buf()
-			local winnr = vim.api.nvim_get_current_buf()
-			---@type string
-			local uri = vim.lsp.util.make_text_document_params(bufnr)["uri"]
-			if not uri then
-				vim.print("Error: Could not get URI for buffer. Is it saved?")
-				return
-			end
-
-			local params = {
-				textDocument = {
-					uri = uri,
-				},
-			}
-
-			local buf_src = uri:sub(1, uri:find(":") - 1)
-			if buf_src ~= "file" then
-				vim.o.winbar = ""
-				return
-			end
-
-			vim.lsp.buf_request(bufnr, "textDocument/documentSymbol", params, lsp_callback)
-		end
-
-		local breadcrumbs_augroup = vim.api.nvim_create_augroup("Breadcrumbs", { clear = true })
-
-		vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-			group = breadcrumbs_augroup,
-			callback = breadcrumbs_set,
-			desc = "Set breadcrumbs.",
+		local ensure_installed = vim.tbl_keys(servers or {})
+		vim.list_extend(ensure_installed, {
+			"stylua",
+			"gdtoolkit",
+			"clang-format",
+			"codelldb",
+			"shellcheck",
+			"shfmt",
 		})
-
-		vim.api.nvim_create_autocmd({ "WinLeave" }, {
-			group = breadcrumbs_augroup,
-			callback = function()
-				vim.o.winbar = ""
-			end,
-			desc = "Clear breadcrumbs when leaving window.",
-		})
-
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 		--
@@ -348,7 +168,6 @@ return {
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			clangd = {},
 			csharp_ls = {},
 			lua_ls = {
 				on_init = function(client)
@@ -418,32 +237,25 @@ return {
 				},
 			},
 			pylsp = {},
+			clangd = { cmd = { "clangd", "--clang-tidy", "--fallback-style=LLVM" }, filetypes = { "cpp" } },
 		}
-
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua",
-			"gdtoolkit",
-			"clang-format",
-			"codelldb",
-			"shellcheck",
-			"shfmt",
-		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		-- none Mason lsp servers
 		servers.gdscript = {}
 
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		local opts = {}
 
 		for _, server in pairs(vim.tbl_keys(servers)) do
 			local custom_settings = servers[server] or {}
-			opts.capabilities = vim.tbl_deep_extend("force", capabilities, vim.lsp.config[server].capabilities or {})
-			opts = vim.tbl_deep_extend("force", custom_settings, opts)
-			vim.lsp.config(server, opts)
+			opts.capabilities =
+				vim.tbl_deep_extend("force", blink_capabilities, vim.lsp.config[server].capabilities or {})
+
+			local cooked_opts = vim.tbl_deep_extend("force", custom_settings, opts)
+
+			vim.lsp.config(server, cooked_opts)
 		end
-		vim.lsp.enable(vim.tbl_keys(servers))
+		vim.lsp.enable(vim.tbl_keys(servers), true)
 	end,
 }
