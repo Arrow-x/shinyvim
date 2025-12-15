@@ -28,62 +28,46 @@ return {
 			},
 		},
 		{
-			"rcarriga/nvim-dap-ui",
+			"Jorenar/nvim-dap-disasm",
+			config = true,
+			dependencies = "igorlfs/nvim-dap-view",
+		},
 
-			dependencies = {
-				"nvim-neotest/nvim-nio",
+		{
+			"igorlfs/nvim-dap-view",
+			opts = {
+				winbar = {
+					controls = {
+						enabled = true,
+					},
+					sections = {
+						"watches",
+						"scopes",
+						"exceptions",
+						"breakpoints",
+						"threads",
+						"repl",
+						"disassembly",
+					},
+				},
 			},
 			keys = {
 				{
 					"<leader>bt",
 					function()
-						require("dapui").toggle()
+						vim.cmd("DapViewToggle")
 					end,
 					desc = "Toggle dapui UI",
 				},
 				{
 					"<leader>b?",
 					function()
-						require("dapui").eval(nil, { enter = true })
+						vim.cmd("DapViewWatch")
 					end,
 				},
 			},
-			config = function()
-				local dap, dapui = require("dap"), require("dapui")
-				dapui.setup({
-					layouts = {
-						{
-							elements = {
-								"scopes",
-								"breakpoints",
-								"stacks",
-								"watches",
-							},
-							size = 40,
-							position = "left",
-						},
-						{
-							elements = {
-								"repl",
-								-- "console",
-							},
-							size = 10,
-							position = "bottom",
-						},
-					},
-				})
-
-				dap.listeners.after.event_initialized["dapui_config"] = function()
-					dapui.open()
-				end
-				dap.listeners.before.event_terminated["dapui_config"] = function()
-					dapui.close()
-				end
-				dap.listeners.before.event_exited["dapui_config"] = function()
-					dapui.close()
-				end
-			end,
 		},
+
 		{
 			"theHamsta/nvim-dap-virtual-text",
 			opts = {
