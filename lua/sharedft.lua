@@ -32,6 +32,7 @@ end
 function M.run_godot_async(filepath)
 	local ctx = { qf = {} }
 
+	vim.cmd("copen")
 	local job_id = vim.fn.jobstart({ "godot", filepath }, {
 		stdout_buffered = true,
 		stderr_buffered = true,
@@ -78,7 +79,7 @@ function M.run_godot_async(filepath)
 					vim.notify("Godot finished (no output)", vim.log.levels.INFO)
 				else
 					vim.fn.setqflist(ctx.qf, "r")
-					vim.cmd("copen")
+					vim.cmd("ccl")
 				end
 
 				if exit_code ~= 0 then
