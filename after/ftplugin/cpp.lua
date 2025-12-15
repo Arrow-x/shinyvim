@@ -5,7 +5,7 @@ vim.bo.errorformat = "%f:%l:%c: %m"
 
 if vim.fn.filereadable(project_root .. "/CMakeLists.txt") == 1 then
 	-- CMake project
-	vim.bo.makeprg = "cmake --build build"
+	vim.bo.makeprg = "cmake --build build/Desktop-Debug --target all"
 elseif vim.fn.filereadable(project_root .. "/SConstruct") == 1 then
 	-- Scons project
 	vim.bo.makeprg = "scons target=template_debug debug_symbols=yes"
