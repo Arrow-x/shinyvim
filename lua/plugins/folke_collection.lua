@@ -1,42 +1,14 @@
 return {
 	{
 		"folke/snacks.nvim",
-		event = { "Bufadd" },
+		lazy = false,
 		opts = {
 			indent = {},
-		},
-		keys = {
-			{
-				"<leader>q",
-				function()
-					Snacks.bufdelete()
-				end,
-				desc = "Close Buffer",
-			},
-			{
-				"<leader>Q",
-				function()
-					Snacks.bufdelete.all()
-				end,
-				desc = "Close All Buffers",
-			},
-		},
-	},
-	{
-		"folke/snacks.nvim",
-		event = { "Bufadd" },
-		opts = {
 			bigfile = {},
-		},
-	},
-	{
-		"folke/snacks.nvim",
-		opts = {
-			lazygit = {
-				-- your lazygit configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			},
+			lazygit = {},
+			quickfile = {},
+			image = {},
+			rename = {},
 		},
 		keys = {
 			{
@@ -74,16 +46,19 @@ return {
 				end,
 				desc = "Git blame of the current file",
 			},
-		},
-	},
-	{
-		"folke/snacks.nvim",
-		lazy = false,
-		opts = {
-			quickfile = {
-				-- your quickfile configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
+			{
+				"<leader>q",
+				function()
+					Snacks.bufdelete()
+				end,
+				desc = "Close Buffer",
+			},
+			{
+				"<leader>Q",
+				function()
+					Snacks.bufdelete.all()
+				end,
+				desc = "Close All Buffers",
 			},
 		},
 	},
@@ -94,17 +69,6 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
-		},
-	},
-	{
-		"folke/snacks.nvim",
-		---@type snacks.Config
-		opts = {
-			image = {
-				-- your image configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			},
 		},
 	},
 }
