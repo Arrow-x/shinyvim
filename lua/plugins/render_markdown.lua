@@ -19,20 +19,20 @@ return {
 		},
 		link = {
 			render_modes = true,
-			image = "󰥶  ",
+			image = "󰥶 ",
 			-- Inlined with 'email_autolink' elements.
-			email = "󰀓  ",
+			email = "󰀓 ",
 			-- Fallback icon for 'inline_link' and 'uri_autolink' elements.
-			hyperlink = "󰌹  ",
+			hyperlink = "󰌹 ",
 			-- Applies to the inlined icon as a fallback.
 			highlight = "RenderMarkdownLink",
 			-- Applies to WikiLink elements.
 			wiki = {
-				icon = "󱗖  ",
+				icon = " ",
 				body = function()
 					return nil
 				end,
-				highlight = "RenderMarkdownWikiLink",
+				highlight = "RenderMarkdownLink",
 			},
 			-- Define custom destination patterns so icons can quickly inform you of what a link
 			-- contains. Applies to 'inline_link', 'uri_autolink', and wikilink nodes. When multiple
@@ -42,16 +42,16 @@ return {
 			-- | icon      | gets inlined before the link text                               |
 			-- | highlight | optional highlight for 'icon', uses fallback highlight if empty |
 			custom = {
-				web = { pattern = "^http", icon = "󰖟  " },
-				discord = { pattern = "discord%.com", icon = "󰙯  " },
-				github = { pattern = "github%.com", icon = "󰊤  " },
-				gitlab = { pattern = "gitlab%.com", icon = "󰮠  " },
-				google = { pattern = "google%.com", icon = "󰊭  " },
-				neovim = { pattern = "neovim%.io", icon = "  " },
-				reddit = { pattern = "reddit%.com", icon = "󰑍  " },
-				stackoverflow = { pattern = "stackoverflow%.com", icon = "󰓌  " },
-				wikipedia = { pattern = "wikipedia%.org", icon = "󰖬  " },
-				youtube = { pattern = "youtube%.com", icon = "󰗃  " },
+				web = { pattern = "^http", icon = "󰖟 " },
+				discord = { pattern = "discord%.com", icon = "󰙯 " },
+				github = { pattern = "github%.com", icon = "󰊤 " },
+				gitlab = { pattern = "gitlab%.com", icon = "󰮠 " },
+				google = { pattern = "google%.com", icon = "󰊭 " },
+				neovim = { pattern = "neovim%.io", icon = " " },
+				reddit = { pattern = "reddit%.com", icon = "󰑍 " },
+				stackoverflow = { pattern = "stackoverflow%.com", icon = "󰓌 " },
+				wikipedia = { pattern = "wikipedia%.org", icon = "󰖬 " },
+				youtube = { pattern = "youtube%.com", icon = "󰗃 " },
 			},
 		},
 	},
