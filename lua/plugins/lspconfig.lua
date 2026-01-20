@@ -5,6 +5,9 @@ return {
 	dependencies = {
 		{
 			"mason-org/mason.nvim",
+			dependencies = {
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+			},
 			opts = {
 				registries = {
 					"github:mason-org/mason-registry",
@@ -13,7 +16,6 @@ return {
 			},
 			cmd = { "Mason" },
 		},
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		{
 			"smjonas/inc-rename.nvim",
@@ -150,12 +152,18 @@ return {
 
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			"clangd",
+			"roslyn",
+			"lua-language-server",
+			"bash-language-server",
+			"python-lsp-server",
+			"shellcheck",
 			"stylua",
 			"gdtoolkit",
 			"clang-format",
-			"codelldb",
-			"shellcheck",
 			"shfmt",
+			"codelldb",
+			"netcoredbg",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		-- Enable the following language servers
