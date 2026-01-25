@@ -150,33 +150,7 @@ return {
 			},
 		})
 
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"clangd",
-			"roslyn",
-			"lua-language-server",
-			"bash-language-server",
-			"python-lsp-server",
-			"shellcheck",
-			"stylua",
-			"gdtoolkit",
-			"clang-format",
-			"shfmt",
-			"codelldb",
-			"netcoredbg",
-		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-		-- Enable the following language servers
-		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-		--
-		--  Add any additional override configuration in the following tables. Available keys are:
-		--  - cmd (table): Override the default command used to start the server
-		--  - filetypes (table): Override the default list of associated filetypes for the server
-		--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-		--  - settings (table): Override the default settings passed when initializing the server.
-		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			csharp_ls = {},
 			lua_ls = {
 				on_init = function(client)
 					if client.workspace_folders then
@@ -247,8 +221,24 @@ return {
 			pylsp = {},
 			clangd = { cmd = { "clangd", "--clang-tidy", "--fallback-style=LLVM" }, filetypes = { "cpp" } },
 		}
+		local ensure_installed = vim.tbl_keys(servers or {})
 
-		-- none Mason lsp servers
+		vim.list_extend(ensure_installed, {
+			"clangd",
+			"roslyn",
+			"lua-language-server",
+			"bash-language-server",
+			"python-lsp-server",
+			"shellcheck",
+			"stylua",
+			"gdtoolkit",
+			"clang-format",
+			"shfmt",
+			"codelldb",
+			"netcoredbg",
+		})
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
 		servers.gdscript = {}
 
 		local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
