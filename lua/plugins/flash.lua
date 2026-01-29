@@ -7,6 +7,11 @@ return {
 				enabled = true,
 			},
 		},
+		search = {
+			exclude = {
+				"blink-cmp-menu",
+			},
+		},
 	},
 	keys = {
 		{
