@@ -224,7 +224,7 @@ return {
 				end,
 				args = {
 					"--path",
-					"${workspaceFolder}/demo/",
+					"${workspaceFolder}/project/",
 					"-s",
 				},
 				cwd = "${workspaceFolder}",
@@ -243,7 +243,7 @@ return {
 					if chosen then
 						last = chosen:match("([^/]+)$")
 					end
-					return { "--path", "demo", last }
+					return { "--path", "project", last }
 				end,
 			},
 		}
