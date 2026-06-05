@@ -13,7 +13,7 @@ autocmd("TextYankPost", {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		require("vim.hl").on_yank({ higroup = "Visual", timeout = 200 })
+		require("vim.hl").hl_op({ higroup = "Visual", timeout = 200 })
 	end,
 })
 
@@ -34,7 +34,7 @@ autocmd({ "BufWinEnter" }, {
 })
 
 autocmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim", "notify", "snipe-menu" },
+	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "vim", "notify", "snipe-menu", "compilation" },
 	group = gr.general_settings,
 	callback = function()
 		vim.keymap.set("n", "q", function()
@@ -98,5 +98,18 @@ autocmd("TermOpen", {
 		vim.opt.signcolumn = "no"
 		vim.opt.number = false
 		vim.opt.relativenumber = false
+	end,
+})
+
+-- Automatically set 'modified' to false for specific buftypes when leaving them
+vim.api.nvim_create_autocmd("BufLeave", {
+	pattern = "*",
+	callback = function()
+		-- List the buftypes you want to ignore (e.g., terminal, prompt, nofile)
+		local ignored_buftypes = { "terminal", "prompt", "nofile", "help", "compilation" }
+
+		if vim.tbl_contains(ignored_buftypes, vim.bo.buftype) then
+			vim.bo.modified = false
+		end
 	end,
 })
