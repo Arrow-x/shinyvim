@@ -10,7 +10,7 @@ return {
 
 		local filename = {
 			"filename",
-			path = 0,
+			path = 1,
 		}
 
 		-- cool function for progress
