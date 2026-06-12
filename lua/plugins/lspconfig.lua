@@ -1,7 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	ft = { "lua", "gdscript", "sh", "bash", "python", "toml" },
-	cmd = { "LspStart" },
+	ft = { "lua", "gdscript", "sh", "bash", "python", "toml", "cpp", "c" },
 	dependencies = {
 		{
 			"mason-org/mason.nvim",
