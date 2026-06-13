@@ -78,7 +78,7 @@ autocmd("BufReadPre", {
 			vim.g.neovide_floating_shadow = false
 		end
 		vim.o.background = "light"
-		vim.cmd([[colorscheme gruvbox]])
+		vim.cmd([[colorscheme gruvbox-material]])
 	end,
 })
 
