@@ -1,7 +1,17 @@
 return {
 	"ibhagwan/fzf-lua",
 	-- optional for icon support
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		{
+			"nvim-tree/nvim-web-devicons",
+		},
+		{
+			"elanmed/fzf-lua-frecency.nvim",
+			opts = {
+				cwd_only = true,
+			},
+		},
+	},
 	-- or if using mini.icons/mini.nvim
 	-- dependencies = { "nvim-mini/mini.icons" },
 	config = function()
@@ -30,17 +40,17 @@ return {
 		end)
 	end,
 	keys = {
-		-- 	{
-		-- 		"<leader>fF",
-		-- 		function()
-		-- 			require("fzf-lua").git_files()
-		-- 		end,
-		-- 		desc = "Find Git Files",
-		-- 	},
 		{
 			"<leader>fF",
 			function()
-				require("fzf-lua").files({ hidden = true })
+				require("fzf-lua").git_files()
+			end,
+			desc = "Find Git Files",
+		},
+		{
+			"<leader>ff",
+			function()
+				require("fzf-lua-frecency").frecency()
 			end,
 			desc = "Find Files",
 		},
@@ -51,20 +61,20 @@ return {
 			end,
 			desc = "Buffers",
 		},
-		-- 	{
-		-- 		"<leader>fg",
-		-- 		function()
-		-- 			require("fzf-lua").live_grep()
-		-- 		end,
-		-- 		desc = "Grep",
-		-- 	},
-		-- 	{
-		-- 		"<leader>fG",
-		-- 		function()
-		-- 			require("fzf-lua").live_grep({ cmd = "rg --no-ignore --line-number --column --hidden" })
-		-- 		end,
-		-- 		desc = "Grep",
-		-- 	},
+		{
+			"<leader>fg",
+			function()
+				require("fzf-lua").live_grep()
+			end,
+			desc = "Grep",
+		},
+		{
+			"<leader>fG",
+			function()
+				require("fzf-lua").live_grep({ cmd = "rg --no-ignore --line-number --column --hidden" })
+			end,
+			desc = "Grep",
+		},
 		{
 			"<leader>f:",
 			function()
@@ -73,28 +83,21 @@ return {
 			desc = "Command History",
 		},
 		{
-			"<leader>mH",
-			function()
-				require("fzf-lua").notifications()
-			end,
-			desc = "Notification History",
-		},
-		{
 			"<leader>fs",
 			function()
 				require("fzf-lua").git_status()
 			end,
 			desc = "Git Status",
 		},
-		-- 	{
-		-- 		"<leader>f*",
-		-- 		function()
-		-- 			require("fzf-lua").grep_cword()
-		-- 		end,
-		-- 		desc = "Visual selection or word",
-		-- 		mode = { "n", "x" },
-		-- 	},
-		-- 	-- 	-- search
+		{
+			"<leader>f*",
+			function()
+				require("fzf-lua").grep_cword()
+			end,
+			desc = "Visual selection or word",
+			mode = { "n", "x" },
+		},
+		-- 	-- search
 		{
 			'<leader>f"',
 			function()
@@ -172,7 +175,6 @@ return {
 			end,
 			desc = "quickfix list",
 		},
-
 		{
 			"<leader>fqg",
 			function()
@@ -191,16 +193,9 @@ return {
 		{
 			"<leader>gl",
 			function()
-				require("fzf-lua").git_log()
+				require("fzf-lua").git_reflog()
 			end,
 			desc = "Git Log",
-		},
-		{
-			"<leader>gL",
-			function()
-				require("fzf-lua").git_log_line()
-			end,
-			desc = "Git Log Line",
 		},
 		{
 			"<leader>gS",
@@ -209,170 +204,5 @@ return {
 			end,
 			desc = "Git Stash",
 		},
-		{
-			"<leader>gd",
-			function()
-				require("fzf-lua").git_diff()
-			end,
-			desc = "Git Diff (Hunks)",
-		},
-		{
-			"<leader>gf",
-			function()
-				require("fzf-lua").git_log_file()
-			end,
-			desc = "Git Log File",
-		},
-		-- 	-- 	-- Grep
-		-- 	-- 	{
-		-- 	-- 		"<leader>sb",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lines()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Buffer Lines",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sB",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").grep_buffers()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Grep Open Buffers",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sa",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").autocmds()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Autocmds",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sb",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lines()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Buffer Lines",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sc",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").command_history()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Command History",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sC",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").commands()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Commands",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sd",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").diagnostics()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Diagnostics",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sD",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").diagnostics_buffer()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Buffer Diagnostics",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sH",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").highlights()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Highlights",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>si",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").icons()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Icons",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sj",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").jumps()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Jumps",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sl",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").loclist()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Location List",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sp",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lazy()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Search for Plugin Spec",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sq",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").qflist()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Quickfix List",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>sR",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").resume()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Resume",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"<leader>su",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").undo()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Undo History",
-		-- 	-- 	},
-		-- 	-- 	-- LSP
-		-- 	-- 	{
-		-- 	-- 		"gd",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lsp_definitions()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Goto Definition",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"gD",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lsp_declarations()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Goto Declaration",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"gr",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lsp_references()
-		-- 	-- 		end,
-		-- 	-- 		nowait = true,
-		-- 	-- 		desc = "References",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"gI",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lsp_implementations()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Goto Implementation",
-		-- 	-- 	},
-		-- 	-- 	{
-		-- 	-- 		"gy",
-		-- 	-- 		function()
-		-- 	-- 			require("fzf-lua").lsp_type_definitions()
-		-- 	-- 		end,
-		-- 	-- 		desc = "Goto T[y]pe Definition",
-		-- 	-- 	},
-		-- },
 	},
 }
