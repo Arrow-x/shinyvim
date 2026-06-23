@@ -218,7 +218,19 @@ return {
 				},
 			},
 			pylsp = {},
-			clangd = { cmd = { "clangd", "--clang-tidy", "--fallback-style=LLVM" }, filetypes = { "cpp" } },
+			clangd = {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					-- Crucial flag to ensure it looks at the build directory for .pcm binaries
+					"--compile-commands-dir=build",
+					-- Experimental feature flags if you run into stability problems
+					"--experimental-modules-support",
+					"--header-insertion=never",
+				},
+				filetypes = { "cpp", "h", "hpp", "cppm", "ixx" },
+			},
 		}
 		local ensure_installed = vim.tbl_keys(servers or {})
 
