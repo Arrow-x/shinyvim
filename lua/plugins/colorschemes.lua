@@ -31,28 +31,11 @@ return {
 			vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
-	-- {
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	opts = {
-	-- 		contrast = "soft",
-	-- 		italic = {
-	-- 			strings = false,
-	-- 		},
-	-- 		overrides = {
-	-- 			CmpGhostText = { fg = "#a89984" },
-	-- 			BufferCurrent = { bold = true },
-	-- 			BufferCurrentMod = { bold = true },
-	-- 			IlluminatedWordText = { bg = "#ebdbb2" },
-	-- 			IlluminatedWordRead = { bg = "#ebdbb2" },
-	-- 			IlluminatedWordWrite = { bg = "#ebdbb2" },
-	-- 		},
-	-- 	},
-	-- },
 	{
 		"https://github.com/sainnhe/gruvbox-material",
 		config = function()
 			-- vim.cmd([[colorscheme gruvbox-material]])
-			vim.cmd([[ let g:gruvbox_material_background = 'soft' ]])
+			vim.cmd([[ let g:gruvbox_material_background = 'hard' ]])
 		end,
 	},
 }
