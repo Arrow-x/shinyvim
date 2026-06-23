@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/snacks.nvim",
-		priority = 1000,
+		lazy = false,
 		opts = {
 			indent = {},
 			bigfile = {},
@@ -9,6 +9,7 @@ return {
 			quickfile = {},
 			image = {},
 			rename = {},
+			blame_line = {},
 		},
 		keys = {
 			{
@@ -40,7 +41,7 @@ return {
 				desc = "Git repo upstream website",
 			},
 			{
-				"<leader>gl",
+				"<leader>gB",
 				function()
 					Snacks.blame_line()
 				end,
