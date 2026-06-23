@@ -25,10 +25,10 @@ keymap("n", "<C-q>", ":qa!<cr>", { desc = "force quite" })
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 
 -- Resize with arrows
-keymap("n", "<A-k>", ":resize +2<CR>")
-keymap("n", "<A-j>", ":resize -2<CR>")
-keymap("n", "<A-h>", ":vertical resize +2<CR>")
-keymap("n", "<A-l>", ":vertical resize -2<CR>")
+keymap("n", "<C-M-k>", ":resize +2<CR>")
+keymap("n", "<C-M-j>", ":resize -2<CR>")
+keymap("n", "<C-M-h>", ":vertical resize +2<CR>")
+keymap("n", "<C-M-l>", ":vertical resize -2<CR>")
 
 -- Quicklist nice navigation
 keymap("n", "<C-n>", "<cmd>cnext<CR>zz")
