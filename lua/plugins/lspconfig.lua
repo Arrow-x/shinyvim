@@ -217,14 +217,27 @@ return {
 					},
 				},
 			},
-			pylsp = {},
+			pylsp = {
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								enabled = false,
+							},
+							pyflakes = {
+								enabled = false,
+							},
+						},
+					},
+				},
+			},
 			clangd = {
 				cmd = {
 					"clangd",
 					"--background-index",
 					"--clang-tidy",
-					-- Crucial flag to ensure it looks at the build directory for .pcm binaries
 					"--compile-commands-dir=build",
+
 					-- Experimental feature flags if you run into stability problems
 					"--experimental-modules-support",
 					"--header-insertion=never",
