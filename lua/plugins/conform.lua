@@ -50,7 +50,7 @@ return { -- Autoformat
 			cpp = { "clang-format" },
 			c = { "clang-format" },
 			cs = { "clang-format" },
-			gdscript = { "gdformat" },
+			gdscript = { "gdscript-formatter" },
 			sh = { "shfmt" },
 			toml = { "taplo" },
 			["_"] = { "trim_whitespace", "trim_newlines", lsp_format = "fallback" },
@@ -60,6 +60,11 @@ return { -- Autoformat
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+		},
+		formatters = {
+			["gdscript-formatter"] = {
+				prepend_args = { "--reorder-code" },
+			},
 		},
 	},
 }

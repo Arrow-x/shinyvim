@@ -242,7 +242,7 @@ return {
 			"python-lsp-server",
 			"shellcheck",
 			"stylua",
-			"gdtoolkit",
+			"gdscript-formatter",
 			"clang-format",
 			"shfmt",
 			"codelldb",
