@@ -29,9 +29,9 @@ return {
 	opts = {
 		keymap = {
 			preset = "default",
-			["<C-l>"] = { "select_and_accept" },
-			["<C-h>"] = { "cancel" },
-			["<C-k>"] = {},
+			["<C-l>"] = { "select_and_accept", "fallback" },
+			["<C-h>"] = { "cancel", "fallback" },
+			["<C-k>"] = { "fallback" },
 		},
 		appearance = {
 			use_nvim_cmp_as_default = false,
