@@ -203,6 +203,7 @@ return {
 						diagnostics = {
 							globals = {
 								"Snacks",
+								"hl",
 							},
 						},
 					},
