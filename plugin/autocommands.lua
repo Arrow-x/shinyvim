@@ -29,7 +29,10 @@ autocmd({ "BufWinEnter" }, {
 	pattern = "*",
 	group = gr.general_settings,
 	callback = function()
-		vim.opt.formatoptions:remove({ "c", "r", "o" })
+		local m = { "c", "r", "o" }
+		for _, n in ipairs(m) do
+			vim.opt.formatoptions:remove(n)
+		end
 	end,
 })
 
@@ -70,7 +73,7 @@ autocmd("FileType", {
 })
 
 autocmd("BufReadPre", {
-	pattern = { "/home/arrow-x/Sources/Vault/**" },
+	pattern = { "/mnt/external/Sources/Vault/**" },
 	group = gr.writing,
 	callback = function()
 		if vim.g.neovide then

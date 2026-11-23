@@ -3,15 +3,15 @@ return {
 	lazy = true,
 	version = "*", -- recommended, use latest release instead of latest commit
 	event = {
-		"BufReadPre /home/arrow-x/Sources/Vault/**",
-		"BufNewFile /home/arrow-x/Sources/Vault/**",
+		"BufReadPre /mnt/external/Sources/Vault/**",
+		"BufNewFile /mnt/external/Sources/Vault/**",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
 		require("obsidian").setup({
-			dir = "~/Sources/Vault", -- no need to call 'vim.fn.expand' here
+			dir = "/mnt/external/Sources/Vault", -- no need to call 'vim.fn.expand' here
 			notes_subdir = "notes", -- Optional, if you keep notes in a specific subdirectory of your vault.
 			daily_notes = { -- Optional, if you keep daily notes in a separate directory.
 				folder = "notes/dailies",
